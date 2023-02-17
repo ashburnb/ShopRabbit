@@ -12,7 +12,7 @@ struct HomeScreenView: View {
   
   var body: some View {
     ZStack {
-      Color.green
+      Color("HomescreenColor")
         .ignoresSafeArea()
 
       VStack {
@@ -26,15 +26,23 @@ struct HomeScreenView: View {
           }
         }
         .padding()
+        .foregroundColor(Color.white)
         
         
         Spacer()
       }
       
       VStack {
-        Text("Shopping")
-          .font(.largeTitle)
+        Text("ShopRabbit")
+          .fontWeight(.black)
+          .font(.system(.largeTitle, design: .rounded))
           .foregroundColor(Color.white)
+          .padding(.top, 20)
+        
+        Image("rabbit")
+          .resizable()
+          .frame(width: 400, height: 400)
+          .padding(.vertical, 30)
         
         Spacer()
       }
