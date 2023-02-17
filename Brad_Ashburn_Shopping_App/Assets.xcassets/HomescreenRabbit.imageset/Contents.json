@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Group 1.png",
+      "filename" : "rabbit.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,10 +12,12 @@
           "value" : "dark"
         }
       ],
+      "filename" : "rabbit 3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "rabbit 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -26,10 +28,12 @@
           "value" : "dark"
         }
       ],
+      "filename" : "rabbit 4.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "rabbit 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -40,6 +44,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "rabbit 5.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

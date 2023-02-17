@@ -32,17 +32,24 @@ struct OnboardingView: View {
           Button {
             showOnboardingView.toggle()
           } label: {
-            Text("Back")
+            Image(systemName: "arrow.down.circle")
+              .resizable()
+              .frame(width: 40, height: 40)
+              .padding(.trailing, 22)
+              .padding(.top, 22)
           }
         }
-        .padding()
+
         
         Spacer()
       }
       
       VStack {
         Text("Onboarding")
-          .font(.largeTitle)
+          .fontWeight(.black)
+          .font(.system(.largeTitle, design: .rounded))
+          .foregroundColor(Color.white)
+          .padding(.top, 20)
         
         VStack(alignment: .leading) {
           Text("Must haves:")
@@ -53,6 +60,7 @@ struct OnboardingView: View {
               .multilineTextAlignment(.leading)
               
           }
+          
         }
         .padding()
         

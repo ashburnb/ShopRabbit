@@ -22,10 +22,19 @@ struct HomeScreenView: View {
           Button {
             showOnboardingView.toggle()
           } label: {
-            Text("Onboarding")
+            ZStack {
+              Circle()
+                .fill(Color.green)
+                .frame(width: 50, height: 50)
+              Image(systemName: "list.dash")
+                .resizable()
+                .frame(width: 26, height: 20)
+            }
+            
           }
         }
-        .padding()
+        .padding(.trailing, 20)
+        .padding(.top, 16)
         .foregroundColor(Color.white)
         
         
@@ -39,7 +48,7 @@ struct HomeScreenView: View {
           .foregroundColor(Color.white)
           .padding(.top, 20)
         
-        Image("rabbit")
+        Image("HomescreenRabbit")
           .resizable()
           .frame(width: 400, height: 400)
           .padding(.vertical, 30)
