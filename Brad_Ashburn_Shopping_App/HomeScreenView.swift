@@ -14,37 +14,11 @@ struct HomeScreenView: View {
     ZStack {
       Color("HomescreenColor")
         .ignoresSafeArea()
-
-      VStack {
-        HStack {
-          Spacer()
-          
-          Button {
-            showOnboardingView.toggle()
-          } label: {
-            ZStack {
-              Circle()
-                .fill(Color.green)
-                .frame(width: 50, height: 50)
-              Image(systemName: "list.dash")
-                .resizable()
-                .frame(width: 26, height: 20)
-            }
-            
-          }
-        }
-        .padding(.trailing, 20)
-        .padding(.top, 16)
-        .foregroundColor(Color.white)
-        
-        
-        Spacer()
-      }
       
       VStack {
         Text("ShopRabbit")
           .fontWeight(.black)
-          .font(.system(.largeTitle, design: .rounded))
+          .font(.system(size: 50, design: .rounded))
           .foregroundColor(Color.white)
           .padding(.top, 20)
         
@@ -54,6 +28,27 @@ struct HomeScreenView: View {
           .padding(.vertical, 30)
         
         Spacer()
+        
+        Button {
+          showOnboardingView.toggle()
+        } label: {
+          Text("Hop on in!")
+            .padding()
+            .frame(width: 160, height: 60)
+            .background(.green)
+            .font(.system(.title2, design: .rounded, weight: .heavy))
+            .foregroundColor(Color.white)
+            .clipShape(
+              Capsule()
+            )
+            .shadow(radius: 3.0, x: 2.0, y: 2.0)
+            .overlay(
+              Capsule()
+                .strokeBorder(Color.white, lineWidth: 3.0)
+            )
+        }
+
+        
       }
     }
     .fullScreenCover(isPresented: $showOnboardingView) {

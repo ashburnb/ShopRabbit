@@ -13,6 +13,7 @@
 		DE046BB3299F675A002FF96E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE046BB2299F675A002FF96E /* Preview Assets.xcassets */; };
 		DE046BBA299F6AE2002FF96E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE046BB9299F6AE2002FF96E /* Constants.swift */; };
 		DE046BBC299F6DF0002FF96E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE046BBB299F6DF0002FF96E /* OnboardingView.swift */; };
+		DE36E0AA29A054ED00AD747A /* ButtonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36E0A929A054ED00AD747A /* ButtonViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DE046BB9299F6AE2002FF96E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DE046BBB299F6DF0002FF96E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		DE36E0A829A013A500AD747A /* Brad-Ashburn-Shopping-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Brad-Ashburn-Shopping-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		DE36E0A929A054ED00AD747A /* ButtonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				DE046BBD299F6E01002FF96E /* Views */,
 				DE046BAD299F6758002FF96E /* HomeScreenView.swift */,
 				DE046BBB299F6DF0002FF96E /* OnboardingView.swift */,
+				DE36E0A929A054ED00AD747A /* ButtonViews.swift */,
 				DE046BAF299F675A002FF96E /* Assets.xcassets */,
 				DE046BB1299F675A002FF96E /* Preview Content */,
 			);
@@ -171,6 +174,7 @@
 			files = (
 				DE046BAE299F6758002FF96E /* HomeScreenView.swift in Sources */,
 				DE046BBC299F6DF0002FF96E /* OnboardingView.swift in Sources */,
+				DE36E0AA29A054ED00AD747A /* ButtonViews.swift in Sources */,
 				DE046BAC299F6758002FF96E /* Brad_Ashburn_Shopping_AppApp.swift in Sources */,
 				DE046BBA299F6AE2002FF96E /* Constants.swift in Sources */,
 			);
@@ -305,6 +309,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Brad-Ashburn-Shopping-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ShopRabbit;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -334,6 +340,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Brad-Ashburn-Shopping-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = ShopRabbit;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
