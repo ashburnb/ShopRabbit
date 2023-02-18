@@ -14,6 +14,8 @@
 		DE046BBA299F6AE2002FF96E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE046BB9299F6AE2002FF96E /* Constants.swift */; };
 		DE046BBC299F6DF0002FF96E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE046BBB299F6DF0002FF96E /* OnboardingView.swift */; };
 		DE36E0AA29A054ED00AD747A /* ButtonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36E0A929A054ED00AD747A /* ButtonViews.swift */; };
+		DE36E0AC29A0656200AD747A /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36E0AB29A0656200AD747A /* OnboardingModel.swift */; };
+		DE36E0AE29A06AF200AD747A /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36E0AD29A06AF200AD747A /* TextViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +26,9 @@
 		DE046BB2299F675A002FF96E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DE046BB9299F6AE2002FF96E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DE046BBB299F6DF0002FF96E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		DE36E0A829A013A500AD747A /* Brad-Ashburn-Shopping-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Brad-Ashburn-Shopping-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		DE36E0A929A054ED00AD747A /* ButtonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViews.swift; sourceTree = "<group>"; };
+		DE36E0AB29A0656200AD747A /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		DE36E0AD29A06AF200AD747A /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +61,9 @@
 		DE046BAA299F6758002FF96E /* Brad_Ashburn_Shopping_App */ = {
 			isa = PBXGroup;
 			children = (
-				DE36E0A829A013A500AD747A /* Brad-Ashburn-Shopping-App-Info.plist */,
 				DE046BBF299F6E3A002FF96E /* App */,
 				DE046BBE299F6E0B002FF96E /* Models */,
 				DE046BBD299F6E01002FF96E /* Views */,
-				DE046BAD299F6758002FF96E /* HomeScreenView.swift */,
-				DE046BBB299F6DF0002FF96E /* OnboardingView.swift */,
-				DE36E0A929A054ED00AD747A /* ButtonViews.swift */,
 				DE046BAF299F675A002FF96E /* Assets.xcassets */,
 				DE046BB1299F675A002FF96E /* Preview Content */,
 			);
@@ -82,6 +81,10 @@
 		DE046BBD299F6E01002FF96E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DE36E0AD29A06AF200AD747A /* TextViews.swift */,
+				DE36E0A929A054ED00AD747A /* ButtonViews.swift */,
+				DE046BAD299F6758002FF96E /* HomeScreenView.swift */,
+				DE046BBB299F6DF0002FF96E /* OnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -90,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				DE046BB9299F6AE2002FF96E /* Constants.swift */,
+				DE36E0AB29A0656200AD747A /* OnboardingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,8 +178,10 @@
 			files = (
 				DE046BAE299F6758002FF96E /* HomeScreenView.swift in Sources */,
 				DE046BBC299F6DF0002FF96E /* OnboardingView.swift in Sources */,
+				DE36E0AC29A0656200AD747A /* OnboardingModel.swift in Sources */,
 				DE36E0AA29A054ED00AD747A /* ButtonViews.swift in Sources */,
 				DE046BAC299F6758002FF96E /* Brad_Ashburn_Shopping_AppApp.swift in Sources */,
+				DE36E0AE29A06AF200AD747A /* TextViews.swift in Sources */,
 				DE046BBA299F6AE2002FF96E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

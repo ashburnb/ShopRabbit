@@ -24,31 +24,13 @@ struct HomeScreenView: View {
         
         Image("HomescreenRabbit")
           .resizable()
-          .frame(width: 400, height: 400)
-          .padding(.vertical, 30)
+          .scaledToFit()
         
         Spacer()
         
-        Button {
-          showOnboardingView.toggle()
-        } label: {
-          Text("Hop on in!")
-            .padding()
-            .frame(width: 160, height: 60)
-            .background(.green)
-            .font(.system(.title2, design: .rounded, weight: .heavy))
-            .foregroundColor(Color.white)
-            .clipShape(
-              Capsule()
-            )
-            .shadow(radius: 3.0, x: 2.0, y: 2.0)
-            .overlay(
-              Capsule()
-                .strokeBorder(Color.white, lineWidth: 3.0)
-            )
-        }
+        HopOnInButtonView(showOnboardingView: $showOnboardingView)
+          .padding(.bottom, 22)
 
-        
       }
     }
     .fullScreenCover(isPresented: $showOnboardingView) {
