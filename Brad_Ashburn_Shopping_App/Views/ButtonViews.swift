@@ -24,12 +24,12 @@ struct HopOnInButtonView: View {
           Capsule()
         )
         .shadow(
-          radius: Constants.General.homescreenShadow,
-          x: Constants.General.homescreenShadow,
-          y: Constants.General.homescreenShadow)
+          radius: Constants.Homescreen.Shadow,
+          x: Constants.Homescreen.Shadow,
+          y: Constants.Homescreen.Shadow)
         .overlay(
           Capsule()
-            .strokeBorder(Color.white, lineWidth: Constants.General.homescreenButtonLineWidth)
+            .strokeBorder(Color.white, lineWidth: Constants.Homescreen.ButtonLineWidth)
         )
     }
   }

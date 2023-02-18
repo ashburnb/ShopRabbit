@@ -17,6 +17,7 @@ struct HomescreenView: View {
       
       VStack {
         HomescreenTitleView(text: "ShopRabbit")
+          .padding(.top, Constants.Homescreen.TitleTextTopPadding)
         
         Image("HomescreenRabbit")
           .resizable()
@@ -24,8 +25,12 @@ struct HomescreenView: View {
         
         Spacer()
         
+        HomescreenBodyView(text: "Welcome [username]")
+          .padding(.bottom, Constants.Homescreen.BodyBottomPadding)
+          
         HopOnInButtonView(showOnboardingView: $showOnboardingView)
-          .padding(.bottom, 22)
+          .padding(.bottom, Constants.Homescreen.ButtonPadding)
+
       }
     } // end of ZStack
     .fullScreenCover(isPresented: $showOnboardingView) {

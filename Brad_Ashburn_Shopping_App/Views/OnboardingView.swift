@@ -17,12 +17,12 @@ struct OnboardingView: View {
         .ignoresSafeArea()
             
       VStack {
-        OnboardingTitleView(text: "Onboarding")
-          .padding(.top, 18)
+        OnboardingTitleView(text: "About ShopRabbit")
+          .padding(.top, Constants.Onboarding.TitleViewTopPadding)
         
-        VStack(alignment: .leading, spacing: 4.0) {
-          Text("A whimiscal shopping experience.")
-            .padding(.vertical, 10)
+        VStack(alignment: .leading, spacing: Constants.Onboarding.BodyTextLineSpacing) {
+          Text("A whimiscal shopping experience for iOS.")
+            .padding(.vertical, Constants.Onboarding.TitleTextPadding)
           
           OnboardingBodyTitleView(text: "Essential App Features")
           
@@ -30,9 +30,9 @@ struct OnboardingView: View {
             Text($0)
               .multilineTextAlignment(.leading)
           }
-        }
+        } // end of VStack
         .font(.system(.headline, design: .rounded))
-        .padding(.horizontal, 20)
+        .padding(.horizontal, Constants.Onboarding.BodyTextPadding)
         
         Spacer()
         
@@ -41,8 +41,8 @@ struct OnboardingView: View {
           GoBackToHomescreenButtonView(showOnboardingView: $showOnboardingView)
           Spacer()
         } // end of HStack
-        .padding(.top, 10)
-        .padding(.bottom, 40)
+        .padding(.top, Constants.Onboarding.goBackToHomescreenButtonViewTopPadding)
+        .padding(.bottom, Constants.Onboarding.goBackToHomescreenButtonViewBottomPadding)
       }
     } // end of ZStack
     .foregroundColor(Color.white)

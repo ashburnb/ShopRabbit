@@ -13,9 +13,19 @@ struct HomescreenTitleView: View {
   var body: some View {
     Text(text)
       .fontWeight(.black)
-      .font(.system(size: 50, design: .rounded))
+      .font(.system(size: Constants.Homescreen.TitleTextSize, design: .rounded))
       .foregroundColor(Color.white)
-      .padding(.top, 20)
+  }
+}
+
+struct HomescreenBodyView: View {
+  let text: String
+  
+  var body: some View {
+    Text(text)
+      .fontWeight(.heavy)
+      .font(.system(.title2, design: .rounded))
+      .foregroundColor(Color.white)
   }
 }
 
@@ -26,7 +36,6 @@ struct OnboardingTitleView: View {
     Text(text)
       .fontWeight(.black)
       .font(.system(.largeTitle, design: .rounded))
-      .padding(.top, 20)
   }
 }
 
@@ -40,10 +49,6 @@ struct OnboardingBodyTitleView: View {
       .padding(.bottom)
   }
 }
-
-
-
-
 
 
 struct TextViews_Previews: PreviewProvider {
