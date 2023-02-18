@@ -14,6 +14,7 @@
 		DE046BBA299F6AE2002FF96E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE046BB9299F6AE2002FF96E /* Constants.swift */; };
 		DE046BBC299F6DF0002FF96E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE046BBB299F6DF0002FF96E /* OnboardingView.swift */; };
 		DE36E0AA29A054ED00AD747A /* ButtonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36E0A929A054ED00AD747A /* ButtonViews.swift */; };
+		DE36E0AC29A0656200AD747A /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36E0AB29A0656200AD747A /* OnboardingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		DE046BBB299F6DF0002FF96E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		DE36E0A829A013A500AD747A /* Brad-Ashburn-Shopping-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Brad-Ashburn-Shopping-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		DE36E0A929A054ED00AD747A /* ButtonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViews.swift; sourceTree = "<group>"; };
+		DE36E0AB29A0656200AD747A /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				DE046BB9299F6AE2002FF96E /* Constants.swift */,
+				DE36E0AB29A0656200AD747A /* OnboardingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			files = (
 				DE046BAE299F6758002FF96E /* HomeScreenView.swift in Sources */,
 				DE046BBC299F6DF0002FF96E /* OnboardingView.swift in Sources */,
+				DE36E0AC29A0656200AD747A /* OnboardingModel.swift in Sources */,
 				DE36E0AA29A054ED00AD747A /* ButtonViews.swift in Sources */,
 				DE046BAC299F6758002FF96E /* Brad_Ashburn_Shopping_AppApp.swift in Sources */,
 				DE046BBA299F6AE2002FF96E /* Constants.swift in Sources */,

@@ -24,8 +24,9 @@ struct HomeScreenView: View {
         
         Image("HomescreenRabbit")
           .resizable()
-          .frame(width: 400, height: 400)
-          .padding(.vertical, 30)
+          .scaledToFit()
+//          .frame(width: 400, height: 400)
+          .padding(.top, 30)
         
         Spacer()
         
@@ -47,6 +48,7 @@ struct HomeScreenView: View {
                 .strokeBorder(Color.white, lineWidth: 3.0)
             )
         }
+        .padding(.bottom, 22)
 
         
       }
