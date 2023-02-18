@@ -17,13 +17,16 @@ struct HopOnInButtonView: View {
       Text("Hop on in")
         .padding()
         .frame(width: 160, height: 60)
-        .background(.green)
+        .background(Color("OnboardingColor"))
         .font(.system(.title2, design: .rounded, weight: .heavy))
         .foregroundColor(Color.white)
         .clipShape(
           Capsule()
         )
-        .shadow(radius: 1.0, x: 1.0, y: 1.0)
+        .shadow(
+          radius: Constants.General.homescreenShadow,
+          x: Constants.General.homescreenShadow,
+          y: Constants.General.homescreenShadow)
         .overlay(
           Capsule()
             .strokeBorder(Color.white, lineWidth: Constants.General.homescreenButtonLineWidth)
@@ -31,6 +34,7 @@ struct HopOnInButtonView: View {
     }
   }
 }
+
 
 struct GoBackToHomescreenButtonView: View {
   @Binding var showOnboardingView: Bool

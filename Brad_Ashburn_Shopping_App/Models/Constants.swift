@@ -16,7 +16,7 @@ enum Constants {
   
   enum General {
     public static let homescreenButtonLineWidth: CGFloat = 2.0
-//    public static let homescreen
+    public static let homescreenShadow: CGFloat = 1.0
   }
   
 }

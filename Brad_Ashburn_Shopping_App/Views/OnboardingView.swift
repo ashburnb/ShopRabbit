@@ -13,7 +13,7 @@ struct OnboardingView: View {
 
   var body: some View {
     ZStack {
-      Color.green
+      Color("OnboardingColor")
         .ignoresSafeArea()
             
       VStack {
