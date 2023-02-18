@@ -17,52 +17,36 @@ struct OnboardingView: View {
         .ignoresSafeArea()
             
       VStack {
-        Text("Onboarding")
-          .fontWeight(.black)
-          .font(.system(.largeTitle, design: .rounded))
-          .padding(.top, 20)
+        OnboardingTitleView(text: "Onboarding")
+          .padding(.top, 18)
         
         VStack(alignment: .leading, spacing: 4.0) {
           Text("A whimiscal shopping experience.")
-            .padding(.vertical, 6)
+            .padding(.vertical, 10)
           
-          Text("Must haves:")
-            .font(.system(.title2, design: .rounded))
-            .bold()
+          OnboardingBodyTitleView(text: "Essential App Features")
           
           ForEach(onboardingData.mustHaveFeatures, id: \.self) {
             Text($0)
               .multilineTextAlignment(.leading)
           }
-          
         }
         .font(.system(.headline, design: .rounded))
         .padding(.horizontal, 20)
-        
         
         Spacer()
         
         HStack {
           Spacer()
-          
-          Button {
-            showOnboardingView.toggle()
-          } label: {
-            Image(systemName: "arrow.down.circle")
-              .resizable()
-              .frame(width: 40, height: 40)            
-          }
-          .padding(.top, 10)
-          .padding(.bottom, 22)
-          
+          GoBackToHomescreenButtonView(showOnboardingView: $showOnboardingView)
           Spacer()
-        }
+        } // end of HStack
+        .padding(.top, 10)
+        .padding(.bottom, 40)
       }
-    }
+    } // end of ZStack
     .foregroundColor(Color.white)
-    
   }
-  
 }
 
 

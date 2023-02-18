@@ -26,18 +26,35 @@ struct HopOnInButtonView: View {
         .shadow(radius: 1.0, x: 1.0, y: 1.0)
         .overlay(
           Capsule()
-            .strokeBorder(Color.white, lineWidth: 3.0)
+            .strokeBorder(Color.white, lineWidth: Constants.General.homescreenButtonLineWidth)
         )
     }
   }
 }
 
-
-
+struct GoBackToHomescreenButtonView: View {
+  @Binding var showOnboardingView: Bool
+  
+  var body: some View {
+    Button {
+      showOnboardingView.toggle()
+    } label: {
+      Image(systemName: "arrow.down.circle")
+        .resizable()
+        .frame(width: 40, height: 40)
+    }
+  }
+}
 
 
 struct ButtonViews_Previews: PreviewProvider {
+  
   static var previews: some View {
-    HopOnInButtonView(showOnboardingView: Binding.constant(false))
+    VStack(spacing: 30) {
+      HopOnInButtonView(showOnboardingView: Binding.constant(false))
+      GoBackToHomescreenButtonView(showOnboardingView: Binding.constant(false))
+    }
   }
+  
 }
+

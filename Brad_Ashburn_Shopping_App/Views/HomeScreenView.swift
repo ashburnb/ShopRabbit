@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeScreenView: View {
+struct HomescreenView: View {
   @State private var showOnboardingView = false
   
   var body: some View {
@@ -16,11 +16,7 @@ struct HomeScreenView: View {
         .ignoresSafeArea()
       
       VStack {
-        Text("ShopRabbit")
-          .fontWeight(.black)
-          .font(.system(size: 50, design: .rounded))
-          .foregroundColor(Color.white)
-          .padding(.top, 20)
+        HomescreenTitleView(text: "ShopRabbit")
         
         Image("HomescreenRabbit")
           .resizable()
@@ -30,22 +26,19 @@ struct HomeScreenView: View {
         
         HopOnInButtonView(showOnboardingView: $showOnboardingView)
           .padding(.bottom, 22)
-
       }
-    }
+    } // end of ZStack
     .fullScreenCover(isPresented: $showOnboardingView) {
       OnboardingView(showOnboardingView: $showOnboardingView)
     }
-    
-    
-    
     
   } // end of body property
   
 }
 
-struct HomeScreenView_Previews: PreviewProvider {
+
+struct HomescreenView_Previews: PreviewProvider {
   static var previews: some View {
-    HomeScreenView()
+    HomescreenView()
   }
 }

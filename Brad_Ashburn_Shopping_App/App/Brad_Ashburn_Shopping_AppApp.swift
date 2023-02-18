@@ -11,7 +11,7 @@ import SwiftUI
 struct Brad_Ashburn_Shopping_AppApp: App {
   var body: some Scene {
     WindowGroup {
-      HomeScreenView()
+      HomescreenView()
     }
   }
 }
