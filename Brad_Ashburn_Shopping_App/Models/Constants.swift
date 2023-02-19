@@ -7,13 +7,9 @@
 
 import Foundation
 
-/*
-  For all hardcoded size values (widths, heights, cornerRadii) use enums
-  This avoids Magic Numbers
-  Constants.General.____ <- Xcode will offer code completions!
- */
 enum Constants {
   
+  // all literal number values for Homescreen layout
   enum Homescreen {
     public static let ButtonLineWidth: CGFloat = 2.0
     public static let Shadow: CGFloat = 1.0
@@ -21,36 +17,23 @@ enum Constants {
     public static let TitleTextSize: CGFloat = 50.0
     public static let TitleTextTopPadding: CGFloat = 20.0
     public static let BodyBottomPadding: CGFloat = 10.0
+    
+    public static let goToOnboardingViewButtonWidth: CGFloat = 160
+    public static let goToOnboardingViewButtonHeight: CGFloat = 60
   }
   
+  // all literal number values for Onboarding layout
   enum Onboarding {
     public static let TitleViewTopPadding: CGFloat = 22.0
     public static let TitleTextPadding: CGFloat = 6.0
     public static let BodyTextLineSpacing: CGFloat = 4.0
     public static let BodyTextPadding: CGFloat = 20.0
-
     
-    public static let goBackToHomescreenButtonViewTopPadding: CGFloat = 10.0
-    public static let goBackToHomescreenButtonViewBottomPadding: CGFloat = 40.0
+    public static let goBackToHomescreenButtonTopPadding: CGFloat = 10.0
+    public static let goBackToHomescreenButtonBottomPadding: CGFloat = 40.0
+    public static let goBackToHomescreenButtonWidth: CGFloat = 40.0
+    public static let goBackToHomescreenButtonHeight: CGFloat = 40.0
   }
-  
-//  enum General {
-//    public static let homescreenButtonLineWidth: CGFloat = 2.0
-//    public static let homescreenShadow: CGFloat = 1.0
-//    public static let homescreenButtonPadding: CGFloat = 22.0
-//    public static let homescreenTitleTextSize: CGFloat = 50.0
-//    public static let homescreenTitleTextTopPadding: CGFloat = 20.0
-//    public static let homescreenBodyBottomPadding: CGFloat = 10.0
-//
-//    public static let onboardingTitleViewTopPadding: CGFloat = 22.0
-//    public static let onboardingTitleTextPadding: CGFloat = 6.0
-//    public static let onboardingBodyTextLineSpacing: CGFloat = 4.0
-//    public static let onboardingBodyTextPadding: CGFloat = 20.0
-//
-//
-//    public static let goBackToHomescreenButtonViewTopPadding: CGFloat = 10.0
-//    public static let goBackToHomescreenButtonViewBottomPadding: CGFloat = 40.0
-//  }
   
 }
 

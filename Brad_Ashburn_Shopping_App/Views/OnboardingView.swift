@@ -41,8 +41,8 @@ struct OnboardingView: View {
           GoBackToHomescreenButtonView(showOnboardingView: $showOnboardingView)
           Spacer()
         } // end of HStack
-        .padding(.top, Constants.Onboarding.goBackToHomescreenButtonViewTopPadding)
-        .padding(.bottom, Constants.Onboarding.goBackToHomescreenButtonViewBottomPadding)
+        .padding(.top, Constants.Onboarding.goBackToHomescreenButtonTopPadding)
+        .padding(.bottom, Constants.Onboarding.goBackToHomescreenButtonBottomPadding)
       }
     } // end of ZStack
     .foregroundColor(Color.white)

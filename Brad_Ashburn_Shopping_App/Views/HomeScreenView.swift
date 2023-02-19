@@ -30,8 +30,7 @@ struct HomescreenView: View {
           
         HopOnInButtonView(showOnboardingView: $showOnboardingView)
           .padding(.bottom, Constants.Homescreen.ButtonPadding)
-
-      }
+      } // end of VStack
     } // end of ZStack
     .fullScreenCover(isPresented: $showOnboardingView) {
       OnboardingView(showOnboardingView: $showOnboardingView)

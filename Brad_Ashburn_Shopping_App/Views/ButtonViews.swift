@@ -16,7 +16,10 @@ struct HopOnInButtonView: View {
     } label: {
       Text("Hop on in")
         .padding()
-        .frame(width: 160, height: 60)
+        .frame(
+          width: Constants.Homescreen.goToOnboardingViewButtonWidth,
+          height: Constants.Homescreen.goToOnboardingViewButtonHeight
+        )
         .background(Color("OnboardingColor"))
         .font(.system(.title2, design: .rounded, weight: .heavy))
         .foregroundColor(Color.white)
@@ -26,12 +29,16 @@ struct HopOnInButtonView: View {
         .shadow(
           radius: Constants.Homescreen.Shadow,
           x: Constants.Homescreen.Shadow,
-          y: Constants.Homescreen.Shadow)
+          y: Constants.Homescreen.Shadow
+        )
         .overlay(
           Capsule()
-            .strokeBorder(Color.white, lineWidth: Constants.Homescreen.ButtonLineWidth)
+            .strokeBorder(
+              Color.white,
+              lineWidth: Constants.Homescreen.ButtonLineWidth
+            )
         )
-    }
+    } // end of Button
   }
 }
 
@@ -45,20 +52,23 @@ struct GoBackToHomescreenButtonView: View {
     } label: {
       Image(systemName: "arrow.down.circle")
         .resizable()
-        .frame(width: 40, height: 40)
+        .frame(
+          width: Constants.Onboarding.goBackToHomescreenButtonWidth,
+          height: Constants.Onboarding.goBackToHomescreenButtonHeight
+        )
     }
   }
 }
 
 
 struct ButtonViews_Previews: PreviewProvider {
+  static let showOnboardingView = Binding.constant(false)
   
   static var previews: some View {
     VStack(spacing: 30) {
-      HopOnInButtonView(showOnboardingView: Binding.constant(false))
-      GoBackToHomescreenButtonView(showOnboardingView: Binding.constant(false))
+      HopOnInButtonView(showOnboardingView: showOnboardingView)
+      GoBackToHomescreenButtonView(showOnboardingView: showOnboardingView)
     }
   }
-  
 }
 
