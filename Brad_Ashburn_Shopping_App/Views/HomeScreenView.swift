@@ -35,9 +35,7 @@ struct HomescreenView: View {
     .fullScreenCover(isPresented: $showOnboardingView) {
       OnboardingView(showOnboardingView: $showOnboardingView)
     }
-    
   } // end of body property
-  
 }
 
 
