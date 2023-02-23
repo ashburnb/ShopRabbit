@@ -16,33 +16,44 @@ struct OnboardingView: View {
       Color("OnboardingColor")
         .ignoresSafeArea()
             
-      VStack {
-        OnboardingTitleView(text: "About ShopRabbit")
-          .padding(.top, Constants.Onboarding.TitleViewTopPadding)
-        
-        VStack(alignment: .leading, spacing: Constants.Onboarding.BodyTextLineSpacing) {
-          Text("A whimiscal shopping experience for iOS.")
-            .padding(.vertical, Constants.Onboarding.TitleTextPadding)
+      ScrollView {
+        VStack {
+          OnboardingTitleView(text: "About Shop Rabbit")
+            .padding(.top, Constants.Onboarding.titleViewTopPadding)
           
-          OnboardingBodyTitleView(text: "Essential App Features")
+          VStack(alignment: .leading, spacing: Constants.Onboarding.bodyTextLineSpacing) {
+            Text("A whimsical shopping experience for iOS.")
+              .padding(.vertical, Constants.Onboarding.titleTextPadding)
+            
+            OnboardingBodyTitleView(text: "Essential App Features")
+            
+            ForEach(onboardingData.mustHaveFeatures, id: \.self) {
+              Text($0)
+                .multilineTextAlignment(.leading)
+            }
+            
+            Spacer()
+            
+            OnboardingBodyTitleView(text: "Nice to Have App Features")
+            
+            ForEach(onboardingData.niceToHaveFeatures, id: \.self) {
+              Text($0)
+                .multilineTextAlignment(.leading)
+            }
+          } // end of VStack
+          .font(.system(.headline, design: .rounded))
+          .padding(.horizontal, Constants.Onboarding.bodyTextPadding)
           
-          ForEach(onboardingData.mustHaveFeatures, id: \.self) {
-            Text($0)
-              .multilineTextAlignment(.leading)
-          }
-        } // end of VStack
-        .font(.system(.headline, design: .rounded))
-        .padding(.horizontal, Constants.Onboarding.BodyTextPadding)
-        
-        Spacer()
-        
-        HStack {
           Spacer()
-          GoBackToHomescreenButtonView(showOnboardingView: $showOnboardingView)
-          Spacer()
-        } // end of HStack
-        .padding(.top, Constants.Onboarding.goBackToHomescreenButtonTopPadding)
-        .padding(.bottom, Constants.Onboarding.goBackToHomescreenButtonBottomPadding)
+          
+          HStack {
+            Spacer()
+            GoBackToHomescreenButtonView(showOnboardingView: $showOnboardingView)
+            Spacer()
+          } // end of HStack
+          .padding(.top, Constants.Onboarding.goBackToHomescreenButtonTopPadding)
+          .padding(.bottom, Constants.Onboarding.goBackToHomescreenButtonBottomPadding)
+        }
       }
     } // end of ZStack
     .foregroundColor(Color.white)

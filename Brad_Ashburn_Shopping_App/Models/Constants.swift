@@ -11,12 +11,12 @@ enum Constants {
   
   // all literal number values for Homescreen layout
   enum Homescreen {
-    public static let ButtonLineWidth: CGFloat = 2.0
-    public static let Shadow: CGFloat = 1.0
-    public static let ButtonPadding: CGFloat = 22.0
-    public static let TitleTextSize: CGFloat = 50.0
-    public static let TitleTextTopPadding: CGFloat = 20.0
-    public static let BodyBottomPadding: CGFloat = 10.0
+    public static let buttonLineWidth: CGFloat = 2.0
+    public static let shadow: CGFloat = 1.0
+    public static let buttonPadding: CGFloat = 22.0
+    public static let titleTextSize: CGFloat = 50.0
+    public static let titleTextTopPadding: CGFloat = 20.0
+    public static let bodyBottomPadding: CGFloat = 10.0
     
     public static let goToOnboardingViewButtonWidth: CGFloat = 160
     public static let goToOnboardingViewButtonHeight: CGFloat = 60
@@ -24,10 +24,10 @@ enum Constants {
   
   // all literal number values for Onboarding layout
   enum Onboarding {
-    public static let TitleViewTopPadding: CGFloat = 22.0
-    public static let TitleTextPadding: CGFloat = 6.0
-    public static let BodyTextLineSpacing: CGFloat = 4.0
-    public static let BodyTextPadding: CGFloat = 20.0
+    public static let titleViewTopPadding: CGFloat = 22.0
+    public static let titleTextPadding: CGFloat = 6.0
+    public static let bodyTextLineSpacing: CGFloat = 8.0
+    public static let bodyTextPadding: CGFloat = 20.0
     
     public static let goBackToHomescreenButtonTopPadding: CGFloat = 10.0
     public static let goBackToHomescreenButtonBottomPadding: CGFloat = 40.0

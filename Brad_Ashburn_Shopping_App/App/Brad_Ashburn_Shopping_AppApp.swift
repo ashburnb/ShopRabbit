@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Brad_Ashburn_Shopping_AppApp: App {
+struct Brad_Ashburn_Shopping_App: App {
   var body: some Scene {
     WindowGroup {
       HomescreenView()

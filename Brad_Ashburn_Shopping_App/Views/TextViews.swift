@@ -13,7 +13,7 @@ struct HomescreenTitleView: View {
   var body: some View {
     Text(text)
       .fontWeight(.black)
-      .font(.system(size: Constants.Homescreen.TitleTextSize, design: .rounded))
+      .font(.system(size: Constants.Homescreen.titleTextSize, design: .rounded))
       .foregroundColor(Color.white)
   }
 }

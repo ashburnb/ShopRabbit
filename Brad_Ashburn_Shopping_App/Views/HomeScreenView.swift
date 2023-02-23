@@ -16,8 +16,8 @@ struct HomescreenView: View {
         .ignoresSafeArea()
       
       VStack {
-        HomescreenTitleView(text: "ShopRabbit")
-          .padding(.top, Constants.Homescreen.TitleTextTopPadding)
+        HomescreenTitleView(text: "Shop Rabbit")
+          .padding(.top, Constants.Homescreen.titleTextTopPadding)
         
         Image("HomescreenRabbit")
           .resizable()
@@ -26,10 +26,10 @@ struct HomescreenView: View {
         Spacer()
         
         HomescreenBodyView(text: "Welcome [username]")
-          .padding(.bottom, Constants.Homescreen.BodyBottomPadding)
+          .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
           
         HopOnInButtonView(showOnboardingView: $showOnboardingView)
-          .padding(.bottom, Constants.Homescreen.ButtonPadding)
+          .padding(.bottom, Constants.Homescreen.buttonPadding)
       } // end of VStack
     } // end of ZStack
     .fullScreenCover(isPresented: $showOnboardingView) {
