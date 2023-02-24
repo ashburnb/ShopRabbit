@@ -18,6 +18,7 @@
 		DE36E0AE29A06AF200AD747A /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36E0AD29A06AF200AD747A /* TextViews.swift */; };
 		DE8048E829A88D2A0013AA11 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048E729A88D2A0013AA11 /* Item.swift */; };
 		DE8048EA29A88D370013AA11 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048E929A88D370013AA11 /* Inventory.swift */; };
+		DE8048EC29A88F980013AA11 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048EB29A88F980013AA11 /* InventoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DE8048E629A84A450013AA11 /* week02assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = week02assignment.playground; path = Brad_Ashburn_Shopping_App/week02assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DE8048E729A88D2A0013AA11 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DE8048E929A88D370013AA11 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		DE8048EB29A88F980013AA11 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				DE046BBB299F6DF0002FF96E /* OnboardingView.swift */,
 				DE36E0AD29A06AF200AD747A /* TextViews.swift */,
 				DE36E0A929A054ED00AD747A /* ButtonViews.swift */,
+				DE8048EB29A88F980013AA11 /* InventoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE046BAE299F6758002FF96E /* HomescreenView.swift in Sources */,
+				DE8048EC29A88F980013AA11 /* InventoryView.swift in Sources */,
 				DE046BBC299F6DF0002FF96E /* OnboardingView.swift in Sources */,
 				DE36E0AC29A0656200AD747A /* OnboardingModel.swift in Sources */,
 				DE8048EA29A88D370013AA11 /* Inventory.swift in Sources */,

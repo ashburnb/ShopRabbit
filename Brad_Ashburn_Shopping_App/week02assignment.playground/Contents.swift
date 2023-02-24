@@ -131,60 +131,7 @@ struct Inventory {
 // create the store inventory
 var storeInventory = Inventory()
 
-// create six Items for the store
-let macStudio = Item(
-                        id: 1,
-                        name: "Mac Studio",
-                        price: 1999,
-                        description: "Powerful Mac desktop for creators and developers.",
-                        category: "Computers",
-                        imageURL: "https://www.shoprabbit.com/computers/macstudio.png"
-                    )
 
-let iMac = Item(
-                        id: 2,
-                        name: "iMac",
-                        price: 1499,
-                        description: "Sleek and colorful all-in-one desktop.",
-                        category: "Computers",
-                        imageURL: "https://www.shoprabbit.com/computers/imac.png"
-                    )
-
-let macBookPro = Item(
-                        id: 3,
-                        name: "MacBook Pro",
-                        price: 2499,
-                        description: "Supercharged by the M2 Pro and M2 Max chips, the all new MacBook Pro takes power and portability to a new level.",
-                        category: "Computers",
-                        imageURL: nil
-                    )
-
-let iPhone14 = Item(
-                        id: 4,
-                        name: "iPhone 14",
-                        price: 699,
-                        description: "The world's most popular phone, now even faster.",
-                        category: "Mobile Phones",
-                        imageURL: "https://www.shoprabbit.com/computers/iphone14.png"
-                    )
-
-let iPhone14Pro = Item(
-                        id: 5,
-                        name: "iPhone 14 Pro",
-                        price: 999,
-                        description: "A magical device to capture your life's most important moments, like a pro.",
-                        category: "Mobile Phones",
-                        imageURL: nil
-                    )
-
-let airPodsPro = Item(
-                        id: 6,
-                        name: "AirPods",
-                        price: 249,
-                        description: "Enhanced noise cancelling, richer sound, and packed with pro features.",
-                        category: "Accessories",
-                        imageURL: "https://www.shoprabbit.com/computers/airpodspro.png"
-                    )
 
 
 // add the six items into the store inventory
