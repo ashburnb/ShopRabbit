@@ -68,45 +68,42 @@ struct Inventory {
     }
   }
   
-  
-  /// <#Description#>
-  /// - Parameter item: <#item description#>
-  /// - Returns: <#description#>
+  /// Checks if an item has nil property values for the two optional properties in the Item struct
+  /// - Parameter item: a store Item
+  /// - Returns: a true if the category or imageURL optional properties are nil, otherwise false
   func itemHasNilProperty(_ item: Item) -> Bool {
     item.category == nil || item.imageURL == nil
   }
   
-  // print out collection whose items do not have any nil props
-  /// <#Description#>
+  /// Print out the store inventory with items DO NOT have any nil props
   func printInventory() {
-    print("Store Inventory:\n")
+    print("Store Inventory (no items with nil property values):\n")
     for (item, amount) in totalInventory where !itemHasNilProperty(item) {
       print("Name: \(item.name)\nDescription: \(item.description)\nImage: \(item.imageURL ?? "")\nCategory: \(item.category ?? "")\nPrice: $\(String(format: "%.2f", item.price))\nAmount: \(amount)\n")
     }
   }
   
-  // print out all items in inventory even if some properties are nil
-  /// <#Description#>
+  /// Print out the ENTIRE store inventory INCLUDING items that have nil properties
   func printAllInventory() {
-    print("Total Store Inventory:\n")
+    print("Total Store Inventory (all items):\n")
     for (item, amount) in totalInventory {
       print("Name: \(item.name)\nDescription: \(item.description)\nImage: \(item.imageURL ?? "Sorry, not found")\nCategory: \(item.category ?? "Sorry, not found")\nPrice: $\(String(format: "%.2f", item.price))\nAmount: \(amount)\n")
     }
   }
 
-  // print out items that are out of stock
-  /// <#Description#>
+  /// Print out all items that have zero amounts in the store inventory
   func printOutOfStockInventory() {
+    print("Out of Stock Items:\n")
     for (item, amount) in totalInventory {
       if amount == 0 {
-        print(item)
+        print(item.name)
       }
     }
   }
   
   // print inventory from a certain category
-  /// <#Description#>
-  /// - Parameter category: <#category description#>
+  /// Print items that belong to a certain store category
+  /// - Parameter category: A string representing the name of one of the three store categories
   func printInventoryFromCategory(_ category: String) {
     if category == "Computers" {
       print("Total Inventory of Computers:\n")
@@ -131,8 +128,10 @@ struct Inventory {
 } // end of Inventory struct
 
 
+// create the store inventory
 var storeInventory = Inventory()
 
+// create six Items for the store
 let macStudio = Item(
                         id: 1,
                         name: "Mac Studio",
@@ -155,7 +154,7 @@ let macBookPro = Item(
                         id: 3,
                         name: "MacBook Pro",
                         price: 2499,
-                        description: "Supercharged by the M2 Pro and M2 Max chips, the MacBook Pro take power and portability to a new level.",
+                        description: "Supercharged by the M2 Pro and M2 Max chips, the all new MacBook Pro takes power and portability to a new level.",
                         category: "Computers",
                         imageURL: nil
                     )
@@ -188,7 +187,8 @@ let airPodsPro = Item(
                     )
 
 
-// adding items into the store inventory
+// add the six items into the store inventory
+// including duplicates for two of them
 storeInventory.addItemToInventory(macStudio)
 storeInventory.addItemToInventory(iMac)
 storeInventory.addItemToInventory(macBookPro)
@@ -198,32 +198,29 @@ storeInventory.addItemToInventory(iPhone14Pro)
 storeInventory.addItemToInventory(airPodsPro)
 storeInventory.addItemToInventory(airPodsPro)
 
-//storeInventory.printInventory()       // only items without any nil properties are displayed
-//storeInventory.printAllInventory()    // all store items are displayed
+storeInventory.printInventory()       // only items without any nil properties are displayed
+storeInventory.printAllInventory()    // all store items are displayed
 
-// prints items found in categories
-//storeInventory.printInventoryFromCategory("Computers")
-//storeInventory.printInventoryFromCategory("Mobile Phones")
-//storeInventory.printInventoryFromCategory("Accessories")
-//storeInventory.printInventoryFromCategory("iPads")
+// print items found in each store category
+storeInventory.printInventoryFromCategory("Computers")
+storeInventory.printInventoryFromCategory("Mobile Phones")
+storeInventory.printInventoryFromCategory("Accessories")
 
+// attempts to print items from a category that does not exist in the store
+print("Attempting to print from a non-existent store category")
+storeInventory.printInventoryFromCategory("iPads")
+print("")
 
-
+// reduces amount of Mac Studio item by 1
+print("Remove one Mac Studio from the inventory")
 storeInventory.removeItemFromInventory(macStudio, quantity: 1)
+print("")
+
+// attempts to reduce amount of Mac Studio but cannot since amount is already zero
+print("Attempting to remove another Mac Studio")
 storeInventory.removeItemFromInventory(macStudio, quantity: 1)
+print("")
 
-storeInventory.printAllInventory()
-storeInventory.removeItemFromInventory(airPodsPro, quantity: 10)
-
-
-
-
-//In Xcode App:
-//  Make all revisions from Vidhur's comments, push to main
-//  Create new branch of revised main
-//  Add new file called ItemModel
-//
-//A&B
-//create a new screen that displays the inventory data nicely
-//create items for each inventory property (computers, mobile phones, and accessories)
+// prints the inventory of items that have zero amounts in the inventory
+storeInventory.printOutOfStockInventory()
 
