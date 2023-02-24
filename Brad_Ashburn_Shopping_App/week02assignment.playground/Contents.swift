@@ -1,26 +1,30 @@
 import UIKit
 
+// Model data for each store item
+// Must conform to Hashable protocol to be used as a key in the inventory dictionary
 struct Item: Hashable {
   let id: Int
   let name: String
-  var price: Double
+  let price: Double
   let description: String
   let category: String?
   let imageURL: String?
 }
 
+// Model data for the store's inventory
+// contains three item category arrays and the main totalInventory dictionary
 struct Inventory {
   var computers: [Item] = []
   var mobilePhones: [Item] = []
   var accessories: [Item] = []
   
   // dictionary holds all items in the store and their respective amounts in stock
-  // rationale is that searching for and accessing items will be O(1) vs O(n) for an array
+  // rationale for choosing this data structure is that searching for and accessing items will be O(1) vs O(n) for an array
   var totalInventory: [Item: Int] = [:]
-  
 
-  /// <#Description#>
-  /// - Parameter item: <#item description#>
+  
+  /// Adds an item into the inventory dictionary and increments the amount by 1, if the item is new to the inventory, the amount is set at 1 and it is added to the corresponding item category array.
+  /// - Parameter item: A store item (of type Item)
   mutating func addItemToInventory(_ item: Item) {
     totalInventory[item] = (totalInventory[item] ?? 0) + 1
     
@@ -42,12 +46,12 @@ struct Inventory {
     }
   }
   
-  
-  /// <#Description#>
+  /// Removes an item from the inventory dictionary and decrements the corresponding quantity by the amount passed in.
   /// - Parameters:
-  ///   - item: <#item description#>
-  ///   - quantity: <#quantity description#>
+  ///   - item: the item that is to be removed from the inventory
+  ///   - quantity: how many of the item should be removed from the inventory
   mutating func removeItemFromInventory(_ item: Item, quantity: Int) {
+    // this ensures that the item is in the inventory before proceeding
     guard let itemAmount = totalInventory[item] else {
       print("Item not found")
       return
