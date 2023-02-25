@@ -21,7 +21,8 @@ struct Inventory {
                           price: 1999,
                           description: "Powerful Mac desktop for creators and developers.",
                           category: "Computers",
-                          imageURL: "https://www.shoprabbit.com/computers/macstudio.png"
+//                          imageURL: "https://www.shoprabbit.com/computers/macstudio.png"
+                          imageURL: "macstudio"
                       )
 
   let iMac = Item(
@@ -30,7 +31,8 @@ struct Inventory {
                           price: 1499,
                           description: "Sleek and colorful all-in-one desktop.",
                           category: "Computers",
-                          imageURL: "https://www.shoprabbit.com/computers/imac.png"
+//                          imageURL: "https://www.shoprabbit.com/computers/imac.png"
+                          imageURL: "imac"
                       )
 
   let macBookPro = Item(
@@ -48,7 +50,8 @@ struct Inventory {
                           price: 699,
                           description: "The world's most popular phone, now even faster.",
                           category: "Mobile Phones",
-                          imageURL: "https://www.shoprabbit.com/computers/iphone14.png"
+//                          imageURL: "https://www.shoprabbit.com/computers/iphone14.png"
+                          imageURL: "iphone14"
                       )
 
   let iPhone14Pro = Item(
@@ -56,8 +59,9 @@ struct Inventory {
                           name: "iPhone 14 Pro",
                           price: 999,
                           description: "A magical device to capture your life's most important moments, like a pro.",
-                          category: "Mobile Phones",
-                          imageURL: nil
+                          category: nil,
+//                          imageURL: "https://www.shoprabbit.com/computers/iphone14pro.png",
+                          imageURL: "iphone14pro"
                       )
 
   let airPodsPro = Item(
@@ -66,7 +70,8 @@ struct Inventory {
                           price: 249,
                           description: "Enhanced noise cancelling, richer sound, and packed with pro features.",
                           category: "Accessories",
-                          imageURL: "https://www.shoprabbit.com/computers/airpodspro.png"
+//                          imageURL: "https://www.shoprabbit.com/computers/airpodspro.png"
+                          imageURL: "airpodspro"
                       )
   
   // dictionary holds all items in the store and their respective amounts in stock

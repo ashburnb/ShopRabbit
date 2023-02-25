@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct HopOnInButtonView: View {
-  @Binding var showOnboardingView: Bool
+  @Binding var showInventoryView: Bool
   
   var body: some View {
     Button {
-      showOnboardingView.toggle()
+      showInventoryView.toggle()
     } label: {
       Text("Hop on in")
         .padding()
@@ -61,13 +61,34 @@ struct GoBackToHomescreenButtonView: View {
 }
 
 
+struct AboutButtonView: View {
+  @Binding var showOnboardingView: Bool
+  
+  var body: some View {
+    Button {
+      showOnboardingView.toggle()
+    } label: {
+      Image(systemName: "questionmark.circle")
+        .resizable()
+        .frame(
+          width: Constants.Onboarding.goBackToHomescreenButtonWidth,
+          height: Constants.Onboarding.goBackToHomescreenButtonHeight
+        )
+        .foregroundColor(.white)
+    }
+  }
+}
+
+
 struct ButtonViews_Previews: PreviewProvider {
   static let showOnboardingView = Binding.constant(false)
+  static let showInventoryView = Binding.constant(false)
   
   static var previews: some View {
     VStack(spacing: 30) {
-      HopOnInButtonView(showOnboardingView: showOnboardingView)
+      HopOnInButtonView(showInventoryView: showInventoryView)
       GoBackToHomescreenButtonView(showOnboardingView: showOnboardingView)
+      AboutButtonView(showOnboardingView: showOnboardingView)
     }
   }
 }

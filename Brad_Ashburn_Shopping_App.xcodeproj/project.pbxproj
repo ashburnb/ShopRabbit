@@ -91,9 +91,9 @@
 			children = (
 				DE046BAD299F6758002FF96E /* HomescreenView.swift */,
 				DE046BBB299F6DF0002FF96E /* OnboardingView.swift */,
+				DE8048EB29A88F980013AA11 /* InventoryView.swift */,
 				DE36E0AD29A06AF200AD747A /* TextViews.swift */,
 				DE36E0A929A054ED00AD747A /* ButtonViews.swift */,
-				DE8048EB29A88F980013AA11 /* InventoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
