@@ -16,22 +16,25 @@ struct InventoryView: View {
     NavigationView {
       List {
         ForEach(storeInventory.totalInventory.keys.sorted(), id: \.id) { item in
-          VStack(alignment: .leading) {
-            Image("\(item.imageURL ?? "")")
+//          VStack(alignment: .leading) {
+          HStack() {
+            Image("\(item.imageURL ?? "imagenotfound")")
               .resizable()
               .scaledToFit()
             
-            HStack {
+//            HStack {
+            VStack(alignment: .leading) {
               Text("\(item.name)")
                 .font(.title)
                 .fontWeight(.heavy)
-              Spacer()
+              
+              Text("\(item.description)")
+                .font(.body)
               Text(item.price, format: .currency(code: "USD"))
                 .font(.title3)
             }
             
-            Text("\(item.description)")
-              .font(.body)
+            
               
           } // end of VStack
         } // end of ForEach
