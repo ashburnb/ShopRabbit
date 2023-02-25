@@ -17,8 +17,8 @@ struct HopOnInButtonView: View {
       Text("Hop on in")
         .padding()
         .frame(
-          width: Constants.Homescreen.goToOnboardingViewButtonWidth,
-          height: Constants.Homescreen.goToOnboardingViewButtonHeight
+          width: Constants.Homescreen.hopOnInButtonWidth,
+          height: Constants.Homescreen.hopOnInButtonHeight
         )
         .background(Color("OnboardingColor"))
         .font(.system(.title2, design: .rounded, weight: .heavy))
@@ -56,6 +56,7 @@ struct GoBackToHomescreenButtonView: View {
           width: Constants.Onboarding.goBackToHomescreenButtonWidth,
           height: Constants.Onboarding.goBackToHomescreenButtonHeight
         )
+        .foregroundColor(.white)
     }
   }
 }
@@ -85,10 +86,15 @@ struct ButtonViews_Previews: PreviewProvider {
   static let showInventoryView = Binding.constant(false)
   
   static var previews: some View {
-    VStack(spacing: 30) {
-      HopOnInButtonView(showInventoryView: showInventoryView)
-      GoBackToHomescreenButtonView(showOnboardingView: showOnboardingView)
-      AboutButtonView(showOnboardingView: showOnboardingView)
+    ZStack {
+      Color.gray
+        .ignoresSafeArea()
+      
+      VStack(spacing: 30) {
+        HopOnInButtonView(showInventoryView: showInventoryView)
+        GoBackToHomescreenButtonView(showOnboardingView: showOnboardingView)
+        AboutButtonView(showOnboardingView: showOnboardingView)
+      }
     }
   }
 }

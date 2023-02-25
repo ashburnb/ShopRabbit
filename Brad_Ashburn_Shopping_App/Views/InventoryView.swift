@@ -16,13 +16,12 @@ struct InventoryView: View {
     NavigationView {
       List {
         ForEach(storeInventory.totalInventory.keys.sorted(), id: \.id) { item in
-//          VStack(alignment: .leading) {
           HStack() {
             Image("\(item.imageURL ?? "imagenotfound")")
               .resizable()
               .scaledToFit()
+              .padding(Constants.Inventory.imagePadding)
             
-//            HStack {
             VStack(alignment: .leading) {
               Text("\(item.name)")
                 .font(.title)
@@ -33,17 +32,11 @@ struct InventoryView: View {
               Text(item.price, format: .currency(code: "USD"))
                 .font(.title3)
             }
-            
-            
-              
-          } // end of VStack
+          } // end of HStack
         } // end of ForEach
-
-      }
-    
+      } // end of List
       .scrollContentBackground(.hidden)
       .navigationTitle("Inventory")
-      .padding(10)
       .toolbar {
         Button {
           showInventoryView.toggle()

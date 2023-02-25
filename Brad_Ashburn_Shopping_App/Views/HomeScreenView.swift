@@ -31,8 +31,8 @@ struct HomescreenView: View {
           
         HStack {
           AboutButtonView(showOnboardingView: $showOnboardingView)
-            .padding(.bottom,18)
-            .padding(.trailing, 18)
+            .padding(.bottom, Constants.Homescreen.aboutButtonBottomPadding)
+            .padding(.trailing, Constants.Homescreen.aboutButtonBottomTrailing)
           HopOnInButtonView(showInventoryView: $showInventoryView)
             .padding(.bottom, Constants.Homescreen.buttonPadding)
         }
