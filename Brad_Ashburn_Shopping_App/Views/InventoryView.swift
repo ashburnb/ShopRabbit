@@ -13,26 +13,31 @@ struct InventoryView: View {
   
   var body: some View {
     
-    NavigationView {
+    NavigationStack {
       List {
         ForEach(storeInventory.totalInventory.keys.sorted(), id: \.id) { item in
-          HStack() {
-            Image("\(item.imageURL ?? "imagenotfound")")
-              .resizable()
-              .scaledToFit()
-              .padding(Constants.Inventory.imagePadding)
-            
-            VStack(alignment: .leading) {
-              Text("\(item.name)")
-                .font(.title)
-                .fontWeight(.heavy)
+          NavigationLink {
+            ItemDetailsView(item: item)
+          } label: {
+            HStack() {
+              Image("\(item.imageURL ?? "imagenotfound")")
+                .resizable()
+                .scaledToFit()
+                .padding(Constants.Inventory.imagePadding)
               
-              Text("\(item.description)")
-                .font(.body)
-              Text(item.price, format: .currency(code: "USD"))
-                .font(.title3)
-            }
-          } // end of HStack
+              VStack(alignment: .leading) {
+                Text("\(item.name)")
+                  .font(.title)
+                  .fontWeight(.heavy)
+                
+                Text("\(item.description)")
+                  .font(.body)
+                Text(item.price, format: .currency(code: "USD"))
+                  .font(.title3)
+              }
+            } // end of HStack
+          }
+
         } // end of ForEach
       } // end of List
       .scrollContentBackground(.hidden)

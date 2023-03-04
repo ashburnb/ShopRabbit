@@ -19,6 +19,7 @@
 		DE8048E829A88D2A0013AA11 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048E729A88D2A0013AA11 /* Item.swift */; };
 		DE8048EA29A88D370013AA11 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048E929A88D370013AA11 /* Inventory.swift */; };
 		DE8048EC29A88F980013AA11 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048EB29A88F980013AA11 /* InventoryView.swift */; };
+		DEB1EA4629B39DE100875B35 /* ItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB1EA4529B39DE100875B35 /* ItemDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		DE8048E729A88D2A0013AA11 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DE8048E929A88D370013AA11 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		DE8048EB29A88F980013AA11 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
+		DEB1EA4429B39C7600875B35 /* week03assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = week03assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		DEB1EA4529B39DE100875B35 /* ItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +55,7 @@
 		DE046B9F299F6758002FF96E = {
 			isa = PBXGroup;
 			children = (
+				DEB1EA4429B39C7600875B35 /* week03assignment.playground */,
 				DE8048E629A84A450013AA11 /* week02assignment.playground */,
 				DE046BAA299F6758002FF96E /* Brad_Ashburn_Shopping_App */,
 				DE046BA9299F6758002FF96E /* Products */,
@@ -94,6 +98,7 @@
 				DE8048EB29A88F980013AA11 /* InventoryView.swift */,
 				DE36E0AD29A06AF200AD747A /* TextViews.swift */,
 				DE36E0A929A054ED00AD747A /* ButtonViews.swift */,
+				DEB1EA4529B39DE100875B35 /* ItemDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEB1EA4629B39DE100875B35 /* ItemDetailsView.swift in Sources */,
 				DE046BAE299F6758002FF96E /* HomescreenView.swift in Sources */,
 				DE8048EC29A88F980013AA11 /* InventoryView.swift in Sources */,
 				DE046BBC299F6DF0002FF96E /* OnboardingView.swift in Sources */,
