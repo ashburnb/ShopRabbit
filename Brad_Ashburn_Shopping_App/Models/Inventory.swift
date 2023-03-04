@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Model data for the store's inventory
+// data model of the store's inventory
 // contains three item category arrays and the main totalInventory dictionary
 struct Inventory {
   var computers: [Item] = []
@@ -86,20 +86,6 @@ struct Inventory {
     totalInventory[iPhone14Pro] = 3
     totalInventory[airPodsPro] = 15
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   /// Adds an item into the inventory dictionary and increments the amount by 1, if the item is new to the inventory, the amount is set at 1 and it is added to the corresponding item category array.

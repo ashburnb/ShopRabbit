@@ -10,6 +10,7 @@ import SwiftUI
 struct ItemDetailsView: View {
   var item: Item
   @State private var showItemAdded = false
+  @State private var showShoppingCart = false
   
   var body: some View {
     VStack {
@@ -31,7 +32,25 @@ struct ItemDetailsView: View {
 
     }
     .sheet(isPresented: $showItemAdded) {
-      Text("\(item.name) added successfully")
+      VStack {
+        Text("\(item.name) added successfully")
+        HStack {
+          Button {
+            //
+          } label: {
+            Text("Go back")
+          }
+          
+          Button {
+            showShoppingCart.toggle()
+          } label: {
+            Text("Go to Cart")
+          }
+        }
+      }
+      .fullScreenCover(isPresented: $showShoppingCart) {
+        ShoppingCartView()
+      }
     }
   } // end of body property
 }

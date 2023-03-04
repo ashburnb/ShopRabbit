@@ -13,7 +13,7 @@ struct InventoryView: View {
   
   var body: some View {
     
-    NavigationStack {
+    NavigationView {
       List {
         ForEach(storeInventory.totalInventory.keys.sorted(), id: \.id) { item in
           NavigationLink {
