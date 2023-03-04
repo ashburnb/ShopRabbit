@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct HopOnInButtonView: View {
-  @Binding var showOnboardingView: Bool
+  @Binding var showInventoryView: Bool
   
   var body: some View {
     Button {
-      showOnboardingView.toggle()
+      showInventoryView.toggle()
     } label: {
       Text("Hop on in")
         .padding()
         .frame(
-          width: Constants.Homescreen.goToOnboardingViewButtonWidth,
-          height: Constants.Homescreen.goToOnboardingViewButtonHeight
+          width: Constants.Homescreen.hopOnInButtonWidth,
+          height: Constants.Homescreen.hopOnInButtonHeight
         )
         .background(Color("OnboardingColor"))
         .font(.system(.title2, design: .rounded, weight: .heavy))
@@ -56,6 +56,26 @@ struct GoBackToHomescreenButtonView: View {
           width: Constants.Onboarding.goBackToHomescreenButtonWidth,
           height: Constants.Onboarding.goBackToHomescreenButtonHeight
         )
+        .foregroundColor(.white)
+    }
+  }
+}
+
+
+struct AboutButtonView: View {
+  @Binding var showOnboardingView: Bool
+  
+  var body: some View {
+    Button {
+      showOnboardingView.toggle()
+    } label: {
+      Image(systemName: "questionmark.circle")
+        .resizable()
+        .frame(
+          width: Constants.Onboarding.goBackToHomescreenButtonWidth,
+          height: Constants.Onboarding.goBackToHomescreenButtonHeight
+        )
+        .foregroundColor(.white)
     }
   }
 }
@@ -63,11 +83,18 @@ struct GoBackToHomescreenButtonView: View {
 
 struct ButtonViews_Previews: PreviewProvider {
   static let showOnboardingView = Binding.constant(false)
+  static let showInventoryView = Binding.constant(false)
   
   static var previews: some View {
-    VStack(spacing: 30) {
-      HopOnInButtonView(showOnboardingView: showOnboardingView)
-      GoBackToHomescreenButtonView(showOnboardingView: showOnboardingView)
+    ZStack {
+      Color.gray
+        .ignoresSafeArea()
+      
+      VStack(spacing: 30) {
+        HopOnInButtonView(showInventoryView: showInventoryView)
+        GoBackToHomescreenButtonView(showOnboardingView: showOnboardingView)
+        AboutButtonView(showOnboardingView: showOnboardingView)
+      }
     }
   }
 }

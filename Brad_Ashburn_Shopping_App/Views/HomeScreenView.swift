@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomescreenView: View {
   @State private var showOnboardingView = false
+  @State private var showInventoryView = false
   
   var body: some View {
     ZStack {
@@ -28,12 +29,20 @@ struct HomescreenView: View {
         HomescreenBodyView(text: "Welcome [username]")
           .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
           
-        HopOnInButtonView(showOnboardingView: $showOnboardingView)
-          .padding(.bottom, Constants.Homescreen.buttonPadding)
+        HStack {
+          AboutButtonView(showOnboardingView: $showOnboardingView)
+            .padding(.bottom, Constants.Homescreen.aboutButtonBottomPadding)
+            .padding(.trailing, Constants.Homescreen.aboutButtonBottomTrailing)
+          HopOnInButtonView(showInventoryView: $showInventoryView)
+            .padding(.bottom, Constants.Homescreen.buttonPadding)
+        }
       } // end of VStack
     } // end of ZStack
     .fullScreenCover(isPresented: $showOnboardingView) {
       OnboardingView(showOnboardingView: $showOnboardingView)
+    }
+    .fullScreenCover(isPresented: $showInventoryView) {
+      InventoryView(showInventoryView: $showInventoryView)
     }
   } // end of body property
 }

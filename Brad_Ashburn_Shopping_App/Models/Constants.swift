@@ -18,8 +18,11 @@ enum Constants {
     public static let titleTextTopPadding: CGFloat = 20.0
     public static let bodyBottomPadding: CGFloat = 10.0
     
-    public static let goToOnboardingViewButtonWidth: CGFloat = 160
-    public static let goToOnboardingViewButtonHeight: CGFloat = 60
+    public static let hopOnInButtonWidth: CGFloat = 160.0
+    public static let hopOnInButtonHeight: CGFloat = 60.0
+    
+    public static let aboutButtonBottomPadding: CGFloat = 18.0
+    public static let aboutButtonBottomTrailing: CGFloat = 18.0
   }
   
   // all literal number values for Onboarding layout
@@ -33,6 +36,11 @@ enum Constants {
     public static let goBackToHomescreenButtonBottomPadding: CGFloat = 40.0
     public static let goBackToHomescreenButtonWidth: CGFloat = 40.0
     public static let goBackToHomescreenButtonHeight: CGFloat = 40.0
+  }
+  
+  // all literal number values for Inventory layout
+  enum Inventory {
+    public static let imagePadding: CGFloat = 8.0
   }
   
 }
