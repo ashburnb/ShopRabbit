@@ -10,6 +10,7 @@ import SwiftUI
 struct InventoryView: View {
   @State var storeInventory = Inventory()
   @Binding var showInventoryView: Bool
+  @State var shoppingCart = ShoppingCart()
   
   var body: some View {
     
@@ -17,7 +18,7 @@ struct InventoryView: View {
       List {
         ForEach(storeInventory.totalInventory.keys.sorted(), id: \.id) { item in
           NavigationLink {
-            ItemDetailsView(item: item)
+            ItemDetailsView(item: item, shoppingCart: $shoppingCart)
           } label: {
             HStack() {
               Image("\(item.imageURL ?? "imagenotfound")")

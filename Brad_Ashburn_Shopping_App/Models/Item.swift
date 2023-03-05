@@ -9,7 +9,7 @@ import Foundation
 
 // data model for each store item
 // must conform to Hashable protocol to be used as a key in the inventory dictionary
-struct Item: Hashable, Comparable {
+struct Item: Hashable, Comparable, Identifiable {
   static func < (lhs: Item, rhs: Item) -> Bool {
     lhs.id < rhs.id
   }

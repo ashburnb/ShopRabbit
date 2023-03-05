@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ItemDetailsView: View {
   var item: Item
-  @State private var showItemAdded = false
-  @State private var showShoppingCart = false
+  @State var showItemAdded = false
+  @State var showShoppingCart = false
+  @Binding var shoppingCart: ShoppingCart
   
   var body: some View {
     VStack {
@@ -18,7 +19,7 @@ struct ItemDetailsView: View {
       Text("\(item.description)")
       
       Button {
-        // adds item to cart
+        shoppingCart.itemsInCart.append(item)
         showItemAdded.toggle()
       } label: {
         Text("Add to cart")
@@ -36,7 +37,7 @@ struct ItemDetailsView: View {
         Text("\(item.name) added successfully")
         HStack {
           Button {
-            //
+            showItemAdded.toggle()
           } label: {
             Text("Go back")
           }
@@ -49,7 +50,7 @@ struct ItemDetailsView: View {
         }
       }
       .fullScreenCover(isPresented: $showShoppingCart) {
-        ShoppingCartView()
+        ShoppingCartView(shoppingCart: $shoppingCart, showShoppingCart: $showShoppingCart)
       }
     }
   } // end of body property
@@ -60,6 +61,6 @@ struct ItemDetailsView_Previews: PreviewProvider {
   static let sampleItem = Item(id: 808, name: "Name", price: 88.88, description: "Sample item", category: nil, imageURL: nil)
   
   static var previews: some View {
-    ItemDetailsView(item: sampleItem)
+    ItemDetailsView(item: sampleItem, shoppingCart: .constant(ShoppingCart()))
   }
 }

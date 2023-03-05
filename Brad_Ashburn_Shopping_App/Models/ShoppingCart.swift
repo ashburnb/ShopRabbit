@@ -11,7 +11,7 @@ import Foundation
 // totalAmount and totalAmountAfterDiscount were chosen to be computed properties since they are not computationally intensive
 struct ShoppingCart {
   var itemsInCart: [Item] = []
-  var discountCode: String? = nil
+  var discountCode: String = ""
   let discountTypes = [
     "tenOff": 0.10,
     "twentyFiveOff": 0.25,
@@ -19,7 +19,7 @@ struct ShoppingCart {
   ]
   
   var discountPercentage: Double {
-    guard let discount = discountTypes[discountCode ?? ""] else {
+    guard let discount = discountTypes[discountCode] else {
       return 0
     }
     return discount

@@ -8,12 +8,38 @@
 import SwiftUI
 
 struct ShoppingCartView: View {
+  @Binding var shoppingCart: ShoppingCart
+  @Binding var showShoppingCart: Bool
   
   var body: some View {
-    VStack {
-      Text("Shopping Cart")
-        .font(.largeTitle)
-      Spacer()
+    NavigationView {
+      VStack {
+        List {
+          ForEach(shoppingCart.itemsInCart) { item in
+            HStack {
+              Text(item.name)
+              Spacer()
+              Text("$\(String(format: "%.2f", item.price))")
+            }
+          }
+        }
+        .navigationTitle("Shopping Cart")
+        .toolbar {
+          Button {
+            showShoppingCart.toggle()
+          } label: {
+            Text("Back")
+          }
+          
+        }
+        Text("Total Amount: $\(String(format: "%.2f", shoppingCart.totalAmount))")
+        TextField("Enter Discount Code", text: $shoppingCart.discountCode)
+          .multilineTextAlignment(.center)
+          .frame(width: 200, height: 60)
+          .border(.orange)
+        Text("Total after Discount: $\(String(format: "%.2f", shoppingCart.totalAmountAfterDiscount))")
+      }
+      
     }
     
     
@@ -23,6 +49,6 @@ struct ShoppingCartView: View {
 
 struct ShoppingCartView_Previews: PreviewProvider {
   static var previews: some View {
-    ShoppingCartView()
+    ShoppingCartView(shoppingCart: .constant(ShoppingCart()), showShoppingCart: .constant(false))
   }
 }
