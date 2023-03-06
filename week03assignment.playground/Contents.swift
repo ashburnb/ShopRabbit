@@ -31,45 +31,42 @@ var totalAmountAfterDiscount: Double {
 
 // Assignment 1 - Function
 func calculateDiscount(totalAmount: Double, discountPercentage: Double) -> Double {
-  if totalAmount < 0 {
-    print("Error. Total amount cannot be less than zero.")
-  }
-  if discountPercentage <= 0 {
-    print("Error. Discount Percentage must be more than zero.")
-  }
-  
   let discountedAmount = totalAmount * discountPercentage
   let totalAmountAfterDiscount = totalAmount - discountedAmount
   return totalAmountAfterDiscount
 }
 
-let totalAmountAfterDiscountExample1 = calculateDiscount(totalAmount: 100, discountPercentage: 0.10)
-print(totalAmountAfterDiscountExample1)
 
+let totalAmountAfterDiscountExample1 = calculateDiscount(totalAmount: 100.00, discountPercentage: 0.10)
+print("Assignment 1 - Function")
+print("Total amount of $100.00, with a 10% discount = $\(String(format: "%.2f", totalAmountAfterDiscountExample1))")
+print("")
 
 // Assignment 2 - Function
 func calculateDiscount(totalAmount: Double, discountPercentageDefaultToTen: Double = 0.10) -> Double {
-  if totalAmount < 0 {
-    print("Error. Total amount cannot be less than zero.")
-  }
-  if discountPercentage <= 0 {
-    print("Error. Discount Percentage must be more than zero.")
-  }
-  
   let discountedAmount = totalAmount * discountPercentage
   let totalAmountAfterDiscount = totalAmount - discountedAmount
   return totalAmountAfterDiscount
 }
 
 let totalAmountAfterDiscountExample2 = calculateDiscount(totalAmount: 200)
-print(totalAmountAfterDiscountExample2)
+print("Assignment 2 - Function")
+print("Total amount of $200.00, with a default 10% discount = $\(String(format: "%.2f", totalAmountAfterDiscountExample2))")
+print("")
 
 
 // Assignment 3
 typealias DiscountedAmount = (Double, String) -> Double
 var printDiscount: DiscountedAmount = { (totalAmount: Double, withDiscountOff: String) in
-  return totalAmount - ( totalAmount * (discountTypes[withDiscountOff] ?? 1) )
+  let totalDiscount = totalAmount - ( totalAmount * (discountTypes[withDiscountOff] ?? 1) )
+  print(totalDiscount)
+  return totalDiscount
 }
+
+print("Assignment 3 - Typealias")
+print("Total amount of $500, with a half off discount = ")
+printDiscount(500.0, "halfOff")
+print("")
 
 
 // Assignment 4 - Closure
@@ -77,18 +74,27 @@ var totalAmountAfterDiscountExample4 = { (totalAmount: Double, discountType: Str
   let totalAmount = totalAmount - ( totalAmount * (discountTypes[discountType] ?? 1) )
   print("Total amount after a discount of \((discountTypes[discountType] ?? 1)*100)% is $\(totalAmount).")
 }
-totalAmountAfterDiscountExample4(100, "tenOff")
+
+print("Assignment 4 - Closure")
+totalAmountAfterDiscountExample4(1000, "tenOff")
+print("")
 
 
 // Assignment 5
-let inflatedItemPrices = itemPrices.map { $0 + ($0 * (discountTypes["halfOff"] ?? 1)) }
+let inflatedItemPrices = itemPrices.map { $0 + ($0 * 0.50) }
+print("Assignment 5 - Map")
+print("All item prices increased by 50% and stored in a new array")
 print(inflatedItemPrices)
+print("")
 
 
 // Assignment 6 - Sorted
 let sortedDiscountDictionary = discountTypes.sorted { $0.value > $1.value
 }
+print("Assignment 6 - Sorted")
+print("A sorted discount dictionary by decreasing discount values")
 print(sortedDiscountDictionary)
+print("")
 
 
 // Assignment 7 - Enums and Switch Cases
@@ -98,15 +104,18 @@ func printDiscount(for discountType: DiscountType) -> Double {
     case DiscountType.tenOff:
       discountAmount = 0.10
     case DiscountType.twentyFiveOff:
-      discountAmount = 0.10
+      discountAmount = 0.25
     case DiscountType.halfOff:
-      discountAmount = 0.10
+      discountAmount = 0.50
   }
   print("The discount value is \(discountAmount*100)% off your total amount.")
   return discountAmount
 }
 
+print("Assignment 7 - Enums and Switch Cases")
+print("An overloaded printDiscount function was created whose function body uses a switch case and the parameter is from an enum")
 printDiscount(for: DiscountType.halfOff)
+print("")
 
 
 // Assignment 8 - Computed Property
@@ -114,7 +123,9 @@ var currentDiscountedAmount: Double {
   return totalAmount - discountedAmount
 }
 
+print("Assignment 8 - Computed Property")
 print("Total Amount: $\(totalAmount) with \(discountPercentage*100)% off ($\(String(format: "%.2f", discountedAmount))) = $\(String(format: "%.2f", currentDiscountedAmount))")
+print("")
 
 
 // Assignment 9 - Lazy Property
@@ -123,7 +134,9 @@ struct Purchase {
 }
 
 var blackFridaySale = Purchase()
-print(blackFridaySale.maximumDiscount)
+print("Assignment 9 - Lazy Property")
+print("An example of a lazy property from the Purchase struct: \(blackFridaySale.maximumDiscount)")
+print("")
 
 
 // Assignment 10 - Method
@@ -138,7 +151,10 @@ struct ShoppingCart {
 }
 
 let shopRabbitCart = ShoppingCart(totalAmount: 1000, discountPercentage: 0.50)
-print(shopRabbitCart.totalAmountAfterApplyingDiscount())
+print("Assignment 10 - Method")
+print("A struct method is used to calculate the total amount after applying a 50% off discount")
+print("Total amount after discount = \(shopRabbitCart.totalAmountAfterApplyingDiscount())")
+print("")
 
 
 // Assignment 11 - Protocol
@@ -166,17 +182,22 @@ class BlackFridaySale: Discount {
   }
 }
 
-let blackFriday2023 = BlackFridaySale(discountName: "tenOff", discountPercentage: 0.15, totalAmount: 60.59)
-print(blackFriday2023.calculateDiscount())
+let blackFriday2023 = BlackFridaySale(discountName: "tenOff", discountPercentage: 0.10, totalAmount: 60.00)
+print("Assignment 11 - Protocol")
+print("A BlackFridaySale class which conforms to a Discount protocol was created")
+print("10% off of $60.00 is $\(String(format: "%.2f", blackFriday2023.calculateDiscount()))")
+print("")
 
 
 // Assignment 12 - Extension
 extension BlackFridaySale {
-  func roundedToClosestInt() -> Double {
-    return self.calculateDiscount().rounded()
+  func roundedToClosestInt() -> Int {
+    return Int(self.calculateDiscount().rounded())
   }
 }
 
-print(blackFriday2023.roundedToClosestInt())
+print("Assignment 12 - Extension")
+print("A class extension to BlackFridaySale includes a method to return the total amount rounded to the nearest integer.")
+print("A 10% off discount off $60.00 is $\(blackFriday2023.roundedToClosestInt())")
 
 
