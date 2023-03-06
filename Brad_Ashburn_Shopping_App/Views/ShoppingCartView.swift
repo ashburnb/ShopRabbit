@@ -11,6 +11,25 @@ struct ShoppingCartView: View {
   @Binding var shoppingCart: ShoppingCart
   @Binding var showShoppingCart: Bool
   
+  var dateAttributedString: AttributedString {
+    var customDateDisplay = Date.now.formatted(.dateTime.hour().minute().attributed)
+    
+    // modifies color of hour
+    let hour = AttributeContainer.dateField(.hour)
+    let hourStyle = AttributeContainer.foregroundColor(.orange)
+    
+    // modifies color of minutes
+    let minute = AttributeContainer.dateField(.minute)
+    let minuteStyle = AttributeContainer.foregroundColor(.orange)
+
+    // replace the default String attributes with custom ones
+    customDateDisplay.replaceAttributes(hour, with: hourStyle)
+    customDateDisplay.replaceAttributes(minute, with: minuteStyle)
+
+    // all computed properties must return their result
+    return customDateDisplay
+  }
+  
   /*
    Future Plans:
    1. Styling will be customized to match the color and rabbit theme
@@ -42,10 +61,17 @@ struct ShoppingCartView: View {
         
         TextField("Enter Discount Code", text: $shoppingCart.discountCode)
           .multilineTextAlignment(.center)
-          .frame(width: 200, height: 60)
+          .frame(
+            width: Constants.ShoppingCart.discountCodeTextFieldWidth,
+            height: Constants.ShoppingCart.discountCodeTextFieldHeight
+          )
           .border(.orange)
+          .autocapitalization(.none)
         
         Text("Total after Discount: $\(String(format: "%.2f", shoppingCart.totalAmountAfterDiscount))")
+        
+        Text("\(dateAttributedString)")
+          .padding(.top, Constants.ShoppingCart.attributedStringPadding)
       } // end of VStack
       
     } // end of NavigationView
