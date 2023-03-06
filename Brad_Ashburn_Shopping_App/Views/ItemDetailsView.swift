@@ -15,22 +15,28 @@ struct ItemDetailsView: View {
   
   var body: some View {
     VStack {
-      Image("\(item.imageURL ?? "imagenotfound")")
-        .resizable()
-        .scaledToFit()
+      VStack {
+        Image("\(item.imageURL ?? "imagenotfound")")
+          .resizable()
+          .scaledToFit()
         .padding(Constants.Inventory.imagePadding)
-      Text("\(item.name)")
-      Text("\(item.description)")
+        Text("\(item.name)")
+        Text("\(item.description)")
+      }
+      .padding(Constants.ItemDetails.itemAndTextPadding)
       
       Button {
         shoppingCart.itemsInCart.append(item)
         showItemAdded.toggle()
       } label: {
         Text("Add to cart")
-          .frame(width: 160, height: 50)
+          .frame(
+            width: Constants.ItemDetails.addToCartButtonWidth,
+            height: Constants.ItemDetails.addToCartButtonHeight
+          )
           .foregroundColor(.white)
           .background(.blue)
-          .cornerRadius(20)
+          .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
           .font(.title2)
           .bold()
       }
@@ -48,10 +54,13 @@ struct ItemDetailsView: View {
             showItemAdded.toggle()
           } label: {
             Text("Go back")
-              .frame(width: 160, height: 50)
+              .frame(
+                width: Constants.ItemDetails.addToCartButtonWidth,
+                height: Constants.ItemDetails.addToCartButtonHeight
+              )
               .foregroundColor(.white)
               .background(.red)
-              .cornerRadius(20)
+              .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
               .font(.title2)
               .bold()
           }
@@ -60,10 +69,13 @@ struct ItemDetailsView: View {
             showShoppingCart.toggle()
           } label: {
             Text("Go to Cart")
-              .frame(width: 160, height: 50)
+              .frame(
+                width: Constants.ItemDetails.addToCartButtonWidth,
+                height: Constants.ItemDetails.addToCartButtonHeight
+              )
               .foregroundColor(.white)
               .background(.green)
-              .cornerRadius(20)
+              .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
               .font(.title2)
               .bold()
           }

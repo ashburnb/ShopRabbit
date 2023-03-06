@@ -43,5 +43,20 @@ enum Constants {
     public static let imagePadding: CGFloat = 8.0
   }
   
+  enum ItemDetails {
+    public static let addToCartButtonWidth: CGFloat = 160.0
+    public static let addToCartButtonHeight: CGFloat = 50.0
+    public static let addToCartButtonCornerRadius: CGFloat = 20.0
+    public static let itemAndTextPadding: CGFloat = 15.0
+    
+  }
+  
+  enum ShoppingCart {
+    public static let attributedStringPadding: CGFloat = 20.0
+    public static let discountCodeTextFieldWidth: CGFloat = 200.0
+    public static let discountCodeTextFieldHeight: CGFloat = 50.0
+  }
+  
+  
 }
 
