@@ -12,6 +12,8 @@ import Foundation
 struct ShoppingCart {
   var itemsInCart: [Item] = []
   var discountCode: String = ""
+  
+  // more discount types will be added in the coming weeks with more creative names
   let discountTypes = [
     "tenOff": 0.10,
     "twentyFiveOff": 0.25,
@@ -33,5 +35,4 @@ struct ShoppingCart {
     return totalAmount - (totalAmount * discountPercentage)
   }
 }
-
 

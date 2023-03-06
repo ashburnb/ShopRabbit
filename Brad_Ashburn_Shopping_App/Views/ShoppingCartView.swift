@@ -11,6 +11,12 @@ struct ShoppingCartView: View {
   @Binding var shoppingCart: ShoppingCart
   @Binding var showShoppingCart: Bool
   
+  /*
+   Future Plans:
+   1. Styling will be customized to match the color and rabbit theme
+   2. Display of shopping cart items and amounts will be optimized
+   3. An ability to remove an item of the cart from this view will be created
+  */
   var body: some View {
     NavigationView {
       VStack {
@@ -30,20 +36,19 @@ struct ShoppingCartView: View {
           } label: {
             Text("Back")
           }
-          
-        }
+        } // end of toolbar
+        
         Text("Total Amount: $\(String(format: "%.2f", shoppingCart.totalAmount))")
+        
         TextField("Enter Discount Code", text: $shoppingCart.discountCode)
           .multilineTextAlignment(.center)
           .frame(width: 200, height: 60)
           .border(.orange)
+        
         Text("Total after Discount: $\(String(format: "%.2f", shoppingCart.totalAmountAfterDiscount))")
-      }
+      } // end of VStack
       
-    }
-    
-    
-    
+    } // end of NavigationView
   } // end of body property
 }
 

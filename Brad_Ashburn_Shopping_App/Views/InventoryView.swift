@@ -11,6 +11,7 @@ struct InventoryView: View {
   @State var storeInventory = Inventory()
   @Binding var showInventoryView: Bool
   @State var shoppingCart = ShoppingCart()
+  @State var showShoppingCart = false
   
   var body: some View {
     
@@ -44,14 +45,25 @@ struct InventoryView: View {
       .scrollContentBackground(.hidden)
       .navigationTitle("Inventory")
       .toolbar {
-        Button {
-          showInventoryView.toggle()
-        } label: {
-          Text("Back")
-        }
+        HStack {
+          Button {
+            showShoppingCart.toggle()
+          } label: {
+            Text("Cart")
+            // improved styling of Shopping Cart and Back buttons will be done in the future
+          }
 
-      }
+          Button {
+            showInventoryView.toggle()
+          } label: {
+            Text("Back")
+          }
+        }
+      } // end of toolbar
     } // end of NavigationView
+    .fullScreenCover(isPresented: $showShoppingCart) {
+      ShoppingCartView(shoppingCart: $shoppingCart, showShoppingCart: $showShoppingCart)
+    }
   } // end of body property
 } // end of InventoryView struct
 
