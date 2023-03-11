@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InventoryView: View {
   @StateObject var store = InventoryViewModel()
+  @StateObject var shoppingCart = ShoppingCart()
+  
   @State var showJewelerySheet = false
   @State var showElectronicsSheet = false
   @State var showMensClothingSheet = false
@@ -50,17 +52,17 @@ struct InventoryView: View {
         }
       
       } // end of VStack
-      .sheet(isPresented: $showJewelerySheet) {
-        ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry")
+      .fullScreenCover(isPresented: $showJewelerySheet) {
+        ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry", shoppingCart: shoppingCart)
       }
       .sheet(isPresented: $showElectronicsSheet) {
-        ItemsDisplayView(items: store.electronics, categoryName: "Electronics")
+        ItemsDisplayView(items: store.electronics, categoryName: "Electronics", shoppingCart: shoppingCart)
       }
       .sheet(isPresented: $showMensClothingSheet) {
-        ItemsDisplayView(items: store.mensclothing, categoryName: "Men's Clothing")
+        ItemsDisplayView(items: store.mensclothing, categoryName: "Men's Clothing", shoppingCart: shoppingCart)
       }
       .sheet(isPresented: $showWomensClothingSheet) {
-        ItemsDisplayView(items: store.womensclothing, categoryName: "Women's Clothing")
+        ItemsDisplayView(items: store.womensclothing, categoryName: "Women's Clothing", shoppingCart: shoppingCart)
     }
   } // end of body property
 } // end of CategoryView
@@ -83,12 +85,13 @@ struct CategoryTextView: View {
 struct ItemsDisplayView: View {
   let items: [Item]
   let categoryName: String
+  @ObservedObject var shoppingCart: ShoppingCart
   
   var body: some View {
     NavigationView {
       List(items, id: \.id) { item in
         NavigationLink {
-          ItemDetailView(item: item)
+          ItemDetailView(item: item, shoppingCart: shoppingCart)
         } label: {
           HStack {
             AsyncImage(
@@ -115,6 +118,7 @@ struct ItemsDisplayView: View {
     } // end of NavigationView
   }
 }
+
 
 struct InventoryView_Previews: PreviewProvider {
     static var previews: some View {

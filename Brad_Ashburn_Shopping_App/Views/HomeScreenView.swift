@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct HomescreenView: View {
-  @State private var showOnboardingView = false
-  @State private var showInventoryView = false
-  
   var body: some View {
     ZStack {
       Color("HomescreenColor")
@@ -26,17 +23,10 @@ struct HomescreenView: View {
         
         Spacer()
         
-
-          
+        InventoryView()
       } // end of VStack
-      InventoryView()
+      .padding(.bottom, 20)
     } // end of ZStack
-    .fullScreenCover(isPresented: $showOnboardingView) {
-      OnboardingView(showOnboardingView: $showOnboardingView)
-    }
-    .fullScreenCover(isPresented: $showInventoryView) {
-      InventoryView()
-    }
   } // end of body property
 }
 

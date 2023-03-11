@@ -9,7 +9,7 @@ import Foundation
 
 // data model for the user's shopping cart
 // totalAmount and totalAmountAfterDiscount were chosen to be computed properties since they are not computationally intensive
-struct ShoppingCart {
+class ShoppingCart: ObservableObject {
   var itemsInCart: [Item] = []
   var discountCode: String = ""
   

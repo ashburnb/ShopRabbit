@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ItemDetailView: View {
   let item: Item
+  @State private var showCart = false
+  @Environment(\.dismiss) var dismiss
+  @ObservedObject var shoppingCart: ShoppingCart
+  
   
   var body: some View {
     ScrollView {
@@ -28,21 +32,44 @@ struct ItemDetailView: View {
           )
           Spacer()
         }
-
+        
         Text(item.title)
           .font(.title)
         Text("$\(String(format: "%.2f", item.price))")
           .font(.title2)
         Text(item.category)
         Text(item.description)
+        
+        HStack {
+          Spacer()
+          Button {
+            shoppingCart.itemsInCart.append(item)
+            showCart.toggle()
+//            dismiss()
+          } label: {
+            Text("Add to cart")
+              .frame(
+                width: Constants.ItemDetails.addToCartButtonWidth,
+                height: Constants.ItemDetails.addToCartButtonHeight
+              )
+              .foregroundColor(.white)
+              .background(.blue)
+              .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
+              .font(.title2)
+              .bold()
+          }
+        }
       } // end of VStack
       .padding(20)
+      .fullScreenCover(isPresented: $showCart) {
+        ShoppingCartView(shoppingCart: shoppingCart, showShoppingCart: $showCart)
+      }
     }
   }
 }
 
 struct ItemDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        InventoryView()
-    }
+  static var previews: some View {
+    InventoryView()
+  }
 }
