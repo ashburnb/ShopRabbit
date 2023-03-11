@@ -26,23 +26,16 @@ struct HomescreenView: View {
         
         Spacer()
         
-        HomescreenBodyView(text: "Welcome [username]")
-          .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
+
           
-        HStack {
-          AboutButtonView(showOnboardingView: $showOnboardingView)
-            .padding(.bottom, Constants.Homescreen.aboutButtonBottomPadding)
-            .padding(.trailing, Constants.Homescreen.aboutButtonBottomTrailing)
-          HopOnInButtonView(showInventoryView: $showInventoryView)
-            .padding(.bottom, Constants.Homescreen.buttonPadding)
-        }
       } // end of VStack
+      InventoryView()
     } // end of ZStack
     .fullScreenCover(isPresented: $showOnboardingView) {
       OnboardingView(showOnboardingView: $showOnboardingView)
     }
     .fullScreenCover(isPresented: $showInventoryView) {
-      InventoryView(showInventoryView: $showInventoryView)
+      InventoryView()
     }
   } // end of body property
 }
