@@ -21,8 +21,6 @@ struct HomescreenView: View {
           .resizable()
           .scaledToFit()
         
-        Spacer()
-        
         InventoryView()
       } // end of VStack
       .padding(.bottom, 20)

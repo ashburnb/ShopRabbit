@@ -17,75 +17,67 @@ struct InventoryView: View {
   @State var showWomensClothingSheet = false
   
   var body: some View {
-      VStack {
-        Spacer()
-        HomescreenBodyView(text: "Categories")
-        
-        HStack(spacing: 10) {
+    VStack {
+      Spacer()
+      HomescreenBodyView(text: "Categories")
+        .padding(.bottom, 10)
+      
+      HStack(spacing: 10) {
+        VStack {
           Button {
             store.jewelery = store.inventory.filter {$0.category == "jewelery"}
             showJewelerySheet.toggle()
           } label: {
             CategoryTextView(categoryName: "Jewelry", backgroundColor: .indigo)
           }
-          
           Button {
             store.electronics = store.inventory.filter {$0.category == "electronics"}
             showElectronicsSheet.toggle()
           } label: {
             CategoryTextView(categoryName: "Electronics", backgroundColor: .teal)
           }
-          
+        }
+        
+        VStack {
           Button {
             store.mensclothing = store.inventory.filter {$0.category == "men's clothing"}
             showMensClothingSheet.toggle()
           } label: {
-            CategoryTextView(categoryName: "Men's Clothing", backgroundColor: .orange)
+            CategoryTextView(categoryName: "Men's\nClothing", backgroundColor: .orange)
           }
-          
           Button {
             store.womensclothing = store.inventory.filter {$0.category == "women's clothing"}
             showWomensClothingSheet.toggle()
           } label: {
-            CategoryTextView(categoryName: "Women's Clothing", backgroundColor: .green)
+            CategoryTextView(categoryName: "Women's\nClothing", backgroundColor: .green)
           }
         }
+      }
       
-      } // end of VStack
-      .fullScreenCover(isPresented: $showJewelerySheet) {
-        ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry", shoppingCart: shoppingCart)
-      }
-      .sheet(isPresented: $showElectronicsSheet) {
-        ItemsDisplayView(items: store.electronics, categoryName: "Electronics", shoppingCart: shoppingCart)
-      }
-      .sheet(isPresented: $showMensClothingSheet) {
-        ItemsDisplayView(items: store.mensclothing, categoryName: "Men's Clothing", shoppingCart: shoppingCart)
-      }
-      .sheet(isPresented: $showWomensClothingSheet) {
-        ItemsDisplayView(items: store.womensclothing, categoryName: "Women's Clothing", shoppingCart: shoppingCart)
+      
+      
+    } // end of VStack
+    .sheet(isPresented: $showJewelerySheet) {
+      ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry", shoppingCart: shoppingCart)
+    }
+    .sheet(isPresented: $showElectronicsSheet) {
+      ItemsDisplayView(items: store.electronics, categoryName: "Electronics", shoppingCart: shoppingCart)
+    }
+    .sheet(isPresented: $showMensClothingSheet) {
+      ItemsDisplayView(items: store.mensclothing, categoryName: "Men's Clothing", shoppingCart: shoppingCart)
+    }
+    .sheet(isPresented: $showWomensClothingSheet) {
+      ItemsDisplayView(items: store.womensclothing, categoryName: "Women's Clothing", shoppingCart: shoppingCart)
     }
   } // end of body property
 } // end of CategoryView
 
-struct CategoryTextView: View {
-  let categoryName: String
-  let backgroundColor: Color
-  
-  var body: some View {
-    Text("\(categoryName)")
-      .frame(width: 80, height: 80)
-      .background(backgroundColor)
-      .foregroundColor(.white)
-      .fontWeight(.heavy)
-      .font(.system(.caption, design: .rounded))
-      .cornerRadius(20)
-  }
-}
 
 struct ItemsDisplayView: View {
   let items: [Item]
   let categoryName: String
   @ObservedObject var shoppingCart: ShoppingCart
+  @Environment(\.dismiss) var dismiss
   
   var body: some View {
     NavigationView {
@@ -115,13 +107,21 @@ struct ItemsDisplayView: View {
         }
       }
       .navigationTitle("\(categoryName)")
+      .toolbar {
+        Button {
+          dismiss()
+        } label: {
+          Text("Categories")
+        }
+
+      }
     } // end of NavigationView
   }
 }
 
 
 struct InventoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        InventoryView()
-    }
+  static var previews: some View {
+    InventoryView()
+  }
 }

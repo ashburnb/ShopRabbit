@@ -70,13 +70,6 @@ struct ShoppingCartView: View {
       
     } // end of NavigationView
   } // end of body property
-  
-  //  var body: some View {
-  //    List(shoppingCart.itemsInCart, id: \.self) { cartItem in
-  //      Text("\(cartItem.title)")
-  //    }
-  //  }
-  
 }
 
 struct ShoppingCartView_Previews: PreviewProvider {

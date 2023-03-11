@@ -29,34 +29,10 @@ struct HomescreenBodyView: View {
   }
 }
 
-struct OnboardingTitleView: View {
-  let text: String
-  
-  var body: some View {
-    Text(text)
-      .fontWeight(.black)
-      .font(.system(.largeTitle, design: .rounded))
-  }
-}
-
-struct OnboardingBodyTitleView: View {
-  let text: String
-  
-  var body: some View {
-    Text(text)
-      .font(.title2)
-      .bold()
-      .padding(.bottom)
-  }
-}
-
-
 struct TextViews_Previews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: 20) {
       HomescreenTitleView(text: "ShopRabbit")
-      OnboardingTitleView(text: "Onboarding")
-      OnboardingBodyTitleView(text: "Essential App Features")
     } // end of VStack
   }
 }

@@ -7,17 +7,16 @@
 
 import Foundation
 
-// data model for the user's shopping cart
-// totalAmount and totalAmountAfterDiscount were chosen to be computed properties since they are not computationally intensive
 class ShoppingCart: ObservableObject {
   var itemsInCart: [Item] = []
   var discountCode: String = ""
   
-  // more discount types will be added in the coming weeks with more creative names
   let discountTypes = [
-    "tenOff": 0.10,
-    "twentyFiveOff": 0.25,
-    "halfOff": 0.50
+    "springbreak": 0.10,
+    "newcustomer": 0.25,
+    "newyearnewyou": 0.50,
+    "thanksgiving": 0.60,
+    "winterwonderland": 0.75
   ]
   
   var discountPercentage: Double {
