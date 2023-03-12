@@ -20,9 +20,9 @@ struct InventoryView: View {
     VStack {
       Spacer()
       HomescreenBodyView(text: "Categories")
-        .padding(.bottom, 10)
+        .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
       
-      HStack(spacing: 10) {
+      HStack(spacing: Constants.Inventory.categoryHStackSpacing) {
         VStack {
           Button {
             store.jewelery = store.inventory.filter {$0.category == "jewelery"}
@@ -54,8 +54,6 @@ struct InventoryView: View {
         }
       }
       
-      
-      
     } // end of VStack
     .sheet(isPresented: $showJewelerySheet) {
       ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry", shoppingCart: shoppingCart)
@@ -71,53 +69,6 @@ struct InventoryView: View {
     }
   } // end of body property
 } // end of CategoryView
-
-
-struct ItemsDisplayView: View {
-  let items: [Item]
-  let categoryName: String
-  @ObservedObject var shoppingCart: ShoppingCart
-  @Environment(\.dismiss) var dismiss
-  
-  var body: some View {
-    NavigationView {
-      List(items, id: \.id) { item in
-        NavigationLink {
-          ItemDetailView(item: item, shoppingCart: shoppingCart)
-        } label: {
-          HStack {
-            AsyncImage(
-              url: URL(string: item.image),
-              content: { image in
-                image.resizable()
-                  .aspectRatio(contentMode: .fit)
-                  .frame(width: 100, height: 100)
-              },
-              placeholder: {
-                ProgressView()
-              }
-            )
-            
-            VStack(alignment: .leading, spacing: 10) {
-              Text(item.title)
-                .font(.headline)
-              Text("$\(String(format: "%.2f", item.price))")
-            }
-          }
-        }
-      }
-      .navigationTitle("\(categoryName)")
-      .toolbar {
-        Button {
-          dismiss()
-        } label: {
-          Text("Categories")
-        }
-
-      }
-    } // end of NavigationView
-  }
-}
 
 
 struct InventoryView_Previews: PreviewProvider {

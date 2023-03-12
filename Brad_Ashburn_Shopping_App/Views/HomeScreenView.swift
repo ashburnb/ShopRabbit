@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomescreenView: View {
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
+  @Environment(\.verticalSizeClass) var verticalSizeClass
+  
   var body: some View {
     ZStack {
       Color("HomescreenColor")
@@ -17,13 +20,25 @@ struct HomescreenView: View {
         HomescreenTitleView(text: "Shop Rabbit")
           .padding(.top, Constants.Homescreen.titleTextTopPadding)
         
-        Image("HomescreenRabbit")
-          .resizable()
-          .scaledToFit()
-        
-        InventoryView()
+        // portrait orientation
+        if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+          Image("HomescreenRabbit")
+            .resizable()
+            .scaledToFit()
+          
+          InventoryView()
+        } else {
+        // landscape orientation
+          HStack {
+            Image("HomescreenRabbit")
+              .resizable()
+              .scaledToFit()
+
+            InventoryView()
+          }
+        }
       } // end of VStack
-      .padding(.bottom, 20)
+      .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
     } // end of ZStack
   } // end of body property
 }

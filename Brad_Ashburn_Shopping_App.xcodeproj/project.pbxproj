@@ -25,6 +25,7 @@
 		DE56BF9129BD3298000D0C6F /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56BF9029BD3298000D0C6F /* ItemModel.swift */; };
 		DE56BF9329BD3EE8000D0C6F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56BF9229BD3EE8000D0C6F /* Constants.swift */; };
 		DE56BF9529BD3FD2000D0C6F /* ButtonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56BF9429BD3FD2000D0C6F /* ButtonViews.swift */; };
+		DE56BF9729BD8998000D0C6F /* ItemsDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56BF9629BD8998000D0C6F /* ItemsDisplayView.swift */; };
 		DE8048E829A88D2A0013AA11 /* ItemModelOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048E729A88D2A0013AA11 /* ItemModelOld.swift */; };
 		DE8048EA29A88D370013AA11 /* InventoryOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048E929A88D370013AA11 /* InventoryOld.swift */; };
 		DE8048EC29A88F980013AA11 /* InventoryViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048EB29A88F980013AA11 /* InventoryViewOld.swift */; };
@@ -51,6 +52,7 @@
 		DE56BF9029BD3298000D0C6F /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		DE56BF9229BD3EE8000D0C6F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DE56BF9429BD3FD2000D0C6F /* ButtonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViews.swift; sourceTree = "<group>"; };
+		DE56BF9629BD8998000D0C6F /* ItemsDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDisplayView.swift; sourceTree = "<group>"; };
 		DE8048E629A84A450013AA11 /* week02assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = week02assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DE8048E729A88D2A0013AA11 /* ItemModelOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModelOld.swift; sourceTree = "<group>"; };
 		DE8048E929A88D370013AA11 /* InventoryOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryOld.swift; sourceTree = "<group>"; };
@@ -113,10 +115,11 @@
 			children = (
 				DE046BAD299F6758002FF96E /* HomescreenView.swift */,
 				DE56BF8A29BC4B90000D0C6F /* InventoryView.swift */,
+				DE56BF9629BD8998000D0C6F /* ItemsDisplayView.swift */,
 				DE56BF8C29BC4C0E000D0C6F /* ItemDetailView.swift */,
+				DE56BF8E29BC71CD000D0C6F /* ShoppingCartView.swift */,
 				DE56BF9429BD3FD2000D0C6F /* ButtonViews.swift */,
 				DE36E0AD29A06AF200AD747A /* TextViews.swift */,
-				DE56BF8E29BC71CD000D0C6F /* ShoppingCartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				DE56BF9129BD3298000D0C6F /* ItemModel.swift in Sources */,
 				DE20CAE429B3ABAE005EECDA /* ShoppingCartViewModel.swift in Sources */,
 				DE56BF8D29BC4C0E000D0C6F /* ItemDetailView.swift in Sources */,
+				DE56BF9729BD8998000D0C6F /* ItemsDisplayView.swift in Sources */,
 				DE20CAE229B3A8E6005EECDA /* ShoppingCartViewOld.swift in Sources */,
 				DE046BBA299F6AE2002FF96E /* ConstantsOld.swift in Sources */,
 				DE56BF8929BC4B38000D0C6F /* InventoryViewModel.swift in Sources */,

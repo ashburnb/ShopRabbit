@@ -16,7 +16,7 @@ struct ItemDetailView: View {
   
   var body: some View {
     ScrollView {
-      VStack(alignment: .leading, spacing: 20) {
+      VStack(alignment: .leading, spacing: Constants.ItemDetails.vstackSpacing) {
         HStack {
           Spacer()
           AsyncImage(
@@ -24,7 +24,10 @@ struct ItemDetailView: View {
             content: { image in
               image.resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 300, height: 300)
+                .frame(
+                  width: Constants.ItemDetails.imageWidth,
+                  height: Constants.ItemDetails.imageHeight
+                )
             },
             placeholder: {
               ProgressView()
@@ -61,7 +64,7 @@ struct ItemDetailView: View {
           }
         }
       } // end of VStack
-      .padding(20)
+      .padding(Constants.ItemDetails.vstackPadding)
       .fullScreenCover(isPresented: $showCart) {
         ShoppingCartView(shoppingCart: shoppingCart, showShoppingCart: $showCart)
       }

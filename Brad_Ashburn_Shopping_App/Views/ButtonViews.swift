@@ -15,8 +15,8 @@ struct CategoryTextView: View {
     Text("\(categoryName)")
       .padding()
       .frame(
-        width: Constants.Homescreen.hopOnInButtonWidth,
-        height: Constants.Homescreen.hopOnInButtonHeight
+        width: Constants.Homescreen.categoryButtonWidth,
+        height: Constants.Homescreen.categoryButtonHeight
       )
       .background(backgroundColor)
       .font(.system(.headline, design: .rounded, weight: .heavy))

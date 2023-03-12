@@ -76,7 +76,7 @@ struct ShoppingCartView: View {
         Text("Total after Discount: $\(String(format: "%.2f", shoppingCart.totalAmountAfterDiscount))")
         
         Text("\(dateAttributedString)")
-          .padding(.top, Constants.ShoppingCart.attributedStringPadding)
+          .padding(.vertical, Constants.ShoppingCart.attributedStringPadding)
       } // end of VStack
       
     } // end of NavigationView
