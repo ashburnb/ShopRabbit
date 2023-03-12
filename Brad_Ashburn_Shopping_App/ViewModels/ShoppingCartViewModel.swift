@@ -8,8 +8,10 @@
 import Foundation
 
 class ShoppingCart: ObservableObject {
-  var itemsInCart: [Item] = []
-  var discountCode: String = ""
+  @Published var itemsInCart: [Item] = []
+  @Published var discountPercentage: Double = 0
+  @Published var totalAmount: Double = 0
+  @Published var totalAmountAfterDiscount: Double = 0
   
   let discountTypes = [
     "springbreak": 0.10,
@@ -19,19 +21,25 @@ class ShoppingCart: ObservableObject {
     "winterwonderland": 0.75
   ]
   
-  var discountPercentage: Double {
-    guard let discount = discountTypes[discountCode] else {
-      return 0
-    }
-    return discount
-  }
-  
-  var totalAmount: Double {
-    return itemsInCart.reduce(0) { $0 + $1.price }
-  }
-  
-  var totalAmountAfterDiscount: Double {
-    return totalAmount - (totalAmount * discountPercentage)
+  init() {
+    self.itemsInCart = [Item]()
   }
 }
 
+
+extension ShoppingCart {
+  func calculateDiscountPercentage(discountCode: String) {
+    guard let discount = discountTypes[discountCode] else {
+      return
+    }
+    discountPercentage = discount
+  }
+  
+  func calculateTotalAmount() {
+    self.totalAmount = self.itemsInCart.reduce(0) { $0 + $1.price }
+  }
+  
+  func calculateTotalAmountAfterDiscount() {
+    self.totalAmountAfterDiscount = self.totalAmount - (self.totalAmount * discountPercentage)
+  }
+}

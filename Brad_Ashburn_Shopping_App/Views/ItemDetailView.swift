@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemDetailView: View {
   let item: Item
-  @State private var showCart = false
+  @State var showCart: Bool = false
   @Environment(\.dismiss) var dismiss
   @ObservedObject var shoppingCart: ShoppingCart
   
@@ -44,8 +44,9 @@ struct ItemDetailView: View {
           Spacer()
           Button {
             shoppingCart.itemsInCart.append(item)
+            shoppingCart.calculateTotalAmount()
+            shoppingCart.calculateTotalAmountAfterDiscount()
             showCart.toggle()
-//            dismiss()
           } label: {
             Text("Add to cart")
               .frame(

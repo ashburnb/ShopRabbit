@@ -10,22 +10,23 @@ import SwiftUI
 struct ShoppingCartView: View {
   @ObservedObject var shoppingCart: ShoppingCart
   @Binding var showShoppingCart: Bool
+  @State var discountField: String = ""
   
   var dateAttributedString: AttributedString {
     var customDateDisplay = Date.now.formatted(.dateTime.hour().minute().attributed)
-    
+
     // modifies color of hour
     let hour = AttributeContainer.dateField(.hour)
     let hourStyle = AttributeContainer.foregroundColor(.orange)
-    
+
     // modifies color of minutes
     let minute = AttributeContainer.dateField(.minute)
     let minuteStyle = AttributeContainer.foregroundColor(.orange)
-    
+
     // replace the default String attributes with custom ones
     customDateDisplay.replaceAttributes(hour, with: hourStyle)
     customDateDisplay.replaceAttributes(minute, with: minuteStyle)
-    
+
     // all computed properties must return their result
     return customDateDisplay
   }
@@ -52,16 +53,26 @@ struct ShoppingCartView: View {
         } // end of toolbar
         
         Text("Total Amount: $\(String(format: "%.2f", shoppingCart.totalAmount))")
-        
-        TextField("Enter Discount Code", text: $shoppingCart.discountCode)
-          .multilineTextAlignment(.center)
-          .frame(
-            width: Constants.ShoppingCart.discountCodeTextFieldWidth,
-            height: Constants.ShoppingCart.discountCodeTextFieldHeight
-          )
-          .border(.orange)
+
+        HStack {
+          TextField("Enter Discount Code", text: $discountField)
+            .multilineTextAlignment(.center)
+            .frame(
+              width: Constants.ShoppingCart.discountCodeTextFieldWidth,
+              height: Constants.ShoppingCart.discountCodeTextFieldHeight
+            )
+            .border(.orange)
           .autocapitalization(.none)
-        
+          Button {
+            //shoppingCart.discountCode = discountField
+            shoppingCart.calculateDiscountPercentage(discountCode: discountField)
+            shoppingCart.calculateTotalAmountAfterDiscount()
+          } label: {
+            Text("Apply")
+          }
+
+        }
+
         Text("Total after Discount: $\(String(format: "%.2f", shoppingCart.totalAmountAfterDiscount))")
         
         Text("\(dateAttributedString)")
