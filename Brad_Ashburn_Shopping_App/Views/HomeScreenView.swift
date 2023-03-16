@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomescreenView: View {
-  @State private var showOnboardingView = false
-  @State private var showInventoryView = false
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
+  @Environment(\.verticalSizeClass) var verticalSizeClass
   
   var body: some View {
     ZStack {
@@ -20,30 +20,26 @@ struct HomescreenView: View {
         HomescreenTitleView(text: "Shop Rabbit")
           .padding(.top, Constants.Homescreen.titleTextTopPadding)
         
-        Image("HomescreenRabbit")
-          .resizable()
-          .scaledToFit()
-        
-        Spacer()
-        
-        HomescreenBodyView(text: "Welcome [username]")
-          .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
+        // portrait orientation
+        if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+          Image("HomescreenRabbit")
+            .resizable()
+            .scaledToFit()
           
-        HStack {
-          AboutButtonView(showOnboardingView: $showOnboardingView)
-            .padding(.bottom, Constants.Homescreen.aboutButtonBottomPadding)
-            .padding(.trailing, Constants.Homescreen.aboutButtonBottomTrailing)
-          HopOnInButtonView(showInventoryView: $showInventoryView)
-            .padding(.bottom, Constants.Homescreen.buttonPadding)
+          InventoryView()
+        } else {
+        // landscape orientation
+          HStack {
+            Image("HomescreenRabbit")
+              .resizable()
+              .scaledToFit()
+
+            InventoryView()
+          }
         }
       } // end of VStack
+      .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
     } // end of ZStack
-    .fullScreenCover(isPresented: $showOnboardingView) {
-      OnboardingView(showOnboardingView: $showOnboardingView)
-    }
-    .fullScreenCover(isPresented: $showInventoryView) {
-      InventoryView(showInventoryView: $showInventoryView)
-    }
   } // end of body property
 }
 
