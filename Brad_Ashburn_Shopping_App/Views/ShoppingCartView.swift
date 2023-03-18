@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ShoppingCartView: View {
-  @ObservedObject var shoppingCart: ShoppingCart
-  @Binding var showShoppingCart: Bool
+  @EnvironmentObject var shoppingCart: ShoppingCart
   @State var discountField: String = ""
   
   var dateAttributedString: AttributedString {
@@ -44,13 +43,6 @@ struct ShoppingCartView: View {
           }
         }
         .navigationTitle("Shopping Cart")
-        .toolbar {
-          Button {
-            showShoppingCart.toggle()
-          } label: {
-            Text("Back")
-          }
-        } // end of toolbar
         
         Text("Total Amount: $\(String(format: "%.2f", shoppingCart.totalAmount))")
 
@@ -70,7 +62,6 @@ struct ShoppingCartView: View {
           } label: {
             Text("Apply")
           }
-
         }
 
         Text("Total after Discount: $\(String(format: "%.2f", shoppingCart.totalAmountAfterDiscount))")
@@ -85,6 +76,7 @@ struct ShoppingCartView: View {
 
 struct ShoppingCartView_Previews: PreviewProvider {
   static var previews: some View {
-    ShoppingCartView(shoppingCart: ShoppingCart(), showShoppingCart: .constant(false))
+    ShoppingCartView()
+      .environmentObject(ShoppingCart())
   }
 }

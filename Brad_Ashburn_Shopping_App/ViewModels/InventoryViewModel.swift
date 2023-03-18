@@ -21,6 +21,13 @@ class InventoryViewModel: ObservableObject {
     self.inventory = [Item]()
     loadAllProductsFromAPI()
   }
+  
+  func loadCategoryData() {
+    self.jewelery = inventory.filter {$0.category == "jewelery"}
+    self.electronics = inventory.filter {$0.category == "electronics"}
+    self.mensclothing = inventory.filter {$0.category == "men's clothing"}
+    self.womensclothing = inventory.filter {$0.category == "women's clothing"}
+  }
 } // end of InventoryViewModel class
 
 

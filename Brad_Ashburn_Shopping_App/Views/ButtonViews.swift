@@ -19,23 +19,23 @@ struct CategoryTextView: View {
         height: Constants.Homescreen.categoryButtonHeight
       )
       .background(backgroundColor)
-      .font(.system(.headline, design: .rounded, weight: .heavy))
+      .font(.system(.title2, design: .rounded, weight: .heavy))
       .foregroundColor(Color.white)
-      .clipShape(
-        Capsule()
+  }
+}
+
+struct AddToCartButton: View {
+  var body: some View {
+    Text("Add to cart")
+      .frame(
+        width: Constants.ItemDetails.addToCartButtonWidth,
+        height: Constants.ItemDetails.addToCartButtonHeight
       )
-      .shadow(
-        radius: Constants.Homescreen.shadow,
-        x: Constants.Homescreen.shadow,
-        y: Constants.Homescreen.shadow
-      )
-      .overlay(
-        Capsule()
-          .strokeBorder(
-            Color.white,
-            lineWidth: Constants.Homescreen.buttonLineWidth
-          )
-      )
+      .foregroundColor(.white)
+      .background(.blue)
+      .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
+      .font(.title2)
+      .bold()
   }
 }
 
@@ -49,6 +49,7 @@ struct ButtonViews_Previews: PreviewProvider {
       VStack(spacing: 30) {
         CategoryTextView(categoryName: "Jewelry", backgroundColor: .orange)
         CategoryTextView(categoryName: "Women's\nClothing", backgroundColor: .red)
+        AddToCartButton()
       }
     }
   }

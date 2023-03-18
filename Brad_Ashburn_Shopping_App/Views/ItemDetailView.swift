@@ -9,10 +9,8 @@ import SwiftUI
 
 struct ItemDetailView: View {
   let item: Item
-  @State var showCart: Bool = false
-  @Environment(\.dismiss) var dismiss
-  @ObservedObject var shoppingCart: ShoppingCart
-  
+  @EnvironmentObject var shoppingCart: ShoppingCart
+  @State var showItemAdded = false
   
   var body: some View {
     ScrollView {
@@ -45,35 +43,30 @@ struct ItemDetailView: View {
         
         HStack {
           Spacer()
+          
           Button {
             shoppingCart.itemsInCart.append(item)
             shoppingCart.calculateTotalAmount()
             shoppingCart.calculateTotalAmountAfterDiscount()
-            showCart.toggle()
+            showItemAdded.toggle()
           } label: {
-            Text("Add to cart")
-              .frame(
-                width: Constants.ItemDetails.addToCartButtonWidth,
-                height: Constants.ItemDetails.addToCartButtonHeight
-              )
-              .foregroundColor(.white)
-              .background(.blue)
-              .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
-              .font(.title2)
-              .bold()
+            AddToCartButton()
           }
+        }
+        .alert("Added to Cart", isPresented: $showItemAdded) {
+          // add buttons here
+        } message: {
+          Text("\(item.title)")
         }
       } // end of VStack
       .padding(Constants.ItemDetails.vstackPadding)
-      .fullScreenCover(isPresented: $showCart) {
-        ShoppingCartView(shoppingCart: shoppingCart, showShoppingCart: $showCart)
-      }
     }
   }
 }
 
 struct ItemDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    InventoryView()
+    MainView()
+      .environmentObject(ShoppingCart())
   }
 }

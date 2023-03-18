@@ -25,20 +25,16 @@ struct HomescreenView: View {
           Image("HomescreenRabbit")
             .resizable()
             .scaledToFit()
-          
-          InventoryView()
         } else {
         // landscape orientation
-          HStack {
-            Image("HomescreenRabbit")
-              .resizable()
-              .scaledToFit()
-
-            InventoryView()
-          }
+          Image("HomescreenRabbit")
+            .resizable()
+            .scaledToFit()
         }
       } // end of VStack
       .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
+      
+      
     } // end of ZStack
   } // end of body property
 }

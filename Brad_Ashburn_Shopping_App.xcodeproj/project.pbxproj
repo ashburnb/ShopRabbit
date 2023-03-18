@@ -29,6 +29,7 @@
 		DE8048E829A88D2A0013AA11 /* ItemModelOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048E729A88D2A0013AA11 /* ItemModelOld.swift */; };
 		DE8048EA29A88D370013AA11 /* InventoryOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048E929A88D370013AA11 /* InventoryOld.swift */; };
 		DE8048EC29A88F980013AA11 /* InventoryViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048EB29A88F980013AA11 /* InventoryViewOld.swift */; };
+		DEA1228429C559FD005EFBD8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA1228329C559FD005EFBD8 /* MainView.swift */; };
 		DEB1EA4629B39DE100875B35 /* ItemDetailsViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB1EA4529B39DE100875B35 /* ItemDetailsViewOld.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		DE8048E729A88D2A0013AA11 /* ItemModelOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModelOld.swift; sourceTree = "<group>"; };
 		DE8048E929A88D370013AA11 /* InventoryOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryOld.swift; sourceTree = "<group>"; };
 		DE8048EB29A88F980013AA11 /* InventoryViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewOld.swift; sourceTree = "<group>"; };
+		DEA1228329C559FD005EFBD8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DEB1EA4429B39C7600875B35 /* week03assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = week03assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DEB1EA4529B39DE100875B35 /* ItemDetailsViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewOld.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 		DE046BBD299F6E01002FF96E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DEA1228329C559FD005EFBD8 /* MainView.swift */,
 				DE046BAD299F6758002FF96E /* HomescreenView.swift */,
 				DE56BF8A29BC4B90000D0C6F /* InventoryView.swift */,
 				DE56BF9629BD8998000D0C6F /* ItemsDisplayView.swift */,
@@ -245,6 +248,7 @@
 				DE8048EC29A88F980013AA11 /* InventoryViewOld.swift in Sources */,
 				DE56BF8F29BC71CD000D0C6F /* ShoppingCartView.swift in Sources */,
 				DE046BBC299F6DF0002FF96E /* OnboardingView.swift in Sources */,
+				DEA1228429C559FD005EFBD8 /* MainView.swift in Sources */,
 				DE36E0AC29A0656200AD747A /* OnboardingModel.swift in Sources */,
 				DE8048EA29A88D370013AA11 /* InventoryOld.swift in Sources */,
 				DE56BF8B29BC4B90000D0C6F /* InventoryView.swift in Sources */,

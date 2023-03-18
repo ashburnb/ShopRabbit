@@ -9,64 +9,44 @@ import SwiftUI
 
 struct InventoryView: View {
   @StateObject var store = InventoryViewModel()
-  @StateObject var shoppingCart = ShoppingCart()
+//  @EnvironmentObject var shoppingCart: ShoppingCart
   
-  @State var showJewelerySheet = false
-  @State var showElectronicsSheet = false
-  @State var showMensClothingSheet = false
-  @State var showWomensClothingSheet = false
+  let columns = [
+    GridItem(.adaptive(minimum: 150))
+  ]
   
   var body: some View {
-    VStack {
-      Spacer()
-      HomescreenBodyView(text: "Categories")
-        .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
-      
-      HStack(spacing: Constants.Inventory.categoryHStackSpacing) {
-        VStack {
-          Button {
-            store.jewelery = store.inventory.filter {$0.category == "jewelery"}
-            showJewelerySheet.toggle()
+    NavigationStack {
+      ScrollView {
+        LazyVGrid(columns: columns, spacing: 10) {
+          NavigationLink {
+            ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry")
           } label: {
-            CategoryTextView(categoryName: "Jewelry", backgroundColor: .indigo)
+            CategoryTextView(categoryName: "Jewelry", backgroundColor: .green)
           }
-          Button {
-            store.electronics = store.inventory.filter {$0.category == "electronics"}
-            showElectronicsSheet.toggle()
+          NavigationLink {
+            ItemsDisplayView(items: store.electronics, categoryName: "Electronics")
           } label: {
-            CategoryTextView(categoryName: "Electronics", backgroundColor: .teal)
+            CategoryTextView(categoryName: "Electronics", backgroundColor: .orange)
           }
-        }
-        
-        VStack {
-          Button {
-            store.mensclothing = store.inventory.filter {$0.category == "men's clothing"}
-            showMensClothingSheet.toggle()
+          NavigationLink {
+            ItemsDisplayView(items: store.mensclothing, categoryName: "Men's Clothing")
           } label: {
-            CategoryTextView(categoryName: "Men's\nClothing", backgroundColor: .orange)
+            CategoryTextView(categoryName: "Men's Clothing", backgroundColor: .blue)
           }
-          Button {
-            store.womensclothing = store.inventory.filter {$0.category == "women's clothing"}
-            showWomensClothingSheet.toggle()
+          NavigationLink {
+            ItemsDisplayView(items: store.womensclothing, categoryName: "Women's Clothing")
           } label: {
-            CategoryTextView(categoryName: "Women's\nClothing", backgroundColor: .green)
+            CategoryTextView(categoryName: "Women's Clothing", backgroundColor: .pink)
           }
         }
+        .padding(20)
+      } // end of ScrollView
+      .navigationTitle("Store Categories")
+      .onAppear {
+        store.loadCategoryData()
       }
-      
-    } // end of VStack
-    .sheet(isPresented: $showJewelerySheet) {
-      ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry", shoppingCart: shoppingCart)
-    }
-    .sheet(isPresented: $showElectronicsSheet) {
-      ItemsDisplayView(items: store.electronics, categoryName: "Electronics", shoppingCart: shoppingCart)
-    }
-    .sheet(isPresented: $showMensClothingSheet) {
-      ItemsDisplayView(items: store.mensclothing, categoryName: "Men's Clothing", shoppingCart: shoppingCart)
-    }
-    .sheet(isPresented: $showWomensClothingSheet) {
-      ItemsDisplayView(items: store.womensclothing, categoryName: "Women's Clothing", shoppingCart: shoppingCart)
-    }
+    } // end of NavigationStack
   } // end of body property
 } // end of CategoryView
 
