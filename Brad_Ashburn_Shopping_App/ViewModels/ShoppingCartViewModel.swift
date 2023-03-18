@@ -10,8 +10,6 @@ import Foundation
 class ShoppingCart: ObservableObject {
   @Published var itemsInCart: [Item] = []
   @Published var discountPercentage: Double = 0
-  @Published var totalAmount: Double = 0
-  @Published var totalAmountAfterDiscount: Double = 0
   
   let discountTypes = [
     "springbreak": 0.10,
@@ -35,11 +33,4 @@ extension ShoppingCart {
     discountPercentage = discount
   }
   
-  func calculateTotalAmount() {
-    self.totalAmount = self.itemsInCart.reduce(0) { $0 + $1.price }
-  }
-  
-  func calculateTotalAmountAfterDiscount() {
-    self.totalAmountAfterDiscount = self.totalAmount - (self.totalAmount * discountPercentage)
-  }
 }

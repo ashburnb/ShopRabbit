@@ -46,8 +46,6 @@ struct ItemDetailView: View {
           
           Button {
             shoppingCart.itemsInCart.append(item)
-            shoppingCart.calculateTotalAmount()
-            shoppingCart.calculateTotalAmountAfterDiscount()
             showItemAdded.toggle()
           } label: {
             AddToCartButton()

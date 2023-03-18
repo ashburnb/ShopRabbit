@@ -9,27 +9,7 @@ import SwiftUI
 
 struct ShoppingCartView: View {
   @EnvironmentObject var shoppingCart: ShoppingCart
-  @State var discountField: String = ""
-  
-  var dateAttributedString: AttributedString {
-    var customDateDisplay = Date.now.formatted(.dateTime.hour().minute().attributed)
 
-    // modifies color of hour
-    let hour = AttributeContainer.dateField(.hour)
-    let hourStyle = AttributeContainer.foregroundColor(.orange)
-
-    // modifies color of minutes
-    let minute = AttributeContainer.dateField(.minute)
-    let minuteStyle = AttributeContainer.foregroundColor(.orange)
-
-    // replace the default String attributes with custom ones
-    customDateDisplay.replaceAttributes(hour, with: hourStyle)
-    customDateDisplay.replaceAttributes(minute, with: minuteStyle)
-
-    // all computed properties must return their result
-    return customDateDisplay
-  }
-  
   var body: some View {
     NavigationView {
       VStack {
@@ -41,37 +21,36 @@ struct ShoppingCartView: View {
               Text("$\(String(format: "%.2f", item.price))")
             }
           }
+          .onDelete(perform: deleteItems)
         }
         .navigationTitle("Shopping Cart")
         
-        Text("Total Amount: $\(String(format: "%.2f", shoppingCart.totalAmount))")
-
-        HStack {
-          TextField("Enter Discount Code", text: $discountField)
-            .multilineTextAlignment(.center)
-            .frame(
-              width: Constants.ShoppingCart.discountCodeTextFieldWidth,
-              height: Constants.ShoppingCart.discountCodeTextFieldHeight
-            )
-            .border(.orange)
-          .autocapitalization(.none)
-          Button {
-            //shoppingCart.discountCode = discountField
-            shoppingCart.calculateDiscountPercentage(discountCode: discountField)
-            shoppingCart.calculateTotalAmountAfterDiscount()
-          } label: {
-            Text("Apply")
-          }
+        NavigationLink {
+          CheckOutView()
+        } label: {
+          Text("Checkout")
+            .padding()
+            .background(.blue)
+            .foregroundColor(.white)
+            .font(.title2)
+            .bold()
+            .cornerRadius(20)
         }
+        .disabled(shoppingCart.itemsInCart.isEmpty)
 
-        Text("Total after Discount: $\(String(format: "%.2f", shoppingCart.totalAmountAfterDiscount))")
-        
-        Text("\(dateAttributedString)")
-          .padding(.vertical, Constants.ShoppingCart.attributedStringPadding)
       } // end of VStack
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        EditButton()
+      }
       
     } // end of NavigationView
+
   } // end of body property
+  
+  func deleteItems(at offsets: IndexSet) {
+    shoppingCart.itemsInCart.remove(atOffsets: offsets)
+  }
 }
 
 struct ShoppingCartView_Previews: PreviewProvider {

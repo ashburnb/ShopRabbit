@@ -13,26 +13,26 @@ struct HomescreenView: View {
   
   var body: some View {
     ZStack {
-      Color("HomescreenColor")
-        .ignoresSafeArea()
+      // portrait orientation
+      if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+        Color("HomescreenColor")
+          .edgesIgnoringSafeArea(.top)
+      } else {
+        // landscape orientation
+        Color("HomescreenColor")
+          .edgesIgnoringSafeArea(.horizontal)
+      }
       
       VStack {
         HomescreenTitleView(text: "Shop Rabbit")
           .padding(.top, Constants.Homescreen.titleTextTopPadding)
         
-        // portrait orientation
-        if horizontalSizeClass == .compact && verticalSizeClass == .regular {
-          Image("HomescreenRabbit")
-            .resizable()
-            .scaledToFit()
-        } else {
-        // landscape orientation
-          Image("HomescreenRabbit")
-            .resizable()
-            .scaledToFit()
-        }
+        Image("HomescreenRabbit")
+          .resizable()
+          .scaledToFit()
+        
       } // end of VStack
-      .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
+//      .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
       
       
     } // end of ZStack
