@@ -9,15 +9,34 @@ import SwiftUI
 
 struct ShoppingCartView: View {
   @EnvironmentObject var shoppingCart: ShoppingCart
-
+  
   var body: some View {
     NavigationView {
       VStack {
         List {
           ForEach(shoppingCart.itemsInCart, id: \.self) { item in
             HStack {
-              Text(item.title)
+              AsyncImage(
+                url: URL(string: item.image),
+                content: { image in
+                  image.resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(
+                      width: 50,
+                      height: 50
+                    )
+                },
+                placeholder: {
+                  ProgressView()
+                }
+              )
+              
               Spacer()
+              
+              Text(item.title)
+             
+              Spacer()
+              
               Text("$\(String(format: "%.2f", item.price))")
             }
           }
@@ -37,7 +56,7 @@ struct ShoppingCartView: View {
             .cornerRadius(20)
         }
         .disabled(shoppingCart.itemsInCart.isEmpty)
-
+        
       } // end of VStack
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
@@ -45,7 +64,7 @@ struct ShoppingCartView: View {
       }
       
     } // end of NavigationView
-
+    
   } // end of body property
   
   func deleteItems(at offsets: IndexSet) {
