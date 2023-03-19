@@ -26,6 +26,8 @@ struct MainView: View {
         .tabItem {
           Label("Cart", systemImage: "cart")
         }
+        .badge(shoppingCart.itemsInCart.count)
+        // instead of using hard coded value as instructions said, I used the actual amount of items in the cart. Note that badge doesn't show up items == 0
     }
   }
 }

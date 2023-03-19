@@ -59,9 +59,9 @@ struct ShoppingCartView: View {
         
       } // end of VStack
       .navigationBarTitleDisplayMode(.inline)
-      .toolbar {
-        EditButton()
-      }
+//      .toolbar {
+//        EditButton()
+//      }
       
     } // end of NavigationView
     

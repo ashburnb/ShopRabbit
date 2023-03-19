@@ -9,7 +9,10 @@ import SwiftUI
 
 struct InventoryView: View {
   @StateObject var store = InventoryViewModel()
-//  @EnvironmentObject var shoppingCart: ShoppingCart
+  @State private var searchTerm = ""
+  var searchResults: [Item] {
+    searchTerm.isEmpty ? store.inventory : store.inventory.filter { $0.title.contains(searchTerm)}
+  }
   
   let columns = [
     GridItem(.adaptive(minimum: 150))
@@ -41,11 +44,52 @@ struct InventoryView: View {
           }
         }
         .padding(20)
+    
       } // end of ScrollView
       .navigationTitle("Store Categories")
       .onAppear {
         store.loadCategoryData()
       }
+      
+      Text("All Items")
+        .font(.largeTitle)
+      
+      NavigationStack {
+        List {
+          ForEach(searchResults, id: \.id) { item in
+            NavigationLink {
+              ItemDetailView(item: item)
+            } label: {
+              HStack {
+                AsyncImage(
+                  url: URL(string: item.image),
+                  content: { image in
+                    image.resizable()
+                      .aspectRatio(contentMode: .fit)
+                      .frame(
+                        width: Constants.ItemsDisplay.imageWidth,
+                        height: Constants.ItemsDisplay.imageHeight
+                      )
+                  },
+                  placeholder: {
+                    ProgressView()
+                  }
+                )
+                
+                VStack(alignment: .leading, spacing: 10) {
+                  Text(item.title)
+                    .font(.headline)
+                  Text("$\(String(format: "%.2f", item.price))")
+                }
+              }
+            }
+          }
+        }
+        .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always))
+        .listStyle(PlainListStyle())
+      }
+      
+      
     } // end of NavigationStack
   } // end of body property
 } // end of CategoryView

@@ -100,9 +100,8 @@ struct CheckOutView: View {
         }
       
       }
-      .listRowBackground(Color.clear)
       
-      HStack{
+      HStack {
         Spacer()
         Text("\(dateAttributedString)")
           .padding(.vertical, Constants.ShoppingCart.attributedStringPadding)
