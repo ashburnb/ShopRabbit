@@ -64,7 +64,7 @@ struct ItemDetailView: View {
 
 struct ItemDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    MainView()
+    ItemDetailView(item: Item(id: 808, title: "AirPods Pro", price: 249.00, category: "Electronics", description: "Enhanced noise cancelling, richer sound, and packed with pro features.", image: "airpodspro"))
       .environmentObject(ShoppingCart())
   }
 }

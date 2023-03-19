@@ -10,6 +10,7 @@ import SwiftUI
 struct HomescreenView: View {
   @Environment(\.horizontalSizeClass) var horizontalSizeClass
   @Environment(\.verticalSizeClass) var verticalSizeClass
+  @State private var scale = 1.0
   
   var body: some View {
     ZStack {
@@ -30,11 +31,16 @@ struct HomescreenView: View {
         Image("HomescreenRabbit")
           .resizable()
           .scaledToFit()
+          .scaleEffect(scale)
+          .onAppear {
+            let animate = Animation.easeInOut(duration: 0.5)
+            withAnimation(animate) {
+              scale = 1.2
+            }
+          }
         
       } // end of VStack
-//      .padding(.bottom, Constants.Homescreen.bodyBottomPadding)
-      
-      
+          
     } // end of ZStack
   } // end of body property
 }

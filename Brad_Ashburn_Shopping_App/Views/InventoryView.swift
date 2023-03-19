@@ -44,7 +44,7 @@ struct InventoryView: View {
           }
         }
         .padding(20)
-    
+        
       } // end of ScrollView
       .navigationTitle("Store Categories")
       .onAppear {
@@ -52,7 +52,7 @@ struct InventoryView: View {
       }
       
       Text("All Items")
-        .font(.largeTitle)
+        .font(.title)
       
       NavigationStack {
         List {
@@ -85,10 +85,9 @@ struct InventoryView: View {
             }
           }
         }
-        .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always))
         .listStyle(PlainListStyle())
+        .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always))
       }
-      
       
     } // end of NavigationStack
   } // end of body property

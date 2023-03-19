@@ -7,7 +7,7 @@
 
 import Foundation
 
-class InventoryViewModel: ObservableObject {
+@MainActor class InventoryViewModel: ObservableObject {
   // stores entire product catalog
   @Published var inventory: [Item]
   
