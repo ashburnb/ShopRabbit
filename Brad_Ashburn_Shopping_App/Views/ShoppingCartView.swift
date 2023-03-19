@@ -22,8 +22,8 @@ struct ShoppingCartView: View {
                   image.resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(
-                      width: 50,
-                      height: 50
+                      width: Constants.ShoppingCart.listImageThumbnailWidth,
+                      height: Constants.ShoppingCart.listImageThumbnailHeight
                     )
                 },
                 placeholder: {
@@ -53,23 +53,23 @@ struct ShoppingCartView: View {
             .foregroundColor(.white)
             .font(.title2)
             .bold()
-            .cornerRadius(20)
+            .cornerRadius(Constants.ShoppingCart.checkoutButtonCornerRadius)
         }
         .disabled(shoppingCart.itemsInCart.isEmpty)
+        // disables button if cart is empty
         
       } // end of VStack
       .navigationBarTitleDisplayMode(.inline)
-//      .toolbar {
-//        EditButton()
-//      }
       
     } // end of NavigationView
-    
   } // end of body property
   
+  // needed to implement List item delete functionality
+  // is passed into .onDelete as a closure
   func deleteItems(at offsets: IndexSet) {
     shoppingCart.itemsInCart.remove(atOffsets: offsets)
   }
+  
 }
 
 struct ShoppingCartView_Previews: PreviewProvider {

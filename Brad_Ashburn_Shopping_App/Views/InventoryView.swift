@@ -15,13 +15,13 @@ struct InventoryView: View {
   }
   
   let columns = [
-    GridItem(.adaptive(minimum: 150))
+    GridItem(.adaptive(minimum: Constants.Inventory.gridColumnMinimumWidth))
   ]
   
   var body: some View {
     NavigationStack {
       ScrollView {
-        LazyVGrid(columns: columns, spacing: 10) {
+        LazyVGrid(columns: columns, spacing: Constants.Inventory.gridSpacing) {
           NavigationLink {
             ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry")
           } label: {
@@ -43,8 +43,7 @@ struct InventoryView: View {
             CategoryTextView(categoryName: "Women's Clothing", backgroundColor: .pink)
           }
         }
-        .padding(20)
-        
+        .padding(Constants.Inventory.gridPadding)
       } // end of ScrollView
       .navigationTitle("Store Categories")
       .onAppear {
@@ -76,7 +75,7 @@ struct InventoryView: View {
                   }
                 )
                 
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: Constants.Inventory.gridSpacing) {
                   Text(item.title)
                     .font(.headline)
                   Text("$\(String(format: "%.2f", item.price))")

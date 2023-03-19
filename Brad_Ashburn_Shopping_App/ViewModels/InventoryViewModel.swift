@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor class InventoryViewModel: ObservableObject {
+class InventoryViewModel: ObservableObject {
   // stores entire product catalog
   @Published var inventory: [Item]
   
@@ -48,8 +48,12 @@ extension InventoryViewModel {
         do {
           // fetched JSON data object is decoded into an array of items
           let results = try JSONDecoder().decode([Item].self, from: data)
-          // the class inventory property is then set to this Item array
-          self.inventory = results
+          
+          DispatchQueue.main.async {
+            // the class inventory property is then set to this Item array
+            self.inventory = results
+          }
+          
         } catch {
           print("Invalid JSON")
         }

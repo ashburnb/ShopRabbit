@@ -34,8 +34,24 @@ struct AddToCartButton: View {
       .foregroundColor(.white)
       .background(.blue)
       .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
-      .font(.title2)
+      .font(.system(.title2, design: .rounded, weight: .heavy))
       .bold()
+  }
+}
+
+struct PlaceOrderButton: View {
+  var body: some View {
+    HStack {
+      Spacer()
+      Text("Place Order")
+        .padding()
+        .background(Color("HomescreenColor"))
+        .foregroundColor(.white)
+        .font(.system(.title2, design: .rounded, weight: .heavy))
+        .bold()
+        .cornerRadius(Constants.ShoppingCart.checkoutButtonCornerRadius)
+      Spacer()
+    }
   }
 }
 
@@ -50,6 +66,7 @@ struct ButtonViews_Previews: PreviewProvider {
         CategoryTextView(categoryName: "Jewelry", backgroundColor: .orange)
         CategoryTextView(categoryName: "Women's\nClothing", backgroundColor: .red)
         AddToCartButton()
+        PlaceOrderButton()
       }
     }
   }

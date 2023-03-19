@@ -11,44 +11,39 @@ struct ItemsDisplayView: View {
   let items: [Item]
   let categoryName: String
   @EnvironmentObject var shoppingCart: ShoppingCart
-//  @State private var searchTerm = ""
-//  var searchResults: [Item] {
-//    searchTerm.isEmpty ? items : items.filter { $0.title.contains(searchTerm)}
-//  }
-
+  
   var body: some View {
-//    NavigationView {
     List(items, id: \.id) { item in
-        NavigationLink {
-          ItemDetailView(item: item)
-        } label: {
-          HStack {
-            AsyncImage(
-              url: URL(string: item.image),
-              content: { image in
-                image.resizable()
-                  .aspectRatio(contentMode: .fit)
-                  .frame(
-                    width: Constants.ItemsDisplay.imageWidth,
-                    height: Constants.ItemsDisplay.imageHeight
-                  )
-              },
-              placeholder: {
-                ProgressView()
-              }
-            )
-            
-            VStack(alignment: .leading, spacing: 10) {
-              Text(item.title)
-                .font(.headline)
-              Text("$\(String(format: "%.2f", item.price))")
+      NavigationLink {
+        ItemDetailView(item: item)
+      } label: {
+        HStack {
+          AsyncImage(
+            url: URL(string: item.image),
+            content: { image in
+              image.resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(
+                  width: Constants.ItemsDisplay.imageWidth,
+                  height: Constants.ItemsDisplay.imageHeight
+                )
+            },
+            placeholder: {
+              ProgressView()
             }
+          )
+          
+          VStack(alignment: .leading, spacing: Constants.Inventory.gridSpacing) {
+            Text(item.title)
+              .font(.headline)
+            Text("$\(String(format: "%.2f", item.price))")
           }
-        }
-      }
-      .navigationTitle("\(categoryName)")
-//    }
-  }
+        } // end of HStack
+      } // end of NavigationLink label
+    } // end of List
+    .navigationTitle("\(categoryName)")
+    
+  } // end of body property
 }
 
 struct ItemsDisplayView_Previews: PreviewProvider {

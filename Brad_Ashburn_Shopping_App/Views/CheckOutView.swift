@@ -13,6 +13,7 @@ struct CheckOutView: View {
   @State private var paymentType = "Credit Card"
   @State private var displayCreditCardEntry = false
   @State private var creditCardNumber = ""
+  @State private var hasDiscountCode = false
   @State private var discountField: String = ""
   @State private var showOrderConfirmed = false
   
@@ -22,26 +23,6 @@ struct CheckOutView: View {
   
   var totalPriceAfterDiscount: Double {
     return totalPrice - (totalPrice * shoppingCart.discountPercentage)
-  }
-  
-  
-  var dateAttributedString: AttributedString {
-    var customDateDisplay = Date.now.formatted(.dateTime.hour().minute().attributed)
-    
-    // modifies color of hour
-    let hour = AttributeContainer.dateField(.hour)
-    let hourStyle = AttributeContainer.foregroundColor(.orange)
-    
-    // modifies color of minutes
-    let minute = AttributeContainer.dateField(.minute)
-    let minuteStyle = AttributeContainer.foregroundColor(.orange)
-    
-    // replace the default String attributes with custom ones
-    customDateDisplay.replaceAttributes(hour, with: hourStyle)
-    customDateDisplay.replaceAttributes(minute, with: minuteStyle)
-    
-    // all computed properties must return their result
-    return customDateDisplay
   }
   
   var body: some View {
@@ -61,24 +42,29 @@ struct CheckOutView: View {
       Section("Total") {
         Text("Total Amount: $\(String(format: "%.2f", totalPrice))")
         
-        HStack {
-          TextField("Enter Discount Code", text: $discountField)
-            .multilineTextAlignment(.center)
-            .frame(
-              width: Constants.ShoppingCart.discountCodeTextFieldWidth,
-              height: Constants.ShoppingCart.discountCodeTextFieldHeight
-            )
-            .border(.orange)
-            .autocapitalization(.none)
-          Button {
-            //shoppingCart.discountCode = discountField
-            shoppingCart.calculateDiscountPercentage(discountCode: discountField)
-          } label: {
-            Text("Apply")
-          }
-        }
+        Toggle("Do you have a discount code?", isOn: $hasDiscountCode)
+          .tint(Color("HomescreenColor"))
         
-        Text("Total after Discount: $\(String(format: "%.2f", totalPriceAfterDiscount))")
+        if hasDiscountCode {
+          HStack {
+            TextField("Enter Discount Code", text: $discountField)
+              .multilineTextAlignment(.center)
+              .frame(
+                width: Constants.ShoppingCart.discountCodeTextFieldWidth,
+                height: Constants.ShoppingCart.discountCodeTextFieldHeight
+              )
+              .textFieldStyle(.roundedBorder)
+              .autocapitalization(.none)
+            Button {
+              shoppingCart.calculateDiscountPercentage(discountCode: discountField)
+            } label: {
+              Text("Apply")
+                .padding(.leading, Constants.CheckOut.applyButtonPadding)
+            }
+          }
+          
+          Text("Total after discount: $\(String(format: "%.2f", totalPriceAfterDiscount))")
+        }
       }
       
       Section {
@@ -86,28 +72,16 @@ struct CheckOutView: View {
           shoppingCart.itemsInCart.removeAll()
           showOrderConfirmed.toggle()
         } label: {
-          HStack {
-            Spacer()
-            Text("Place Order")
-              .padding()
-              .background(Color("HomescreenColor"))
-              .foregroundColor(.white)
-              .font(.title2)
-              .bold()
-              .cornerRadius(20)
-            Spacer()
-          }
+          PlaceOrderButton()
         }
-      
+        .listRowBackground(Color.clear)
       }
       
-      HStack {
-        Spacer()
-        Text("\(dateAttributedString)")
-          .padding(.vertical, Constants.ShoppingCart.attributedStringPadding)
-        Spacer()
+      Section {
+        DateAttributedStringView()
+          .listRowBackground(Color.clear)
       }
-      .listRowBackground(Color.clear)
+      
     } // end of Form
     .navigationTitle("Checkout")
     .navigationBarTitleDisplayMode(.inline)
@@ -119,6 +93,7 @@ struct CheckOutView: View {
     
   } // end of body property
 } // end of CheckOutView
+
 
 struct CheckOutView_Previews: PreviewProvider {
   static var previews: some View {

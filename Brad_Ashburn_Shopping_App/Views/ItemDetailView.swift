@@ -52,7 +52,8 @@ struct ItemDetailView: View {
           }
         }
         .alert("Added to Cart", isPresented: $showItemAdded) {
-          // add buttons here
+          // could add more button functionality here
+          // or this could become a custom alert view like in Week 1 Bullseye Assignment
         } message: {
           Text("\(item.title)")
         }

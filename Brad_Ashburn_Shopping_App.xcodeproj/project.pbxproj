@@ -118,12 +118,12 @@
 			isa = PBXGroup;
 			children = (
 				DEA1228329C559FD005EFBD8 /* MainView.swift */,
-				DE38CFA729C6698300630043 /* CheckOutView.swift */,
 				DE046BAD299F6758002FF96E /* HomescreenView.swift */,
 				DE56BF8A29BC4B90000D0C6F /* InventoryView.swift */,
 				DE56BF9629BD8998000D0C6F /* ItemsDisplayView.swift */,
 				DE56BF8C29BC4C0E000D0C6F /* ItemDetailView.swift */,
 				DE56BF8E29BC71CD000D0C6F /* ShoppingCartView.swift */,
+				DE38CFA729C6698300630043 /* CheckOutView.swift */,
 				DE56BF9429BD3FD2000D0C6F /* ButtonViews.swift */,
 				DE36E0AD29A06AF200AD747A /* TextViews.swift */,
 			);
