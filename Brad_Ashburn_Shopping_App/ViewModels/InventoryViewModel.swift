@@ -21,6 +21,13 @@ class InventoryViewModel: ObservableObject {
     self.inventory = [Item]()
     loadAllProductsFromAPI()
   }
+  
+  func loadCategoryData() {
+    self.jewelery = inventory.filter {$0.category == "jewelery"}
+    self.electronics = inventory.filter {$0.category == "electronics"}
+    self.mensclothing = inventory.filter {$0.category == "men's clothing"}
+    self.womensclothing = inventory.filter {$0.category == "women's clothing"}
+  }
 } // end of InventoryViewModel class
 
 
@@ -41,8 +48,12 @@ extension InventoryViewModel {
         do {
           // fetched JSON data object is decoded into an array of items
           let results = try JSONDecoder().decode([Item].self, from: data)
-          // the class inventory property is then set to this Item array
-          self.inventory = results
+          
+          DispatchQueue.main.async {
+            // the class inventory property is then set to this Item array
+            self.inventory = results
+          }
+          
         } catch {
           print("Invalid JSON")
         }

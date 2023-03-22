@@ -17,13 +17,15 @@ enum Constants {
     public static let titleTextTopPadding: CGFloat = 20.0
     public static let bodyBottomPadding: CGFloat = 20.0
     
-    public static let categoryButtonWidth: CGFloat = 140.0
-    public static let categoryButtonHeight: CGFloat = 80.0
+    public static let categoryButtonWidth: CGFloat = 160.0
+    public static let categoryButtonHeight: CGFloat = 100.0
   }
     
   enum Inventory {
     public static let imagePadding: CGFloat = 8.0
-    public static let categoryHStackSpacing: CGFloat = 10.0
+    public static let gridColumnMinimumWidth: CGFloat = 150.0
+    public static let gridSpacing: CGFloat = 10.0
+    public static let gridPadding: CGFloat = 20.0
   }
   
   enum ItemsDisplay {
@@ -47,7 +49,13 @@ enum Constants {
     public static let attributedStringPadding: CGFloat = 20.0
     public static let discountCodeTextFieldWidth: CGFloat = 200.0
     public static let discountCodeTextFieldHeight: CGFloat = 50.0
+    public static let checkoutButtonCornerRadius: CGFloat = 20.0
+    public static let listImageThumbnailWidth: CGFloat = 50.0
+    public static let listImageThumbnailHeight: CGFloat = 50.0
   }
   
+  enum CheckOut {
+    public static let applyButtonPadding: CGFloat = 5.0
+  }
   
 }

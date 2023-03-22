@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Brad_Ashburn_Shopping_App: App {
+  @StateObject var shoppingCart = ShoppingCart()
+  
   var body: some Scene {
     WindowGroup {
-      HomescreenView()
+      MainView()
+        .environmentObject(shoppingCart)
     }
   }
 }

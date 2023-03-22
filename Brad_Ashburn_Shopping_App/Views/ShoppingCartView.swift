@@ -8,28 +8,7 @@
 import SwiftUI
 
 struct ShoppingCartView: View {
-  @ObservedObject var shoppingCart: ShoppingCart
-  @Binding var showShoppingCart: Bool
-  @State var discountField: String = ""
-  
-  var dateAttributedString: AttributedString {
-    var customDateDisplay = Date.now.formatted(.dateTime.hour().minute().attributed)
-
-    // modifies color of hour
-    let hour = AttributeContainer.dateField(.hour)
-    let hourStyle = AttributeContainer.foregroundColor(.orange)
-
-    // modifies color of minutes
-    let minute = AttributeContainer.dateField(.minute)
-    let minuteStyle = AttributeContainer.foregroundColor(.orange)
-
-    // replace the default String attributes with custom ones
-    customDateDisplay.replaceAttributes(hour, with: hourStyle)
-    customDateDisplay.replaceAttributes(minute, with: minuteStyle)
-
-    // all computed properties must return their result
-    return customDateDisplay
-  }
+  @EnvironmentObject var shoppingCart: ShoppingCart
   
   var body: some View {
     NavigationView {
@@ -37,54 +16,65 @@ struct ShoppingCartView: View {
         List {
           ForEach(shoppingCart.itemsInCart, id: \.self) { item in
             HStack {
-              Text(item.title)
+              AsyncImage(
+                url: URL(string: item.image),
+                content: { image in
+                  image.resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(
+                      width: Constants.ShoppingCart.listImageThumbnailWidth,
+                      height: Constants.ShoppingCart.listImageThumbnailHeight
+                    )
+                },
+                placeholder: {
+                  ProgressView()
+                }
+              )
+              
               Spacer()
+              
+              Text(item.title)
+             
+              Spacer()
+              
               Text("$\(String(format: "%.2f", item.price))")
             }
           }
+          .onDelete(perform: deleteItems)
         }
         .navigationTitle("Shopping Cart")
-        .toolbar {
-          Button {
-            showShoppingCart.toggle()
-          } label: {
-            Text("Back")
-          }
-        } // end of toolbar
         
-        Text("Total Amount: $\(String(format: "%.2f", shoppingCart.totalAmount))")
-
-        HStack {
-          TextField("Enter Discount Code", text: $discountField)
-            .multilineTextAlignment(.center)
-            .frame(
-              width: Constants.ShoppingCart.discountCodeTextFieldWidth,
-              height: Constants.ShoppingCart.discountCodeTextFieldHeight
-            )
-            .border(.orange)
-          .autocapitalization(.none)
-          Button {
-            //shoppingCart.discountCode = discountField
-            shoppingCart.calculateDiscountPercentage(discountCode: discountField)
-            shoppingCart.calculateTotalAmountAfterDiscount()
-          } label: {
-            Text("Apply")
-          }
-
+        NavigationLink {
+          CheckOutView()
+        } label: {
+          Text("Checkout")
+            .padding()
+            .background(.blue)
+            .foregroundColor(.white)
+            .font(.title2)
+            .bold()
+            .cornerRadius(Constants.ShoppingCart.checkoutButtonCornerRadius)
         }
-
-        Text("Total after Discount: $\(String(format: "%.2f", shoppingCart.totalAmountAfterDiscount))")
+        .disabled(shoppingCart.itemsInCart.isEmpty)
+        // disables button if cart is empty
         
-        Text("\(dateAttributedString)")
-          .padding(.vertical, Constants.ShoppingCart.attributedStringPadding)
       } // end of VStack
+      .navigationBarTitleDisplayMode(.inline)
       
     } // end of NavigationView
   } // end of body property
+  
+  // needed to implement List item delete functionality
+  // is passed into .onDelete as a closure
+  func deleteItems(at offsets: IndexSet) {
+    shoppingCart.itemsInCart.remove(atOffsets: offsets)
+  }
+  
 }
 
 struct ShoppingCartView_Previews: PreviewProvider {
   static var previews: some View {
-    ShoppingCartView(shoppingCart: ShoppingCart(), showShoppingCart: .constant(false))
+    ShoppingCartView()
+      .environmentObject(ShoppingCart())
   }
 }

@@ -9,10 +9,8 @@ import SwiftUI
 
 struct ItemDetailView: View {
   let item: Item
-  @State var showCart: Bool = false
-  @Environment(\.dismiss) var dismiss
-  @ObservedObject var shoppingCart: ShoppingCart
-  
+  @EnvironmentObject var shoppingCart: ShoppingCart
+  @State var showItemAdded = false
   
   var body: some View {
     ScrollView {
@@ -45,35 +43,29 @@ struct ItemDetailView: View {
         
         HStack {
           Spacer()
+          
           Button {
             shoppingCart.itemsInCart.append(item)
-            shoppingCart.calculateTotalAmount()
-            shoppingCart.calculateTotalAmountAfterDiscount()
-            showCart.toggle()
+            showItemAdded.toggle()
           } label: {
-            Text("Add to cart")
-              .frame(
-                width: Constants.ItemDetails.addToCartButtonWidth,
-                height: Constants.ItemDetails.addToCartButtonHeight
-              )
-              .foregroundColor(.white)
-              .background(.blue)
-              .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
-              .font(.title2)
-              .bold()
+            AddToCartButton()
           }
+        }
+        .alert("Added to Cart", isPresented: $showItemAdded) {
+          // could add more button functionality here
+          // or this could become a custom alert view like in Week 1 Bullseye Assignment
+        } message: {
+          Text("\(item.title)")
         }
       } // end of VStack
       .padding(Constants.ItemDetails.vstackPadding)
-      .fullScreenCover(isPresented: $showCart) {
-        ShoppingCartView(shoppingCart: shoppingCart, showShoppingCart: $showCart)
-      }
     }
   }
 }
 
 struct ItemDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    InventoryView()
+    ItemDetailView(item: Item(id: 808, title: "AirPods Pro", price: 249.00, category: "Electronics", description: "Enhanced noise cancelling, richer sound, and packed with pro features.", image: "airpodspro"))
+      .environmentObject(ShoppingCart())
   }
 }
