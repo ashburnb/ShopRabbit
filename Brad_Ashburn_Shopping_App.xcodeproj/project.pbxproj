@@ -21,7 +21,6 @@
 		DE38CFA829C6698300630043 /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE38CFA729C6698300630043 /* CheckOutView.swift */; };
 		DE4F6DCD29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F6DCC29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests.swift */; };
 		DE4F6DDA29CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F6DD929CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITests.swift */; };
-		DE4F6DDC29CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4F6DDB29CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITestsLaunchTests.swift */; };
 		DE56BF8929BC4B38000D0C6F /* InventoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56BF8829BC4B38000D0C6F /* InventoryViewModel.swift */; };
 		DE56BF8B29BC4B90000D0C6F /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56BF8A29BC4B90000D0C6F /* InventoryView.swift */; };
 		DE56BF8D29BC4C0E000D0C6F /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56BF8C29BC4C0E000D0C6F /* ItemDetailView.swift */; };
@@ -72,7 +71,6 @@
 		DE4F6DCC29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brad_Ashburn_Shopping_AppTests.swift; sourceTree = "<group>"; };
 		DE4F6DD729CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brad_Ashburn_Shopping_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4F6DD929CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brad_Ashburn_Shopping_AppUITests.swift; sourceTree = "<group>"; };
-		DE4F6DDB29CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brad_Ashburn_Shopping_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DE56BF8829BC4B38000D0C6F /* InventoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewModel.swift; sourceTree = "<group>"; };
 		DE56BF8A29BC4B90000D0C6F /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
 		DE56BF8C29BC4C0E000D0C6F /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				DE4F6DD929CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITests.swift */,
-				DE4F6DDB29CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITestsLaunchTests.swift */,
 			);
 			path = Brad_Ashburn_Shopping_AppUITests;
 			sourceTree = "<group>";
@@ -403,7 +400,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE4F6DDA29CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITests.swift in Sources */,
-				DE4F6DDC29CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

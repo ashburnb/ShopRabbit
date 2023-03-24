@@ -11,9 +11,10 @@ import SwiftUI
 
 final class Brad_Ashburn_Shopping_AppTests: XCTestCase {
   
-  func test_inventoryCreated() {
+  func test_inventoryAndItemCategoryArraysCreated() {
     let inventoryVM = InventoryViewModel()
     let itemsInInventory = inventoryVM.inventory.isEmpty
+    
     let itemsInJewelry = inventoryVM.jewelery.isEmpty
     let itemsInElectronics = inventoryVM.electronics.isEmpty
     let itemsInMensClothing = inventoryVM.mensclothing.isEmpty
@@ -26,7 +27,7 @@ final class Brad_Ashburn_Shopping_AppTests: XCTestCase {
     XCTAssertTrue(itemsInWomensClothing)
   }
   
-  func test_noServerResponse() {
+  func test_noServerResponseWithInvalidURL() {
     // create a URL that will not exist
     // URL() returns an optional which must be unwrapped to run URLSession.shared.dataTask()
     let url = URL(string: "catscatscats")
@@ -39,8 +40,11 @@ final class Brad_Ashburn_Shopping_AppTests: XCTestCase {
       URLSession.shared.dataTask(with: url) { data, response, error in
         defer { expectation.fulfill() }
         
+        // Assert that data and response are nil
         XCTAssertNil(data)
         XCTAssertNil(response)
+        
+        // Assert that an error is not nil
         XCTAssertNotNil(error)
         
       }
@@ -91,8 +95,6 @@ final class Brad_Ashburn_Shopping_AppTests: XCTestCase {
     
     XCTAssertEqual(cart.discountPercentage, 0)
   }
-  
-
   
   func test_totalPriceInShoppingCart() {
     let cart = ShoppingCart()
