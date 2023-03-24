@@ -82,25 +82,47 @@ final class Brad_Ashburn_Shopping_AppTests: XCTestCase {
     } // end of url optional binding unwrapping
   } // end of decode test method
   
-  func test_shoppingCartDiscountCodeWorks() {
+  func test_shoppingCartDiscountCodeEntryWorks() {
     let cart = ShoppingCart()
     cart.calculateDiscountPercentage(discountCode: "springbreak")
     
     XCTAssertEqual(cart.discountPercentage, 0.10)
   }
   
-  func test_shoppingCartDiscountCodeDoesNotWork() {
+  func test_shoppingCartDiscountCodeInvalidEntry() {
     let cart = ShoppingCart()
     cart.calculateDiscountPercentage(discountCode: "invalidcode")
     
     XCTAssertEqual(cart.discountPercentage, 0)
   }
   
-  func test_totalPriceInShoppingCart() {
+  func test_totalPriceInShoppingCartWhenEmpty() {
     let cart = ShoppingCart()
     let totalPrice = cart.itemsInCart.reduce(0) { $0 + $1.price }
     XCTAssertEqual(totalPrice, 0)
-    
   }
   
-}
+  func test_totalPriceInShoppingCartWithItems() {
+    let cart = ShoppingCart()
+    cart.itemsInCart.append(Item(id: 1, title: "dummyData", price: 100.00, category: "dummyData", description: "dummyData", image: "dummyData"))
+    cart.itemsInCart.append(Item(id: 2, title: "dummyData", price: 50.00, category: "dummyData", description: "dummyData", image: "dummyData"))
+    let totalPrice = cart.itemsInCart.reduce(0) { $0 + $1.price }
+    XCTAssertEqual(totalPrice, 150.00)
+  }
+  
+  func test_totalPriceAdjustedForDiscountCode() {
+    let cart = ShoppingCart()
+
+    cart.itemsInCart.append(Item(id: 1, title: "dummyData", price: 100.00, category: "dummyData", description: "dummyData", image: "dummyData"))
+    cart.itemsInCart.append(Item(id: 2, title: "dummyData", price: 50.00, category: "dummyData", description: "dummyData", image: "dummyData"))
+    let totalPrice = cart.itemsInCart.reduce(0) { $0 + $1.price }
+    XCTAssertEqual(totalPrice, 150.00)
+    
+    cart.calculateDiscountPercentage(discountCode: "newyearnewyou")
+    XCTAssertEqual(cart.discountPercentage, 0.50)
+    
+    let totalPriceAfterDiscount = totalPrice - (totalPrice * cart.discountPercentage)
+    XCTAssertEqual(totalPriceAfterDiscount, 75.0)
+  }
+  
+} // end of Unit Tests
