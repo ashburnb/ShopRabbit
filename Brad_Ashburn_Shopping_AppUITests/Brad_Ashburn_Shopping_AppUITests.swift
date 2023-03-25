@@ -140,9 +140,4 @@ final class Brad_Ashburn_Shopping_AppUITests: XCTestCase {
     XCTAssertFalse(listItemAdded.exists)
   }
 
-
-
-
-
-  
-}
+} // end of UI Tests
