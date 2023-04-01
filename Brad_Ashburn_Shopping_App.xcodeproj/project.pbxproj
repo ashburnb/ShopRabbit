@@ -67,6 +67,7 @@
 		DE36E0AB29A0656200AD747A /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		DE36E0AD29A06AF200AD747A /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		DE38CFA729C6698300630043 /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
+		DE44758E29D8C49C00B4E23B /* storedata.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = storedata.json; sourceTree = "<group>"; };
 		DE4F6DCA29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brad_Ashburn_Shopping_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4F6DCC29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brad_Ashburn_Shopping_AppTests.swift; sourceTree = "<group>"; };
 		DE4F6DD729CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brad_Ashburn_Shopping_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +143,8 @@
 				DE56BF8729BC4B1F000D0C6F /* ViewModels */,
 				DE046BBD299F6E01002FF96E /* Views */,
 				DE046BAF299F675A002FF96E /* Assets.xcassets */,
+				DE44758E29D8C49C00B4E23B /* storedata.json */,
+				DE44758D29D8C49500B4E23B /* Resources */,
 				DE046BB1299F675A002FF96E /* Preview Content */,
 			);
 			path = Brad_Ashburn_Shopping_App;
@@ -186,6 +189,13 @@
 				DE046BAB299F6758002FF96E /* Brad_Ashburn_Shopping_AppApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		DE44758D29D8C49500B4E23B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DE4F6DCB29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests */ = {

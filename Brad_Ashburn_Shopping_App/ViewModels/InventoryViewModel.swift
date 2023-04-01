@@ -9,7 +9,7 @@ import Foundation
 
 class InventoryViewModel: ObservableObject {
   // stores entire product catalog
-  @Published var inventory: [Item]
+  @Published var inventory = [Item]()
   
   // stores items from each product category
   @Published var jewelery: [Item] = []
@@ -18,8 +18,10 @@ class InventoryViewModel: ObservableObject {
   @Published var womensclothing: [Item] = []
   
   init() {
-    self.inventory = [Item]()
-    loadAllProductsFromAPI()
+//    loadAllProductsFromAPI()
+    print("loading items")
+    loadAllProductsFromJSONFileInAppBundle()
+    print("loading complete")
   }
   
   func loadCategoryData() {
@@ -29,6 +31,42 @@ class InventoryViewModel: ObservableObject {
     self.womensclothing = inventory.filter {$0.category == "women's clothing"}
   }
 } // end of InventoryViewModel class
+
+
+extension InventoryViewModel {
+  func loadAllProductsFromJSONFileInAppBundle() {
+
+    // get url for JSON file from the App Bundle
+    if let jsonDataURL = Bundle.main.url(forResource: "storedata", withExtension: "json") {
+      do {
+        // convert URL contents into JSON data
+        let jsonDataFromURL = try Data(contentsOf: jsonDataURL)
+        
+        let decoder = JSONDecoder()
+        let decodedData = try decoder.decode([Item].self, from: jsonDataFromURL)
+        print(decodedData)
+        self.inventory = decodedData
+      } catch {
+        print("Failure loading JSON file")
+      }
+    } else {
+      print("Could not find JSON file in App Bundle")
+    }
+  }
+  
+  func loadAllProductsFromJSONFileInDocumentDirectory() {
+    
+  }
+  
+  func saveProductsInShoppingCartToDocumentDirectory() {
+    
+  }
+}
+
+
+
+
+
 
 
 // adds method to fetch items
