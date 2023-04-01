@@ -13,6 +13,13 @@ struct Item: Codable, Hashable {
   let title: String
   let price: Double
   let category: String
-  let description: String
+  //let description: String
+  let details: String
   let image: String
+  
+  // WEEK07 - ABOVE AND BEYOND
+  enum CodingKeys: String, CodingKey {
+    case id, title, price, category, image
+    case details = "description"
+  }
 }

@@ -39,7 +39,7 @@ struct ItemDetailView: View {
         Text("$\(String(format: "%.2f", item.price))")
           .font(.title2)
         Text(item.category)
-        Text(item.description)
+        Text(item.details)
         
         HStack {
           Spacer()
@@ -65,7 +65,7 @@ struct ItemDetailView: View {
 
 struct ItemDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    ItemDetailView(item: Item(id: 808, title: "AirPods Pro", price: 249.00, category: "Electronics", description: "Enhanced noise cancelling, richer sound, and packed with pro features.", image: "airpodspro"))
+    ItemDetailView(item: Item(id: 808, title: "AirPods Pro", price: 249.00, category: "Electronics", details: "Enhanced noise cancelling, richer sound, and packed with pro features.", image: "airpodspro"))
       .environmentObject(ShoppingCart())
   }
 }
