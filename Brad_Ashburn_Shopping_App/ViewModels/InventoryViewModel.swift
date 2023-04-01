@@ -9,7 +9,12 @@ import Foundation
 
 class InventoryViewModel: ObservableObject {
   // stores entire product catalog
-  @Published var inventory: [Item]
+  @Published var inventory = [Item]() {
+    didSet {
+      // WEEK07 - ASSIGNMENT 4
+      saveAllProductsToDocumentDirectory()
+    }
+  }
   
   // stores items from each product category
   @Published var jewelery: [Item] = []
@@ -18,8 +23,8 @@ class InventoryViewModel: ObservableObject {
   @Published var womensclothing: [Item] = []
   
   init() {
-    self.inventory = [Item]()
-    loadAllProductsFromAPI()
+//    loadAllProductsFromAPI()
+    loadAllProductsFromJSONFile()
   }
   
   func loadCategoryData() {
@@ -29,6 +34,74 @@ class InventoryViewModel: ObservableObject {
     self.womensclothing = inventory.filter {$0.category == "women's clothing"}
   }
 } // end of InventoryViewModel class
+
+
+extension InventoryViewModel {
+  // WEEK07 - ASSIGNMENT 1 and ASSIGNMENT 3
+  func loadAllProductsFromJSONFile() {
+    // get url for Documents folder
+    let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    // get url for JSON file
+    let jsonDataURL = documentsDirectory.appendingPathComponent("storedata").appendingPathExtension("json")
+
+    do {
+      if try jsonDataURL.checkResourceIsReachable() {
+        do {
+          // convert URL contents into JSON data
+          let jsonDataFromURL = try Data(contentsOf: jsonDataURL)
+          
+          let decoder = JSONDecoder()
+          let decodedData = try decoder.decode([Item].self, from: jsonDataFromURL)
+          inventory = decodedData
+          return
+        } catch {
+          print("Failure loading JSON file from Documents Directory")
+        }
+      } else {
+        if let jsonDataURL = Bundle.main.url(forResource: "storedata", withExtension: "json") {
+          do {
+            // convert URL contents into JSON data
+            let jsonDataFromURL = try Data(contentsOf: jsonDataURL)
+            
+            let decoder = JSONDecoder()
+            let decodedData = try decoder.decode([Item].self, from: jsonDataFromURL)
+
+            self.inventory = decodedData
+          } catch {
+            print("Failure loading JSON file")
+          }
+        } else {
+          print("Could not find JSON file in App Bundle")
+        }
+      }
+    } catch {
+      print("JSON file was unreachable in Documents Directory")
+    }
+
+  } // end of loadAllProductsFromJSONFile() method
+  
+  // WEEK07 - ASSIGNMENT 2
+  func saveAllProductsToDocumentDirectory() {
+    let encoder = JSONEncoder()
+    
+    do {
+      let inventoryData = try encoder.encode(inventory)
+
+      // get url for Documents folder
+      let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+      // get url for JSON file
+      let jsonDataURL = documentsDirectory.appendingPathComponent("storedata").appendingPathExtension("json")
+      
+      try inventoryData.write(to: jsonDataURL)
+    } catch {
+      print("Error encoding inventory to JSON file")
+    }
+  }
+
+}
+
+
+
 
 
 // adds method to fetch items
