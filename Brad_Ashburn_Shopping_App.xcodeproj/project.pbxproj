@@ -34,6 +34,9 @@
 		DE8048EC29A88F980013AA11 /* InventoryViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8048EB29A88F980013AA11 /* InventoryViewOld.swift */; };
 		DEA1228429C559FD005EFBD8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA1228329C559FD005EFBD8 /* MainView.swift */; };
 		DEB1EA4629B39DE100875B35 /* ItemDetailsViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB1EA4529B39DE100875B35 /* ItemDetailsViewOld.swift */; };
+		DEE6511329D8C8B600589C71 /* storedata.json in Resources */ = {isa = PBXBuildFile; fileRef = DEE6511229D8C8B600589C71 /* storedata.json */; };
+		DEE6511429D8C8B600589C71 /* storedata.json in Resources */ = {isa = PBXBuildFile; fileRef = DEE6511229D8C8B600589C71 /* storedata.json */; };
+		DEE6511529D8C8B600589C71 /* storedata.json in Resources */ = {isa = PBXBuildFile; fileRef = DEE6511229D8C8B600589C71 /* storedata.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +70,6 @@
 		DE36E0AB29A0656200AD747A /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		DE36E0AD29A06AF200AD747A /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		DE38CFA729C6698300630043 /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
-		DE44758E29D8C49C00B4E23B /* storedata.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = storedata.json; sourceTree = "<group>"; };
 		DE4F6DCA29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brad_Ashburn_Shopping_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4F6DCC29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brad_Ashburn_Shopping_AppTests.swift; sourceTree = "<group>"; };
 		DE4F6DD729CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brad_Ashburn_Shopping_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,7 @@
 		DEA1228329C559FD005EFBD8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DEB1EA4429B39C7600875B35 /* week03assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = week03assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DEB1EA4529B39DE100875B35 /* ItemDetailsViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewOld.swift; sourceTree = "<group>"; };
+		DEE6511229D8C8B600589C71 /* storedata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = storedata.json; path = ../../Week07PracticeAssignment/Week07PracticeAssignment/storedata.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +146,7 @@
 				DE56BF8729BC4B1F000D0C6F /* ViewModels */,
 				DE046BBD299F6E01002FF96E /* Views */,
 				DE046BAF299F675A002FF96E /* Assets.xcassets */,
-				DE44758E29D8C49C00B4E23B /* storedata.json */,
+				DEE6511229D8C8B600589C71 /* storedata.json */,
 				DE44758D29D8C49500B4E23B /* Resources */,
 				DE046BB1299F675A002FF96E /* Preview Content */,
 			);
@@ -345,6 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE6511329D8C8B600589C71 /* storedata.json in Resources */,
 				DE046BB3299F675A002FF96E /* Preview Assets.xcassets in Resources */,
 				DE046BB0299F675A002FF96E /* Assets.xcassets in Resources */,
 			);
@@ -354,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE6511429D8C8B600589C71 /* storedata.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE6511529D8C8B600589C71 /* storedata.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
