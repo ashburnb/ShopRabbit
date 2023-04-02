@@ -41,6 +41,7 @@ extension ShoppingCart {
   }
 }
 
+
 extension ShoppingCart {
   // WEEK07 - ASSIGNMENT 4 + Above and Beyond
   func saveItemsInShoppingCartToDocumentDirectory() {
@@ -48,13 +49,16 @@ extension ShoppingCart {
     encoder.outputFormatting = .prettyPrinted
     
     do {
+      // encode the itemsInCart array into data to store
       let cartData = try encoder.encode(itemsInCart)
 
       // get url for Documents folder
       let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+      
       // get url for JSON file
       let jsonCartDataURL = documentsDirectory.appendingPathComponent("itemsInCart").appendingPathExtension("json")
       
+      // write the JSON data to the url
       try cartData.write(to: jsonCartDataURL)
     } catch {
       print("Error encoding cart data to JSON file")
@@ -65,6 +69,7 @@ extension ShoppingCart {
   func loadItemsInShoppingCartFromDocumentDirectory() {
     // get url for Documents folder
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    
     // get url for JSON file
     let jsonCartDataURL = documentsDirectory.appendingPathComponent("itemsInCart").appendingPathExtension("json")
     
@@ -74,14 +79,14 @@ extension ShoppingCart {
       
       let decoder = JSONDecoder()
       let decodedData = try decoder.decode([Item].self, from: jsonCartDataFromURL)
+      
       itemsInCart = decodedData
       return
     } catch {
-      print("Failure loading JSON file from Documents Directory")
+      print("Initial run of app or failure loading JSON file from Documents Directory")
     }
-
   }
   
-}
+} // end of extension
 
 

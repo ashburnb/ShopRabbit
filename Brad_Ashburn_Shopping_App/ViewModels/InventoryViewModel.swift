@@ -41,6 +41,7 @@ extension InventoryViewModel {
   func loadAllProductsFromJSONFile() {
     // get url for Documents folder
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    
     // get url for JSON file
     let jsonDataURL = documentsDirectory.appendingPathComponent("storedata").appendingPathExtension("json")
 
@@ -57,25 +58,24 @@ extension InventoryViewModel {
         } catch {
           print("Failure loading JSON file from Documents Directory")
         }
-      } else {
-        if let jsonDataURL = Bundle.main.url(forResource: "storedata", withExtension: "json") {
-          do {
-            // convert URL contents into JSON data
-            let jsonDataFromURL = try Data(contentsOf: jsonDataURL)
-            
-            let decoder = JSONDecoder()
-            let decodedData = try decoder.decode([Item].self, from: jsonDataFromURL)
-
-            self.inventory = decodedData
-          } catch {
-            print("Failure loading JSON file")
-          }
-        } else {
-          print("Could not find JSON file in App Bundle")
-        }
       }
     } catch {
-      print("JSON file was unreachable in Documents Directory")
+      // if the file is not reachable in the Documents Directory, then load the JSON file in the App Bundle resources
+      if let jsonDataURL = Bundle.main.url(forResource: "storedata", withExtension: "json") {
+        do {
+          // convert URL contents into JSON data
+          let jsonDataFromURL = try Data(contentsOf: jsonDataURL)
+          
+          let decoder = JSONDecoder()
+          let decodedData = try decoder.decode([Item].self, from: jsonDataFromURL)
+
+          self.inventory = decodedData
+        } catch {
+          print("Failure loading JSON file")
+        }
+      } else {
+        print("Could not find JSON file in App Bundle")
+      }
     }
 
   } // end of loadAllProductsFromJSONFile() method
@@ -90,6 +90,7 @@ extension InventoryViewModel {
 
       // get url for Documents folder
       let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+      
       // get url for JSON file
       let jsonDataURL = documentsDirectory.appendingPathComponent("storedata").appendingPathExtension("json")
       
@@ -99,7 +100,7 @@ extension InventoryViewModel {
     }
   }
 
-}
+} // end of extension
 
 
 
