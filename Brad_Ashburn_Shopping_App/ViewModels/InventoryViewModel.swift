@@ -83,6 +83,7 @@ extension InventoryViewModel {
   // WEEK07 - ASSIGNMENT 2
   func saveAllProductsToDocumentDirectory() {
     let encoder = JSONEncoder()
+    encoder.outputFormatting = .prettyPrinted
     
     do {
       let inventoryData = try encoder.encode(inventory)

@@ -42,9 +42,10 @@ extension ShoppingCart {
 }
 
 extension ShoppingCart {
-  // WEEK07 - ASSIGNMENT 4
+  // WEEK07 - ASSIGNMENT 4 + Above and Beyond
   func saveItemsInShoppingCartToDocumentDirectory() {
     let encoder = JSONEncoder()
+    encoder.outputFormatting = .prettyPrinted
     
     do {
       let cartData = try encoder.encode(itemsInCart)
