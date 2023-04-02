@@ -54,7 +54,6 @@ extension InventoryViewModel {
           let decoder = JSONDecoder()
           let decodedData = try decoder.decode([Item].self, from: jsonDataFromURL)
           inventory = decodedData
-          return
         } catch {
           print("Failure loading JSON file from Documents Directory")
         }
