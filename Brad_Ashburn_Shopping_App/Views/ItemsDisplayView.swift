@@ -11,7 +11,7 @@ struct ItemsDisplayView: View {
   let items: [Item]
   let categoryName: String
   @EnvironmentObject var shoppingCart: ShoppingCart
-  
+
   var body: some View {
     List(items, id: \.id) { item in
       NavigationLink {
@@ -32,7 +32,7 @@ struct ItemsDisplayView: View {
               ProgressView()
             }
           )
-          
+
           VStack(alignment: .leading, spacing: Constants.Inventory.gridSpacing) {
             Text(item.title)
               .font(.headline)
@@ -42,7 +42,7 @@ struct ItemsDisplayView: View {
       } // end of NavigationLink label
     } // end of List
     .navigationTitle("\(categoryName)")
-    
+
   } // end of body property
 }
 

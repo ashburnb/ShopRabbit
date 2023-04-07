@@ -15,18 +15,18 @@ class InventoryViewModel: ObservableObject {
       saveAllProductsToDocumentDirectory()
     }
   }
-  
+
   // stores items from each product category
   @Published var jewelery: [Item] = []
   @Published var mensclothing: [Item] = []
   @Published var electronics: [Item] = []
   @Published var womensclothing: [Item] = []
-  
+
   init() {
 //    loadAllProductsFromAPI()
     loadAllProductsFromJSONFile()
   }
-  
+
   func loadCategoryData() {
     self.jewelery = inventory.filter {$0.category == "jewelery"}
     self.electronics = inventory.filter {$0.category == "electronics"}
@@ -35,13 +35,12 @@ class InventoryViewModel: ObservableObject {
   }
 } // end of InventoryViewModel class
 
-
 extension InventoryViewModel {
   // WEEK07 - ASSIGNMENT 1 and ASSIGNMENT 3
   func loadAllProductsFromJSONFile() {
     // get url for Documents folder
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    
+
     // get url for JSON file
     let jsonDataURL = documentsDirectory.appendingPathComponent("storedata").appendingPathExtension("json")
 
@@ -50,7 +49,7 @@ extension InventoryViewModel {
         do {
           // convert URL contents into JSON data
           let jsonDataFromURL = try Data(contentsOf: jsonDataURL)
-          
+
           let decoder = JSONDecoder()
           let decodedData = try decoder.decode([Item].self, from: jsonDataFromURL)
           inventory = decodedData
@@ -64,7 +63,7 @@ extension InventoryViewModel {
         do {
           // convert URL contents into JSON data
           let jsonDataFromURL = try Data(contentsOf: jsonDataURL)
-          
+
           let decoder = JSONDecoder()
           let decodedData = try decoder.decode([Item].self, from: jsonDataFromURL)
 
@@ -78,21 +77,21 @@ extension InventoryViewModel {
     }
 
   } // end of loadAllProductsFromJSONFile() method
-  
+
   // WEEK07 - ASSIGNMENT 2
   func saveAllProductsToDocumentDirectory() {
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted
-    
+
     do {
       let inventoryData = try encoder.encode(inventory)
 
       // get url for Documents folder
       let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-      
+
       // get url for JSON file
       let jsonDataURL = documentsDirectory.appendingPathComponent("storedata").appendingPathExtension("json")
-      
+
       try inventoryData.write(to: jsonDataURL)
     } catch {
       print("Error encoding inventory to JSON file")
@@ -100,10 +99,6 @@ extension InventoryViewModel {
   }
 
 } // end of extension
-
-
-
-
 
 // adds method to fetch items
 extension InventoryViewModel {
@@ -114,7 +109,7 @@ extension InventoryViewModel {
       print("Invalid URL")
       return
     }
-    
+
     // use URLSession with url constant created above to retrieve JSON data
     // the two underscores represent response and error which are not used
     let fetchData = URLSession.shared.dataTask(with: url) { (data, _, _) in
@@ -122,18 +117,18 @@ extension InventoryViewModel {
         do {
           // fetched JSON data object is decoded into an array of items
           let results = try JSONDecoder().decode([Item].self, from: data)
-          
+
           DispatchQueue.main.async {
             // the class inventory property is then set to this Item array
             self.inventory = results
           }
-          
+
         } catch {
           print("Invalid JSON")
         }
       }
     }
-    
+
     fetchData.resume()
   } // end of loadAllProductsFromAPI() method
 }

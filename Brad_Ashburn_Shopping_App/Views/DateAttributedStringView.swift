@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct DateAttributedStringView_Previews: PreviewProvider {
   static var previews: some View {
     DateAttributedStringView()

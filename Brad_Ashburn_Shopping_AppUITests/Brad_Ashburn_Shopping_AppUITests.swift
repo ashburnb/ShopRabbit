@@ -8,7 +8,7 @@
 import XCTest
 @testable import Brad_Ashburn_Shopping_App
 
-final class Brad_Ashburn_Shopping_AppUITests: XCTestCase {
+final class BradAshburnShoppingAppUITests: XCTestCase {
   var app: XCUIApplication!
 
   override func setUpWithError() throws {
@@ -44,13 +44,14 @@ final class Brad_Ashburn_Shopping_AppUITests: XCTestCase {
     let tabBar = app.tabBars["Tab Bar"]
     let itemsButton = tabBar.buttons["Items"]
     itemsButton.tap()
-    app.collectionViews/*@START_MENU_TOKEN@*/.buttons["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95"]/*[[".cells.buttons[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95\"]",".buttons[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+    app.collectionViews.buttons["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95"].tap()
     app.scrollViews.otherElements.buttons["Add to cart"].tap()
     app.alerts["Added to Cart"].scrollViews.otherElements.buttons["OK"].tap()
 
     let cartButton = tabBar.buttons["Cart"]
     cartButton.tap()
-    let itemAdded = app/*@START_MENU_TOKEN@*/.collectionViews.staticTexts["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"]/*[[".otherElements[\"1\"].collectionViews",".cells.staticTexts[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\"]",".staticTexts[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\"]",".collectionViews"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/
+    let itemAdded = app.collectionViews.staticTexts["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"]
 
     // Assert that the item was added to the shopping cart
     XCTAssertTrue(itemAdded.exists)
@@ -60,17 +61,17 @@ final class Brad_Ashburn_Shopping_AppUITests: XCTestCase {
     let tabBar = app.tabBars["Tab Bar"]
     let itemsButton = tabBar.buttons["Items"]
     itemsButton.tap()
-    app.collectionViews/*@START_MENU_TOKEN@*/.buttons["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95"]/*[[".cells.buttons[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95\"]",".buttons[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    app.collectionViews.buttons["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95"].tap()
     app.scrollViews.otherElements.buttons["Add to cart"].tap()
     app.alerts["Added to Cart"].scrollViews.otherElements.buttons["OK"].tap()
 
     let cartButton = tabBar.buttons["Cart"]
     cartButton.tap()
 
-    let itemAdded = app/*@START_MENU_TOKEN@*/.collectionViews.staticTexts["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"]/*[[".otherElements[\"1\"].collectionViews",".cells.staticTexts[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\"]",".staticTexts[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\"]",".collectionViews"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/
+    let itemAdded = app.collectionViews.staticTexts["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"]
     itemAdded.tap()
-    app/*@START_MENU_TOKEN@*/.buttons["Checkout"]/*[[".otherElements[\"1\"].buttons[\"Checkout\"]",".buttons[\"Checkout\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-    app/*@START_MENU_TOKEN@*/.collectionViews.buttons["Place Order"]/*[[".otherElements[\"1\"].collectionViews",".cells.buttons[\"Place Order\"]",".buttons[\"Place Order\"]",".collectionViews"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
+    app.buttons["Checkout"].tap()
+    app.collectionViews.buttons["Place Order"].tap()
     app.alerts["Order Confirmed"].scrollViews.otherElements.buttons["OK"].tap()
 
     cartButton.tap()
@@ -108,7 +109,7 @@ final class Brad_Ashburn_Shopping_AppUITests: XCTestCase {
 
   func test_returnsToInventoryViewFromItemDetailViewWhenBackButtonPressed() throws {
     app.tabBars["Tab Bar"].buttons["Items"].tap()
-    app.collectionViews/*@START_MENU_TOKEN@*/.buttons["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95"]/*[[".cells.buttons[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95\"]",".buttons[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    app.collectionViews.buttons["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95"].tap()
     let itemDetailPrice = app.scrollViews.otherElements.staticTexts["$109.95"]
 
     // Assert that the ItemDetailView is shown when a List item is tapped
@@ -121,15 +122,16 @@ final class Brad_Ashburn_Shopping_AppUITests: XCTestCase {
 
   func test_removeItemFromShoppingCart() throws {
     app.tabBars["Tab Bar"].buttons["Items"].tap()
-    app.collectionViews/*@START_MENU_TOKEN@*/.buttons["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95"]/*[[".cells.buttons[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95\"]",".buttons[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    app.collectionViews.buttons["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops, $109.95"].tap()
     app.scrollViews.otherElements.buttons["Add to cart"].tap()
     app.alerts["Added to Cart"].scrollViews.otherElements.buttons["OK"].tap()
     app.tabBars["Tab Bar"].buttons["Cart"].tap()
 
-    app/*@START_MENU_TOKEN@*/.collectionViews.staticTexts["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"]/*[[".otherElements[\"1\"].collectionViews",".cells.staticTexts[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\"]",".staticTexts[\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\"]",".collectionViews"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
+    app.collectionViews.staticTexts["Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"].tap()
 
-    let collectionViewsQuery = app/*@START_MENU_TOKEN@*/.collectionViews/*[[".otherElements[\"1\"].collectionViews",".collectionViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-    let listItemAdded = collectionViewsQuery.cells.children(matching: .other).element(boundBy: 1).children(matching: .other).element
+    let collectionViewsQuery = app.collectionViews
+    let listItemAdded = collectionViewsQuery.cells.children(matching: .other)
+                                             .element(boundBy: 1).children(matching: .other).element
     listItemAdded.swipeLeft()
 
     // Assert that an item is added to the shopping cart

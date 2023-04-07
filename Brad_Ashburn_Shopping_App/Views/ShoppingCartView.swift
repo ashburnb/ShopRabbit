@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShoppingCartView: View {
   @EnvironmentObject var shoppingCart: ShoppingCart
-  
+
   var body: some View {
     NavigationView {
       VStack {
@@ -30,20 +30,19 @@ struct ShoppingCartView: View {
                   ProgressView()
                 }
               )
-              
+
               Spacer()
-              
               Text(item.title)
-             
+
               Spacer()
-              
+
               Text("$\(String(format: "%.2f", item.price))")
             }
           }
           .onDelete(perform: deleteItems)
         }
         .navigationTitle("Shopping Cart")
-        
+
         NavigationLink {
           CheckOutView()
         } label: {
@@ -57,19 +56,15 @@ struct ShoppingCartView: View {
         }
         .disabled(shoppingCart.itemsInCart.isEmpty)
         // disables button if cart is empty
-        
       } // end of VStack
       .navigationBarTitleDisplayMode(.inline)
-      
     } // end of NavigationView
   } // end of body property
-  
   // needed to implement List item delete functionality
   // is passed into .onDelete as a closure
   func deleteItems(at offsets: IndexSet) {
     shoppingCart.itemsInCart.remove(atOffsets: offsets)
   }
-  
 }
 
 struct ShoppingCartView_Previews: PreviewProvider {

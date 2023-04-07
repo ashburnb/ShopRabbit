@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoryTextView: View {
   let categoryName: String
   let backgroundColor: Color
-  
+
   var body: some View {
     Text("\(categoryName)")
       .padding()
@@ -55,13 +55,12 @@ struct PlaceOrderButton: View {
   }
 }
 
-
 struct ButtonViews_Previews: PreviewProvider {
   static var previews: some View {
     ZStack {
       Color.gray
         .ignoresSafeArea()
-      
+
       VStack(spacing: 30) {
         CategoryTextView(categoryName: "Jewelry", backgroundColor: .orange)
         CategoryTextView(categoryName: "Women's\nClothing", backgroundColor: .red)
@@ -71,4 +70,3 @@ struct ButtonViews_Previews: PreviewProvider {
     }
   }
 }
-

@@ -8,9 +8,9 @@
 import SwiftUI
 
 @main
-struct Brad_Ashburn_Shopping_App: App {
+struct BradAshburnShoppingApp: App {
   @StateObject var shoppingCart = ShoppingCart()
-  
+
   var body: some Scene {
     WindowGroup {
       MainView()

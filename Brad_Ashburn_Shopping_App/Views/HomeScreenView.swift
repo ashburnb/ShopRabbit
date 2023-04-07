@@ -7,15 +7,11 @@
 
 import SwiftUI
 
-/*
- The goal is to implement a launch screen animation that will transition to this view. I looked up tutorials on how to do that and they were pretty complex for my current level.
- */
-
 struct HomescreenView: View {
   @Environment(\.horizontalSizeClass) var horizontalSizeClass
   @Environment(\.verticalSizeClass) var verticalSizeClass
   @State private var scale = 1.0
-  
+
   var body: some View {
     ZStack {
       // portrait orientation
@@ -27,11 +23,11 @@ struct HomescreenView: View {
         Color("HomescreenColor")
           .edgesIgnoringSafeArea(.horizontal)
       }
-      
+
       VStack {
         HomescreenTitleView(text: "Shop Rabbit")
           .padding(.top, Constants.Homescreen.titleTextTopPadding)
-        
+
         Image("HomescreenRabbit")
           .resizable()
           .scaledToFit()
@@ -43,11 +39,10 @@ struct HomescreenView: View {
             }
           }
       } // end of VStack
-      
+
     } // end of ZStack
   } // end of body property
 }
-
 
 struct HomescreenView_Previews: PreviewProvider {
   static var previews: some View {

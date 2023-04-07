@@ -16,15 +16,15 @@ struct CheckOutView: View {
   @State private var hasDiscountCode = false
   @State private var discountField: String = ""
   @State private var showOrderConfirmed = false
-  
+
   var totalPrice: Double {
     return shoppingCart.itemsInCart.reduce(0) { $0 + $1.price }
   }
-  
+
   var totalPriceAfterDiscount: Double {
     return totalPrice - (totalPrice * shoppingCart.discountPercentage)
   }
-  
+
   var body: some View {
     Form {
       Section("Payment Information") {
@@ -33,18 +33,18 @@ struct CheckOutView: View {
             Text($0)
           }
         }
-        
+
         if paymentType == "Credit Card" {
           TextField("Enter card number", text: $creditCardNumber.animation())
         }
       }
-      
+
       Section("Total") {
         Text("Total Amount: $\(String(format: "%.2f", totalPrice))")
-        
+
         Toggle("Do you have a discount code?", isOn: $hasDiscountCode)
           .tint(Color("HomescreenColor"))
-        
+
         if hasDiscountCode {
           HStack {
             TextField("Enter Discount Code", text: $discountField)
@@ -62,11 +62,11 @@ struct CheckOutView: View {
                 .padding(.leading, Constants.CheckOut.applyButtonPadding)
             }
           }
-          
+
           Text("Total after discount: $\(String(format: "%.2f", totalPriceAfterDiscount))")
         }
       }
-      
+
       Section {
         Button {
           shoppingCart.itemsInCart.removeAll()
@@ -76,12 +76,12 @@ struct CheckOutView: View {
         }
         .listRowBackground(Color.clear)
       }
-      
+
       Section {
         DateAttributedStringView()
           .listRowBackground(Color.clear)
       }
-      
+
     } // end of Form
     .navigationTitle("Checkout")
     .navigationBarTitleDisplayMode(.inline)
@@ -90,10 +90,9 @@ struct CheckOutView: View {
     } message: {
       Text("Thank you!")
     }
-    
+
   } // end of body property
 } // end of CheckOutView
-
 
 struct CheckOutView_Previews: PreviewProvider {
   static var previews: some View {
