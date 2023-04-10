@@ -10,11 +10,20 @@ import SwiftUI
 @main
 struct BradAshburnShoppingApp: App {
   @StateObject var shoppingCart = ShoppingCart()
+  @StateObject var launchscreenModel = LaunchscreenModel()
+  @StateObject var store = InventoryViewModel()
 
   var body: some Scene {
     WindowGroup {
-      MainView()
-        .environmentObject(shoppingCart)
+      ZStack {
+        MainView()
+        if launchscreenModel.state != .completed {
+          LaunchscreenView()
+        }
+      }
+      .environmentObject(shoppingCart)
+      .environmentObject(launchscreenModel)
+      .environmentObject(store)
     }
   }
 }

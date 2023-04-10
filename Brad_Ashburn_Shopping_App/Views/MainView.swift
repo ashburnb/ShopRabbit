@@ -9,17 +9,18 @@ import SwiftUI
 
 struct MainView: View {
   @EnvironmentObject var shoppingCart: ShoppingCart
+  @EnvironmentObject var launchscreenModel: LaunchscreenModel
 
   var body: some View {
     TabView {
-      HomescreenView()
-        .tabItem {
-          Label("Home", systemImage: "house")
-        }
-
       InventoryView()
         .tabItem {
           Label("Items", systemImage: "list.dash")
+        }
+
+      WishListView()
+        .tabItem {
+          Label("WishList", systemImage: "star.circle")
         }
 
       ShoppingCartView()
@@ -28,6 +29,11 @@ struct MainView: View {
         }
         .badge(shoppingCart.itemsInCart.count)
     }
+    .onAppear {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        launchscreenModel.dismiss()
+      }
+    }
   }
 }
 
@@ -35,5 +41,6 @@ struct MainView_Previews: PreviewProvider {
   static var previews: some View {
     MainView()
       .environmentObject(ShoppingCart())
+      .environmentObject(LaunchscreenModel())
   }
 }

@@ -28,6 +28,9 @@
 		DEC03E0729D8D1B900D4AE4E /* storedata.json in Resources */ = {isa = PBXBuildFile; fileRef = DEC03E0629D8D1B900D4AE4E /* storedata.json */; };
 		DEC03E0829D8D1B900D4AE4E /* storedata.json in Resources */ = {isa = PBXBuildFile; fileRef = DEC03E0629D8D1B900D4AE4E /* storedata.json */; };
 		DEC03E0929D8D1B900D4AE4E /* storedata.json in Resources */ = {isa = PBXBuildFile; fileRef = DEC03E0629D8D1B900D4AE4E /* storedata.json */; };
+		DEDC387B29E330450012C51E /* LaunchscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387A29E330450012C51E /* LaunchscreenView.swift */; };
+		DEDC387D29E331150012C51E /* LaunchscreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387C29E331150012C51E /* LaunchscreenModel.swift */; };
+		DEDC387F29E3AAD00012C51E /* WishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387E29E3AACF0012C51E /* WishListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		DE56BF9629BD8998000D0C6F /* ItemsDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDisplayView.swift; sourceTree = "<group>"; };
 		DEA1228329C559FD005EFBD8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DEC03E0629D8D1B900D4AE4E /* storedata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = storedata.json; sourceTree = SOURCE_ROOT; };
+		DEDC387A29E330450012C51E /* LaunchscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchscreenView.swift; sourceTree = "<group>"; };
+		DEDC387C29E331150012C51E /* LaunchscreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchscreenModel.swift; sourceTree = "<group>"; };
+		DEDC387E29E3AACF0012C51E /* WishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,12 +148,14 @@
 		DE046BBD299F6E01002FF96E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DEDC387A29E330450012C51E /* LaunchscreenView.swift */,
 				DEA1228329C559FD005EFBD8 /* MainView.swift */,
 				DE046BAD299F6758002FF96E /* HomescreenView.swift */,
 				DE56BF8A29BC4B90000D0C6F /* InventoryView.swift */,
 				DE56BF9629BD8998000D0C6F /* ItemsDisplayView.swift */,
 				DE56BF8C29BC4C0E000D0C6F /* ItemDetailView.swift */,
 				DE56BF8E29BC71CD000D0C6F /* ShoppingCartView.swift */,
+				DEDC387E29E3AACF0012C51E /* WishListView.swift */,
 				DE38CFA729C6698300630043 /* CheckOutView.swift */,
 				DE56BF9429BD3FD2000D0C6F /* ButtonViews.swift */,
 				DE36E0AD29A06AF200AD747A /* TextViews.swift */,
@@ -191,6 +199,7 @@
 		DE56BF8729BC4B1F000D0C6F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DEDC387C29E331150012C51E /* LaunchscreenModel.swift */,
 				DE56BF8829BC4B38000D0C6F /* InventoryViewModel.swift */,
 				DE20CAE329B3ABAE005EECDA /* ShoppingCartViewModel.swift */,
 			);
@@ -355,6 +364,7 @@
 			files = (
 				DE56BF9329BD3EE8000D0C6F /* Constants.swift in Sources */,
 				DE56BF9529BD3FD2000D0C6F /* ButtonViews.swift in Sources */,
+				DEDC387B29E330450012C51E /* LaunchscreenView.swift in Sources */,
 				DE046BAE299F6758002FF96E /* HomescreenView.swift in Sources */,
 				DE38CFA829C6698300630043 /* CheckOutView.swift in Sources */,
 				DE56BF8F29BC71CD000D0C6F /* ShoppingCartView.swift in Sources */,
@@ -365,7 +375,9 @@
 				DE56BF9129BD3298000D0C6F /* ItemModel.swift in Sources */,
 				DE20CAE429B3ABAE005EECDA /* ShoppingCartViewModel.swift in Sources */,
 				DE56BF8D29BC4C0E000D0C6F /* ItemDetailView.swift in Sources */,
+				DEDC387F29E3AAD00012C51E /* WishListView.swift in Sources */,
 				DE56BF9729BD8998000D0C6F /* ItemsDisplayView.swift in Sources */,
+				DEDC387D29E331150012C51E /* LaunchscreenModel.swift in Sources */,
 				DE56BF8929BC4B38000D0C6F /* InventoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,7 +543,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Shop Rabbit";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -565,7 +576,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Shop Rabbit";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (

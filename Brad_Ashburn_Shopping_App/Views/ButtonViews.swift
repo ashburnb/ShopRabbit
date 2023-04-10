@@ -13,7 +13,6 @@ struct CategoryTextView: View {
 
   var body: some View {
     Text("\(categoryName)")
-      .padding()
       .frame(
         width: Constants.Homescreen.categoryButtonWidth,
         height: Constants.Homescreen.categoryButtonHeight
@@ -26,16 +25,44 @@ struct CategoryTextView: View {
 
 struct AddToCartButton: View {
   var body: some View {
-    Text("Add to cart")
-      .frame(
-        width: Constants.ItemDetails.addToCartButtonWidth,
-        height: Constants.ItemDetails.addToCartButtonHeight
-      )
-      .foregroundColor(.white)
-      .background(.blue)
-      .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
-      .font(.system(.title2, design: .rounded, weight: .heavy))
-      .bold()
+    VStack {
+      Image(systemName: "cart")
+        .font(.system(size: 50))
+      
+      Text("Add to cart")
+        .font(.system(.title2, design: .rounded, weight: .heavy))
+        .bold()
+    }
+    .padding()
+    .frame(
+      width: 160,
+      height: 100
+    )
+    .foregroundColor(.white)
+    .background(Color("HomescreenColor"))
+    .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
+  }
+}
+
+struct AddToWishListButton: View {
+  var body: some View {
+    VStack {
+      Image(systemName: "star.fill")
+        .font(.system(size: 50))
+        
+      Text("WishList")
+        .font(.system(.title2, design: .rounded, weight: .heavy))
+        .bold()
+    }
+    .padding()
+    .frame(
+      //Constants.ItemDetails.addToCartButtonWidth
+      width: 160,
+      height: 100
+    )
+    .foregroundColor(.white)
+    .background(Color("OnboardingColor"))
+    .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
   }
 }
 
@@ -65,6 +92,7 @@ struct ButtonViews_Previews: PreviewProvider {
         CategoryTextView(categoryName: "Jewelry", backgroundColor: .orange)
         CategoryTextView(categoryName: "Women's\nClothing", backgroundColor: .red)
         AddToCartButton()
+        AddToWishListButton()
         PlaceOrderButton()
       }
     }

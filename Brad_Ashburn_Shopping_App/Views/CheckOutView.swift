@@ -71,6 +71,7 @@ struct CheckOutView: View {
         Button {
           shoppingCart.itemsInCart.removeAll()
           showOrderConfirmed.toggle()
+          // ADD A CONFETTI ANIMATION WHEN USER COMPLETES PURCHASE
         } label: {
           PlaceOrderButton()
         }

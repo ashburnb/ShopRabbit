@@ -42,6 +42,13 @@ struct ItemDetailView: View {
         Text(item.details)
 
         HStack {
+          Button {
+            // add to wishlist
+            // show an alert that item was added
+          } label: {
+            AddToWishListButton()
+          }
+          
           Spacer()
 
           Button {
