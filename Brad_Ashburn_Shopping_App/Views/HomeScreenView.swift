@@ -5,9 +5,9 @@
 ////  Created by Brad Ashburn on 2/16/23.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct HomescreenView: View {
+// struct HomescreenView: View {
 //  @Environment(\.horizontalSizeClass) var horizontalSizeClass
 //  @Environment(\.verticalSizeClass) var verticalSizeClass
 //
@@ -35,10 +35,10 @@
 //    } // end of ZStack
 //
 //  } // end of body property
-//}
+// }
 //
-//struct HomescreenView_Previews: PreviewProvider {
+// struct HomescreenView_Previews: PreviewProvider {
 //  static var previews: some View {
 //    HomescreenView()
 //  }
-//}
+// }

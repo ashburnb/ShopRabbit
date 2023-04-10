@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct BradAshburnShoppingApp: App {
   @StateObject var shoppingCart = ShoppingCart()
+  @StateObject var wishlist = WishList()
   @StateObject var launchscreenModel = LaunchscreenModel()
   @StateObject var store = InventoryViewModel()
 
@@ -24,6 +25,7 @@ struct BradAshburnShoppingApp: App {
       .environmentObject(shoppingCart)
       .environmentObject(launchscreenModel)
       .environmentObject(store)
+      .environmentObject(wishlist)
     }
   }
 }

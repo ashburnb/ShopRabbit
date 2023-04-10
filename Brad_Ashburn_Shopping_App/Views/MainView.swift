@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
   @EnvironmentObject var shoppingCart: ShoppingCart
+  @EnvironmentObject var wishlist: WishList
   @EnvironmentObject var launchscreenModel: LaunchscreenModel
 
   var body: some View {
@@ -22,6 +23,7 @@ struct MainView: View {
         .tabItem {
           Label("WishList", systemImage: "star.circle")
         }
+        .badge(wishlist.items.count)
 
       ShoppingCartView()
         .tabItem {

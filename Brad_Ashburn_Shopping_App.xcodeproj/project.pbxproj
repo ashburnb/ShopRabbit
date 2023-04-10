@@ -31,6 +31,7 @@
 		DEDC387B29E330450012C51E /* LaunchscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387A29E330450012C51E /* LaunchscreenView.swift */; };
 		DEDC387D29E331150012C51E /* LaunchscreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387C29E331150012C51E /* LaunchscreenModel.swift */; };
 		DEDC387F29E3AAD00012C51E /* WishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387E29E3AACF0012C51E /* WishListView.swift */; };
+		DEDC388129E3E93B0012C51E /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC388029E3E93B0012C51E /* WishListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		DEDC387A29E330450012C51E /* LaunchscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchscreenView.swift; sourceTree = "<group>"; };
 		DEDC387C29E331150012C51E /* LaunchscreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchscreenModel.swift; sourceTree = "<group>"; };
 		DEDC387E29E3AACF0012C51E /* WishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListView.swift; sourceTree = "<group>"; };
+		DEDC388029E3E93B0012C51E /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				DEDC387C29E331150012C51E /* LaunchscreenModel.swift */,
 				DE56BF8829BC4B38000D0C6F /* InventoryViewModel.swift */,
 				DE20CAE329B3ABAE005EECDA /* ShoppingCartViewModel.swift */,
+				DEDC388029E3E93B0012C51E /* WishListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				DE56BF9329BD3EE8000D0C6F /* Constants.swift in Sources */,
 				DE56BF9529BD3FD2000D0C6F /* ButtonViews.swift in Sources */,
 				DEDC387B29E330450012C51E /* LaunchscreenView.swift in Sources */,
+				DEDC388129E3E93B0012C51E /* WishListViewModel.swift in Sources */,
 				DE046BAE299F6758002FF96E /* HomescreenView.swift in Sources */,
 				DE38CFA829C6698300630043 /* CheckOutView.swift in Sources */,
 				DE56BF8F29BC71CD000D0C6F /* ShoppingCartView.swift in Sources */,

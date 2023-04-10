@@ -14,12 +14,13 @@ struct CategoryTextView: View {
   var body: some View {
     Text("\(categoryName)")
       .frame(
-        width: Constants.Homescreen.categoryButtonWidth,
+        width: 130,
         height: Constants.Homescreen.categoryButtonHeight
       )
       .background(backgroundColor)
       .font(.system(.title2, design: .rounded, weight: .heavy))
       .foregroundColor(Color.white)
+      .cornerRadius(20)
   }
 }
 
@@ -28,7 +29,7 @@ struct AddToCartButton: View {
     VStack {
       Image(systemName: "cart")
         .font(.system(size: 50))
-      
+
       Text("Add to cart")
         .font(.system(.title2, design: .rounded, weight: .heavy))
         .bold()
@@ -49,14 +50,14 @@ struct AddToWishListButton: View {
     VStack {
       Image(systemName: "star.fill")
         .font(.system(size: 50))
-        
+
       Text("WishList")
         .font(.system(.title2, design: .rounded, weight: .heavy))
         .bold()
     }
     .padding()
     .frame(
-      //Constants.ItemDetails.addToCartButtonWidth
+      // Constants.ItemDetails.addToCartButtonWidth
       width: 160,
       height: 100
     )

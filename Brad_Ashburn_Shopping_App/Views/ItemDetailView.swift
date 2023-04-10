@@ -10,7 +10,9 @@ import SwiftUI
 struct ItemDetailView: View {
   let item: Item
   @EnvironmentObject var shoppingCart: ShoppingCart
+  @EnvironmentObject var wishlist: WishList
   @State var showItemAdded = false
+  @State var showWishlistItemAdded = false
 
   var body: some View {
     ScrollView {
@@ -20,11 +22,14 @@ struct ItemDetailView: View {
           AsyncImage(
             url: URL(string: item.image),
             content: { image in
-              image.resizable()
-                .aspectRatio(contentMode: .fit)
+              image
+                .resizable()
+//                .aspectRatio(contentMode: .fit)
+                .scaledToFit()
                 .frame(
-                  width: Constants.ItemDetails.imageWidth,
-                  height: Constants.ItemDetails.imageHeight
+//                  width: Constants.ItemDetails.imageWidth,
+//                  height: Constants.ItemDetails.imageHeight
+                  width: 150
                 )
             },
             placeholder: {
@@ -43,12 +48,12 @@ struct ItemDetailView: View {
 
         HStack {
           Button {
-            // add to wishlist
-            // show an alert that item was added
+            wishlist.items.append(item)
+            showWishlistItemAdded.toggle()
           } label: {
             AddToWishListButton()
           }
-          
+
           Spacer()
 
           Button {
@@ -61,6 +66,10 @@ struct ItemDetailView: View {
         .alert("Added to Cart", isPresented: $showItemAdded) {
           // could add more button functionality here
           // or this could become a custom alert view like in Week 1 Bullseye Assignment
+        } message: {
+          Text("\(item.title)")
+        }
+        .alert("Added to WishList", isPresented: $showWishlistItemAdded) {
         } message: {
           Text("\(item.title)")
         }
@@ -81,5 +90,6 @@ struct ItemDetailView_Previews: PreviewProvider {
       image: "airpodspro")
     )
       .environmentObject(ShoppingCart())
+      .environmentObject(WishList())
   }
 }
