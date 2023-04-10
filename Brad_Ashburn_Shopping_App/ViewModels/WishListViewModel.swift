@@ -14,7 +14,7 @@ final class WishList: ObservableObject {
       saveItemsInWishListToDocumentDirectory()
     }
   }
-  
+
   init() {
     loadItemsInWishListFromDocumentDirectory()
   }
@@ -42,7 +42,7 @@ extension WishList {
       print("Error encoding cart data to JSON file")
     }
   } // end of method
-  
+
 }
 
 extension WishList {

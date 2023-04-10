@@ -19,18 +19,20 @@ struct WishListView: View {
               url: URL(string: item.image),
               content: { image in
                 image.resizable()
-                  .aspectRatio(contentMode: .fit)
+                  .scaledToFit()
                   .frame(
-                    width: Constants.ShoppingCart.listImageThumbnailWidth,
-                    height: Constants.ShoppingCart.listImageThumbnailHeight
+                    minWidth: 50,
+                    maxWidth: 50
+//                    width: Constants.ShoppingCart.listImageThumbnailWidth,
+//                    height: Constants.ShoppingCart.listImageThumbnailHeight
                   )
               },
               placeholder: {
                 ProgressView()
               }
             )
+            .padding(.trailing, 5)
 
-            Spacer()
             Text(item.title)
 
             Spacer()
@@ -38,13 +40,21 @@ struct WishListView: View {
             Text("$\(String(format: "%.2f", item.price))")
           }
         }
-//        .onDelete(perform: deleteItems)
-        // add move functionality
-        // add text to show ranking of wish items
+        .onDelete(perform: deleteItems)
+        .onMove(perform: move)
       }
       .navigationTitle("Wish List")
     }
+  } // end of body property
+
+  func deleteItems(at offsets: IndexSet) {
+    wishlist.items.remove(atOffsets: offsets)
   }
+
+  func move(from source: IndexSet, to destination: Int) {
+    wishlist.items.move(fromOffsets: source, toOffset: destination)
+  }
+
 }
 
 struct WishListView_Previews: PreviewProvider {

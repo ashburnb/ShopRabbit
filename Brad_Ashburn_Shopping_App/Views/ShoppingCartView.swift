@@ -17,7 +17,7 @@ struct ShoppingCartView: View {
           Image("emptyCartImage")
             .resizable()
             .scaledToFit()
-          
+
           Text("Your Shopping Cart is empty")
             .font(.system(size: 36, weight: .light, design: .rounded))
             .multilineTextAlignment(.center)
@@ -71,9 +71,7 @@ struct ShoppingCartView: View {
         } // end of VStack
         .navigationBarTitleDisplayMode(.inline)
       }
-      
-      
-      
+
     } // end of NavigationView
   } // end of body property
   // needed to implement List item delete functionality
