@@ -30,6 +30,12 @@ struct MainView: View {
           Label("Cart", systemImage: "cart")
         }
         .badge(shoppingCart.itemsInCart.count)
+
+      AccountView()
+        .tabItem {
+          Label("Account", systemImage: "person.crop.circle")
+        }
+
     }
     .onAppear {
       DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

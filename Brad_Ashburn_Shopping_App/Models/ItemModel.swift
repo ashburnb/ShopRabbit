@@ -8,7 +8,7 @@
 import Foundation
 
 // data model for each product from www.fakestoreapi.com
-struct Item: Codable, Hashable {
+struct Item: Codable, Hashable, Identifiable {
   let id: Int
   let title: String
   let price: Double

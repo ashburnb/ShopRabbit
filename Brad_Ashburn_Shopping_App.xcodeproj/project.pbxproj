@@ -32,6 +32,7 @@
 		DEDC387D29E331150012C51E /* LaunchscreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387C29E331150012C51E /* LaunchscreenModel.swift */; };
 		DEDC387F29E3AAD00012C51E /* WishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387E29E3AACF0012C51E /* WishListView.swift */; };
 		DEDC388129E3E93B0012C51E /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC388029E3E93B0012C51E /* WishListViewModel.swift */; };
+		DEF5871B29E4FF360043DB84 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5871A29E4FF360043DB84 /* AccountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		DEDC387C29E331150012C51E /* LaunchscreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchscreenModel.swift; sourceTree = "<group>"; };
 		DEDC387E29E3AACF0012C51E /* WishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListView.swift; sourceTree = "<group>"; };
 		DEDC388029E3E93B0012C51E /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
+		DEF5871A29E4FF360043DB84 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				DE56BF8E29BC71CD000D0C6F /* ShoppingCartView.swift */,
 				DEDC387E29E3AACF0012C51E /* WishListView.swift */,
 				DE38CFA729C6698300630043 /* CheckOutView.swift */,
+				DEF5871A29E4FF360043DB84 /* AccountView.swift */,
 				DE56BF9429BD3FD2000D0C6F /* ButtonViews.swift */,
 				DE36E0AD29A06AF200AD747A /* TextViews.swift */,
 			);
@@ -378,6 +381,7 @@
 				DE36E0AE29A06AF200AD747A /* TextViews.swift in Sources */,
 				DE56BF9129BD3298000D0C6F /* ItemModel.swift in Sources */,
 				DE20CAE429B3ABAE005EECDA /* ShoppingCartViewModel.swift in Sources */,
+				DEF5871B29E4FF360043DB84 /* AccountView.swift in Sources */,
 				DE56BF8D29BC4C0E000D0C6F /* ItemDetailView.swift in Sources */,
 				DEDC387F29E3AAD00012C51E /* WishListView.swift in Sources */,
 				DE56BF9729BD8998000D0C6F /* ItemsDisplayView.swift in Sources */,

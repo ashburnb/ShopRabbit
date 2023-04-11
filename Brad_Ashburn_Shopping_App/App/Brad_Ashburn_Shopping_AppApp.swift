@@ -13,6 +13,7 @@ struct BradAshburnShoppingApp: App {
   @StateObject var wishlist = WishList()
   @StateObject var launchscreenModel = LaunchscreenModel()
   @StateObject var store = InventoryViewModel()
+  @StateObject var orders = OrdersViewModel()
 
   var body: some Scene {
     WindowGroup {
@@ -26,6 +27,7 @@ struct BradAshburnShoppingApp: App {
       .environmentObject(launchscreenModel)
       .environmentObject(store)
       .environmentObject(wishlist)
+      .environmentObject(orders)
     }
   }
 }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CheckOutView: View {
   @EnvironmentObject var shoppingCart: ShoppingCart
+  @EnvironmentObject var orders: OrdersViewModel
+  @EnvironmentObject var wishlist: WishList
   private let paymentTypes = ["Credit Card", "Apple Pay", "Venmo", "PayPal"]
   @State private var paymentType = "Credit Card"
   @State private var displayCreditCardEntry = false
@@ -69,8 +71,18 @@ struct CheckOutView: View {
 
       Section {
         Button {
+          let newOrder = Order(orderItems: shoppingCart.itemsInCart, date: Date.now, totalPrice: totalPrice)
+          orders.ordersPlaced.append(newOrder)
+
+          for item in shoppingCart.itemsInCart where wishlist.items.contains(item) {
+            // force unwrap used here because we know for sure that item is in wishlist
+            let indexOfWishListItem = wishlist.items.firstIndex(of: item)!
+            wishlist.items.remove(at: indexOfWishListItem)
+          }
+
           shoppingCart.itemsInCart.removeAll()
           showOrderConfirmed.toggle()
+
           // ADD A CONFETTI ANIMATION WHEN USER COMPLETES PURCHASE
         } label: {
           PlaceOrderButton()
@@ -100,6 +112,7 @@ struct CheckOutView_Previews: PreviewProvider {
     NavigationStack {
       CheckOutView()
         .environmentObject(ShoppingCart())
+        .environmentObject(WishList())
     }
   }
 }
