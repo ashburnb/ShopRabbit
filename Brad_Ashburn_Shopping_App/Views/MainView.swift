@@ -21,7 +21,7 @@ struct MainView: View {
 
       WishListView()
         .tabItem {
-          Label("WishList", systemImage: "star.circle")
+          Label("Wish List", systemImage: "star.circle")
         }
         .badge(wishlist.items.count)
 

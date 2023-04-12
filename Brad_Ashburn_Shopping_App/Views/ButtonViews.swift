@@ -45,10 +45,32 @@ struct AddToCartButton: View {
   }
 }
 
+struct MoveToCartButton: View {
+  var body: some View {
+    Image(systemName: "cart")
+      .font(.system(size: 20))
+      .padding(5)
+      .foregroundColor(.white)
+      .background(Color("HomescreenColor"))
+      .cornerRadius(8)
+  }
+}
+
+struct MoveToWishlistButton: View {
+  var body: some View {
+    Image(systemName: "star.circle")
+      .font(.system(size: 20))
+      .padding(5)
+      .foregroundColor(.white)
+      .background(Color("OnboardingColor"))
+      .cornerRadius(8)
+  }
+}
+
 struct AddToWishListButton: View {
   var body: some View {
     VStack {
-      Image(systemName: "star.fill")
+      Image(systemName: "star.circle")
         .font(.system(size: 50))
 
       Text("WishList")
@@ -93,6 +115,8 @@ struct ButtonViews_Previews: PreviewProvider {
         CategoryTextView(categoryName: "Jewelry", backgroundColor: .orange)
         CategoryTextView(categoryName: "Women's\nClothing", backgroundColor: .red)
         AddToCartButton()
+        MoveToCartButton()
+        MoveToWishlistButton()
         AddToWishListButton()
         PlaceOrderButton()
       }

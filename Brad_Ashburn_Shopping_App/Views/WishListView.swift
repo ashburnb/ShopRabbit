@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WishListView: View {
   @EnvironmentObject var wishlist: WishList
+  @EnvironmentObject var shoppingCart: ShoppingCart
 
   var body: some View {
     NavigationView {
@@ -38,6 +39,18 @@ struct WishListView: View {
             Spacer()
 
             Text("$\(String(format: "%.2f", item.price))")
+
+            Spacer()
+
+            Button {
+              shoppingCart.itemsInCart.append(item)
+
+              let indexOfWishlistItem = wishlist.items.firstIndex(of: item)!
+              wishlist.items.remove(at: indexOfWishlistItem)
+            } label: {
+              MoveToCartButton()
+            }
+
           }
         }
         .onDelete(perform: deleteItems)
@@ -61,5 +74,6 @@ struct WishListView_Previews: PreviewProvider {
   static var previews: some View {
     WishListView()
       .environmentObject(WishList())
+      .environmentObject(ShoppingCart())
   }
 }

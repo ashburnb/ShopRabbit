@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ShoppingCartView: View {
   @EnvironmentObject var shoppingCart: ShoppingCart
+  @EnvironmentObject var wishlist: WishList
 
   var body: some View {
     NavigationView {
@@ -49,6 +50,17 @@ struct ShoppingCartView: View {
                 Spacer()
 
                 Text("$\(String(format: "%.2f", item.price))")
+
+                Spacer()
+
+                Button {
+                  wishlist.items.append(item)
+
+                  let indexOfCartItem = shoppingCart.itemsInCart.firstIndex(of: item)!
+                  shoppingCart.itemsInCart.remove(at: indexOfCartItem)
+                } label: {
+                  MoveToWishlistButton()
+                }
               }
             }
             .onDelete(perform: deleteItems)
@@ -69,7 +81,6 @@ struct ShoppingCartView: View {
           .disabled(shoppingCart.itemsInCart.isEmpty)
           // disables button if cart is empty
         } // end of VStack
-        .navigationBarTitleDisplayMode(.inline)
       }
 
     } // end of NavigationView
@@ -85,5 +96,6 @@ struct ShoppingCartView_Previews: PreviewProvider {
   static var previews: some View {
     ShoppingCartView()
       .environmentObject(ShoppingCart())
+      .environmentObject(WishList())
   }
 }
