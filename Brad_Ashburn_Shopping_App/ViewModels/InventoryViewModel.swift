@@ -11,20 +11,20 @@ class InventoryViewModel: ObservableObject {
   // stores entire product catalog
   @Published var inventory = [Item]() {
     didSet {
-      // WEEK07 - ASSIGNMENT 4
       saveAllProductsToDocumentDirectory()
     }
   }
 
   // stores items from each product category
-  @Published var jewelery: [Item] = []
-  @Published var mensclothing: [Item] = []
-  @Published var electronics: [Item] = []
-  @Published var womensclothing: [Item] = []
+  @Published var jewelery = [Item]()
+  @Published var mensclothing = [Item]()
+  @Published var electronics = [Item]()
+  @Published var womensclothing = [Item]()
 
   init() {
 //    loadAllProductsFromAPI()
     loadAllProductsFromJSONFile()
+    loadCategoryData()
   }
 
   func loadCategoryData() {
@@ -36,7 +36,6 @@ class InventoryViewModel: ObservableObject {
 } // end of InventoryViewModel class
 
 extension InventoryViewModel {
-  // WEEK07 - ASSIGNMENT 1 and ASSIGNMENT 3
   func loadAllProductsFromJSONFile() {
     // get url for Documents folder
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -78,7 +77,6 @@ extension InventoryViewModel {
 
   } // end of loadAllProductsFromJSONFile() method
 
-  // WEEK07 - ASSIGNMENT 2
   func saveAllProductsToDocumentDirectory() {
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted

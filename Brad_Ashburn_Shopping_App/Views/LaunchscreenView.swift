@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LaunchscreenView: View {
-  @EnvironmentObject var launchscreenModel: LaunchscreenModel
+  @EnvironmentObject var launchscreenModel: LaunchscreenViewModel
   @State private var firstPhaseAnimating = false
   @State private var secondPhaseAnimating = false
   private let timer = Timer.publish(every: 0.70,
@@ -21,14 +21,14 @@ struct LaunchscreenView: View {
         .ignoresSafeArea()
 
       VStack {
-        HomescreenTitleView(text: "ShopRabbit")
+        HomescreenTitleView(text: "Shop Rabbit")
           .padding(.top, Constants.Homescreen.titleTextTopPadding)
 
         Image("HomescreenRabbit")
           .resizable()
           .scaledToFit()
-          .scaleEffect(firstPhaseAnimating ? 0.6 : 1)
-          .scaleEffect(secondPhaseAnimating ? UIScreen.main.bounds.height / 4 : 1)
+          .scaleEffect(firstPhaseAnimating ? 0.4 : 1)
+          .scaleEffect(secondPhaseAnimating ? 2 : 1)
 
       } // end of VStack
     } // end of ZStack
@@ -36,12 +36,10 @@ struct LaunchscreenView: View {
     .onReceive(timer) { _ in
       switch launchscreenModel.state {
       case .first:
-        // first phase of animation
         withAnimation(.spring()) {
           firstPhaseAnimating.toggle()
         }
       case .second:
-        // second phase of animation
         withAnimation(.easeInOut) {
           secondPhaseAnimating.toggle()
         }
@@ -56,6 +54,6 @@ struct LaunchscreenView: View {
 struct LaunchscreenView_Previews: PreviewProvider {
     static var previews: some View {
         LaunchscreenView()
-          .environmentObject(LaunchscreenModel())
+          .environmentObject(LaunchscreenViewModel())
     }
 }

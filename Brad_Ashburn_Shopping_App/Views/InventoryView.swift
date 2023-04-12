@@ -46,10 +46,7 @@ struct InventoryView: View {
           }
         }
         .padding(Constants.Inventory.gridPadding)
-        .navigationTitle("Store Categories")
-        .onAppear {
-          store.loadCategoryData()
-        }
+        .navigationTitle("Shop Rabbit")
       }
 
       Text("All Items")

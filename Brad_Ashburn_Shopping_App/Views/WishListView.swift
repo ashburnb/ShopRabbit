@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct WishListView: View {
-  @EnvironmentObject var wishlist: WishList
-  @EnvironmentObject var shoppingCart: ShoppingCart
+  @EnvironmentObject var wishlist: WishListViewModel
+  @EnvironmentObject var shoppingCart: ShoppingCartViewModel
 
   var body: some View {
     NavigationView {
@@ -22,17 +22,15 @@ struct WishListView: View {
                 image.resizable()
                   .scaledToFit()
                   .frame(
-                    minWidth: 50,
-                    maxWidth: 50
-//                    width: Constants.ShoppingCart.listImageThumbnailWidth,
-//                    height: Constants.ShoppingCart.listImageThumbnailHeight
+                    minWidth: Constants.Wishlist.wishlistImageThumbnailWidth,
+                    maxWidth: Constants.Wishlist.wishlistImageThumbnailHeight
                   )
               },
               placeholder: {
                 ProgressView()
               }
             )
-            .padding(.trailing, 5)
+            .padding(.trailing, Constants.Wishlist.wishlistPadding)
 
             Text(item.title)
 
@@ -73,7 +71,7 @@ struct WishListView: View {
 struct WishListView_Previews: PreviewProvider {
   static var previews: some View {
     WishListView()
-      .environmentObject(WishList())
-      .environmentObject(ShoppingCart())
+      .environmentObject(WishListViewModel())
+      .environmentObject(ShoppingCartViewModel())
   }
 }

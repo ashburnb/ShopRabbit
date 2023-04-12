@@ -1,5 +1,5 @@
 //
-//  LaunchscreenModel.swift
+//  LaunchscreenViewModel.swift
 //  Brad_Ashburn_Shopping_App
 //
 //  Created by Brad Ashburn on 4/9/23.
@@ -11,13 +11,14 @@ enum LaunchscreenPhase {
   case first, second, completed
 }
 
-final class LaunchscreenModel: ObservableObject {
+final class LaunchscreenViewModel: ObservableObject {
   @Published private(set) var state: LaunchscreenPhase = .first
+  
   func dismiss() {
-    self.state = .second
-
+    self.state = .second    
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       self.state = .completed
     }
   }
+  
 }

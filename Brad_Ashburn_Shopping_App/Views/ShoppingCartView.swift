@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ShoppingCartView: View {
-  @EnvironmentObject var shoppingCart: ShoppingCart
-  @EnvironmentObject var wishlist: WishList
+  @EnvironmentObject var shoppingCart: ShoppingCartViewModel
+  @EnvironmentObject var wishlist: WishListViewModel
 
   var body: some View {
     NavigationView {
@@ -95,7 +95,7 @@ struct ShoppingCartView: View {
 struct ShoppingCartView_Previews: PreviewProvider {
   static var previews: some View {
     ShoppingCartView()
-      .environmentObject(ShoppingCart())
-      .environmentObject(WishList())
+      .environmentObject(ShoppingCartViewModel())
+      .environmentObject(WishListViewModel())
   }
 }

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-  @EnvironmentObject var shoppingCart: ShoppingCart
-  @EnvironmentObject var wishlist: WishList
-  @EnvironmentObject var launchscreenModel: LaunchscreenModel
+  @EnvironmentObject var launchscreen: LaunchscreenViewModel
+  @EnvironmentObject var shoppingCart: ShoppingCartViewModel
+  @EnvironmentObject var wishlist: WishListViewModel
 
   var body: some View {
     TabView {
@@ -39,7 +39,7 @@ struct MainView: View {
     }
     .onAppear {
       DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-        launchscreenModel.dismiss()
+        launchscreen.dismiss()
       }
     }
   }
@@ -48,7 +48,7 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
   static var previews: some View {
     MainView()
-      .environmentObject(ShoppingCart())
-      .environmentObject(LaunchscreenModel())
+      .environmentObject(LaunchscreenViewModel())
+      .environmentObject(ShoppingCartViewModel())
   }
 }

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ItemDetailView: View {
-  let item: Item
-  @EnvironmentObject var shoppingCart: ShoppingCart
-  @EnvironmentObject var wishlist: WishList
+  @EnvironmentObject var shoppingCart: ShoppingCartViewModel
+  @EnvironmentObject var wishlist: WishListViewModel
   @State var showItemAdded = false
   @State var showWishlistItemAdded = false
+  let item: Item
 
   var body: some View {
     ScrollView {
@@ -89,7 +89,7 @@ struct ItemDetailView_Previews: PreviewProvider {
       details: "Enhanced noise cancelling, richer sound, and packed with pro features.",
       image: "airpodspro")
     )
-      .environmentObject(ShoppingCart())
-      .environmentObject(WishList())
+      .environmentObject(ShoppingCartViewModel())
+      .environmentObject(WishListViewModel())
   }
 }
