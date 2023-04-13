@@ -17,7 +17,8 @@ struct CheckOutView: View {
   @State private var creditCardNumber = ""
   @State private var hasDiscountCode = false
   @State private var discountField: String = ""
-  @State private var showOrderConfirmed = false
+  @State private var showConfirmation = false
+  @State private var carrotPointsEarnedFromOrder = 0
 
   var totalPrice: Double {
     return shoppingCart.itemsInCart.reduce(0) { $0 + $1.price }
@@ -74,7 +75,7 @@ struct CheckOutView: View {
           // create a new Order instance to store the order
           let newOrder = Order(orderItems: shoppingCart.itemsInCart, date: Date.now, totalPrice: totalPrice)
           orders.ordersPlaced.append(newOrder)
-          
+
           // check if any items in the shopping cart are also on the wishlist
           // if so, then remove the item from the wishlist since it was just purchased
           for item in shoppingCart.itemsInCart where wishlist.items.contains(item) {
@@ -82,12 +83,15 @@ struct CheckOutView: View {
             let indexOfWishListItem = wishlist.items.firstIndex(of: item)!
             wishlist.items.remove(at: indexOfWishListItem)
           }
+          
+          // add carrotPoints to running total
+          carrotPointsEarnedFromOrder = Int(10 * totalPrice)
+          orders.carrotPoints += carrotPointsEarnedFromOrder
 
           // empty the cart and show a modal to the user that order was successful
           shoppingCart.itemsInCart.removeAll()
-          showOrderConfirmed.toggle()
+          showConfirmation.toggle()
 
-          // ADD A CONFETTI ANIMATION WHEN USER COMPLETES PURCHASE
         } label: {
           PlaceOrderButton()
         }
@@ -102,10 +106,8 @@ struct CheckOutView: View {
     } // end of Form
     .navigationTitle("Checkout")
     .navigationBarTitleDisplayMode(.inline)
-    .alert("Order Confirmed", isPresented: $showOrderConfirmed) {
-      // add buttons here
-    } message: {
-      Text("Thank you!")
+    .fullScreenCover(isPresented: $showConfirmation) {
+      OrderConfirmationView(showConfirmation: $showConfirmation, carrotPointsEarnedFromOrder: $carrotPointsEarnedFromOrder)
     }
 
   } // end of body property

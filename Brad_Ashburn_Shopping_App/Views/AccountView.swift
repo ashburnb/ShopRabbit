@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AccountView: View {
+  @EnvironmentObject var orders: OrdersViewModel
   // For production app, do not use @AppStorage, use Keychain for security purposes
   @AppStorage("firstName") private var firstName = ""
   @AppStorage("lastName") private var lastName = ""
@@ -15,6 +16,7 @@ struct AccountView: View {
   @AppStorage("city") private var city = ""
   @AppStorage("state") private var state = ""
   @AppStorage("zipCode") private var zipCode = ""
+  
 
   private let states = ["Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas",
                         "California", "Colorado", "Connecticut", "Delaware",
@@ -61,6 +63,12 @@ struct AccountView: View {
           }
         }
 
+        Section("Carrot Points") {
+          Text("\(orders.carrotPoints)")
+            .font(.largeTitle)
+            .bold()
+        }
+
         Section("Trophies") {
           // place badges in a grid
           // greyed out ones for not earned yet
@@ -80,5 +88,6 @@ struct AccountView: View {
 struct AccountView_Previews: PreviewProvider {
   static var previews: some View {
     AccountView()
+      .environmentObject(OrdersViewModel())
   }
 }

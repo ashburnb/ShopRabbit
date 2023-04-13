@@ -59,8 +59,7 @@ enum Constants {
     public static let wishlistImageThumbnailHeight: CGFloat = 50.0
     public static let wishlistPadding: CGFloat = 5.0
   }
-  
-  
+
   enum CheckOut {
     public static let applyButtonPadding: CGFloat = 5.0
   }

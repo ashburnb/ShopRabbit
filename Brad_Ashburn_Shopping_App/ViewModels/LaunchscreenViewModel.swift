@@ -13,12 +13,12 @@ enum LaunchscreenPhase {
 
 final class LaunchscreenViewModel: ObservableObject {
   @Published private(set) var state: LaunchscreenPhase = .first
-  
+
   func dismiss() {
-    self.state = .second    
+    self.state = .second
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       self.state = .completed
     }
   }
-  
+
 }
