@@ -7,10 +7,9 @@
 
 import Foundation
 
-class ShoppingCart: ObservableObject {
+class ShoppingCartViewModel: ObservableObject {
   @Published var discountPercentage: Double = 0
   @Published var itemsInCart = [Item]() {
-    // WEEK07 - ASSIGNMENT 4
     // when an item is added or removed from the cart, this data is saved in Documents Directory
     didSet {
       saveItemsInShoppingCartToDocumentDirectory()
@@ -31,7 +30,7 @@ class ShoppingCart: ObservableObject {
   }
 }
 
-extension ShoppingCart {
+extension ShoppingCartViewModel {
   func calculateDiscountPercentage(discountCode: String) {
     guard let discount = discountTypes[discountCode] else {
       return
@@ -40,8 +39,7 @@ extension ShoppingCart {
   }
 }
 
-extension ShoppingCart {
-  // WEEK07 - ASSIGNMENT 4 + Above and Beyond
+extension ShoppingCartViewModel {
   func saveItemsInShoppingCartToDocumentDirectory() {
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted
@@ -63,7 +61,6 @@ extension ShoppingCart {
     }
   }
 
-  // WEEK07 - ASSIGNMENT 4
   func loadItemsInShoppingCartFromDocumentDirectory() {
     // get url for Documents folder
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]

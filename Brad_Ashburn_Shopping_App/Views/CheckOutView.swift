@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CheckOutView: View {
-  @EnvironmentObject var shoppingCart: ShoppingCart
+  @EnvironmentObject var shoppingCart: ShoppingCartViewModel
+  @EnvironmentObject var orders: OrdersViewModel
+  @EnvironmentObject var wishlist: WishListViewModel
   private let paymentTypes = ["Credit Card", "Apple Pay", "Venmo", "PayPal"]
   @State private var paymentType = "Credit Card"
   @State private var displayCreditCardEntry = false
@@ -69,8 +71,23 @@ struct CheckOutView: View {
 
       Section {
         Button {
+          // create a new Order instance to store the order
+          let newOrder = Order(orderItems: shoppingCart.itemsInCart, date: Date.now, totalPrice: totalPrice)
+          orders.ordersPlaced.append(newOrder)
+          
+          // check if any items in the shopping cart are also on the wishlist
+          // if so, then remove the item from the wishlist since it was just purchased
+          for item in shoppingCart.itemsInCart where wishlist.items.contains(item) {
+            // force unwrap used here because we know for sure that item is in wishlist
+            let indexOfWishListItem = wishlist.items.firstIndex(of: item)!
+            wishlist.items.remove(at: indexOfWishListItem)
+          }
+
+          // empty the cart and show a modal to the user that order was successful
           shoppingCart.itemsInCart.removeAll()
           showOrderConfirmed.toggle()
+
+          // ADD A CONFETTI ANIMATION WHEN USER COMPLETES PURCHASE
         } label: {
           PlaceOrderButton()
         }
@@ -98,7 +115,8 @@ struct CheckOutView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
       CheckOutView()
-        .environmentObject(ShoppingCart())
+        .environmentObject(ShoppingCartViewModel())
+        .environmentObject(WishListViewModel())
     }
   }
 }

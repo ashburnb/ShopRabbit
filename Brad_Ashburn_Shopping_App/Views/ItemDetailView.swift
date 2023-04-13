@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ItemDetailView: View {
-  let item: Item
-  @EnvironmentObject var shoppingCart: ShoppingCart
+  @EnvironmentObject var shoppingCart: ShoppingCartViewModel
+  @EnvironmentObject var wishlist: WishListViewModel
   @State var showItemAdded = false
+  @State var showWishlistItemAdded = false
+  let item: Item
 
   var body: some View {
     ScrollView {
@@ -20,11 +22,14 @@ struct ItemDetailView: View {
           AsyncImage(
             url: URL(string: item.image),
             content: { image in
-              image.resizable()
-                .aspectRatio(contentMode: .fit)
+              image
+                .resizable()
+//                .aspectRatio(contentMode: .fit)
+                .scaledToFit()
                 .frame(
-                  width: Constants.ItemDetails.imageWidth,
-                  height: Constants.ItemDetails.imageHeight
+//                  width: Constants.ItemDetails.imageWidth,
+//                  height: Constants.ItemDetails.imageHeight
+                  width: 150
                 )
             },
             placeholder: {
@@ -42,6 +47,13 @@ struct ItemDetailView: View {
         Text(item.details)
 
         HStack {
+          Button {
+            wishlist.items.append(item)
+            showWishlistItemAdded.toggle()
+          } label: {
+            AddToWishListButton()
+          }
+
           Spacer()
 
           Button {
@@ -54,6 +66,10 @@ struct ItemDetailView: View {
         .alert("Added to Cart", isPresented: $showItemAdded) {
           // could add more button functionality here
           // or this could become a custom alert view like in Week 1 Bullseye Assignment
+        } message: {
+          Text("\(item.title)")
+        }
+        .alert("Added to WishList", isPresented: $showWishlistItemAdded) {
         } message: {
           Text("\(item.title)")
         }
@@ -73,6 +89,7 @@ struct ItemDetailView_Previews: PreviewProvider {
       details: "Enhanced noise cancelling, richer sound, and packed with pro features.",
       image: "airpodspro")
     )
-      .environmentObject(ShoppingCart())
+      .environmentObject(ShoppingCartViewModel())
+      .environmentObject(WishListViewModel())
   }
 }

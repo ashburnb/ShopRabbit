@@ -8,56 +8,81 @@
 import SwiftUI
 
 struct ShoppingCartView: View {
-  @EnvironmentObject var shoppingCart: ShoppingCart
+  @EnvironmentObject var shoppingCart: ShoppingCartViewModel
+  @EnvironmentObject var wishlist: WishListViewModel
 
   var body: some View {
     NavigationView {
-      VStack {
-        List {
-          ForEach(shoppingCart.itemsInCart, id: \.self) { item in
-            HStack {
-              AsyncImage(
-                url: URL(string: item.image),
-                content: { image in
-                  image.resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(
-                      width: Constants.ShoppingCart.listImageThumbnailWidth,
-                      height: Constants.ShoppingCart.listImageThumbnailHeight
-                    )
-                },
-                placeholder: {
-                  ProgressView()
-                }
-              )
+      if shoppingCart.itemsInCart.isEmpty {
+        VStack {
+          Image("emptyCartImage")
+            .resizable()
+            .scaledToFit()
 
-              Spacer()
-              Text(item.title)
-
-              Spacer()
-
-              Text("$\(String(format: "%.2f", item.price))")
-            }
-          }
-          .onDelete(perform: deleteItems)
-        }
-        .navigationTitle("Shopping Cart")
-
-        NavigationLink {
-          CheckOutView()
-        } label: {
-          Text("Checkout")
+          Text("Your Shopping Cart is empty")
+            .font(.system(size: 36, weight: .light, design: .rounded))
+            .multilineTextAlignment(.center)
             .padding()
-            .background(.blue)
-            .foregroundColor(.white)
-            .font(.title2)
-            .bold()
-            .cornerRadius(Constants.ShoppingCart.checkoutButtonCornerRadius)
         }
-        .disabled(shoppingCart.itemsInCart.isEmpty)
-        // disables button if cart is empty
-      } // end of VStack
-      .navigationBarTitleDisplayMode(.inline)
+      } else {
+        VStack {
+          List {
+            ForEach(shoppingCart.itemsInCart, id: \.self) { item in
+              HStack {
+                AsyncImage(
+                  url: URL(string: item.image),
+                  content: { image in
+                    image.resizable()
+                      .aspectRatio(contentMode: .fit)
+                      .frame(
+                        width: Constants.ShoppingCart.listImageThumbnailWidth,
+                        height: Constants.ShoppingCart.listImageThumbnailHeight
+                      )
+                  },
+                  placeholder: {
+                    ProgressView()
+                  }
+                )
+
+                Spacer()
+                Text(item.title)
+
+                Spacer()
+
+                Text("$\(String(format: "%.2f", item.price))")
+
+                Spacer()
+
+                Button {
+                  wishlist.items.append(item)
+
+                  let indexOfCartItem = shoppingCart.itemsInCart.firstIndex(of: item)!
+                  shoppingCart.itemsInCart.remove(at: indexOfCartItem)
+                } label: {
+                  MoveToWishlistButton()
+                }
+              }
+            }
+            .onDelete(perform: deleteItems)
+          }
+          .navigationTitle("Shopping Cart")
+
+          NavigationLink {
+            CheckOutView()
+          } label: {
+            Text("Checkout")
+              .padding()
+              .background(.blue)
+              .foregroundColor(.white)
+              .font(.title2)
+              .bold()
+              .cornerRadius(Constants.ShoppingCart.checkoutButtonCornerRadius)
+          }
+          .disabled(shoppingCart.itemsInCart.isEmpty)
+          // disables button if cart is empty
+        } // end of VStack
+      }
+
     } // end of NavigationView
   } // end of body property
   // needed to implement List item delete functionality
@@ -70,6 +95,7 @@ struct ShoppingCartView: View {
 struct ShoppingCartView_Previews: PreviewProvider {
   static var previews: some View {
     ShoppingCartView()
-      .environmentObject(ShoppingCart())
+      .environmentObject(ShoppingCartViewModel())
+      .environmentObject(WishListViewModel())
   }
 }

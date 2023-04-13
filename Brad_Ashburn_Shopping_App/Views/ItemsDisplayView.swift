@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ItemsDisplayView: View {
+  @EnvironmentObject var shoppingCart: ShoppingCartViewModel
   let items: [Item]
   let categoryName: String
-  @EnvironmentObject var shoppingCart: ShoppingCart
 
   var body: some View {
     List(items, id: \.id) { item in
@@ -50,7 +50,7 @@ struct ItemsDisplayView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
       ItemsDisplayView(items: [Item](), categoryName: "Men's clothing")
-        .environmentObject(ShoppingCart())
+        .environmentObject(ShoppingCartViewModel())
     }
   }
 }

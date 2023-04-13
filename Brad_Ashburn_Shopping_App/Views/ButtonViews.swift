@@ -13,29 +13,79 @@ struct CategoryTextView: View {
 
   var body: some View {
     Text("\(categoryName)")
-      .padding()
       .frame(
-        width: Constants.Homescreen.categoryButtonWidth,
+        width: 130,
         height: Constants.Homescreen.categoryButtonHeight
       )
       .background(backgroundColor)
       .font(.system(.title2, design: .rounded, weight: .heavy))
       .foregroundColor(Color.white)
+      .cornerRadius(20)
   }
 }
 
 struct AddToCartButton: View {
   var body: some View {
-    Text("Add to cart")
-      .frame(
-        width: Constants.ItemDetails.addToCartButtonWidth,
-        height: Constants.ItemDetails.addToCartButtonHeight
-      )
+    VStack {
+      Image(systemName: "cart")
+        .font(.system(size: 50))
+
+      Text("Add to cart")
+        .font(.system(.title2, design: .rounded, weight: .heavy))
+        .bold()
+    }
+    .padding()
+    .frame(
+      width: 160,
+      height: 100
+    )
+    .foregroundColor(.white)
+    .background(Color("HomescreenColor"))
+    .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
+  }
+}
+
+struct MoveToCartButton: View {
+  var body: some View {
+    Image(systemName: "cart")
+      .font(.system(size: 20))
+      .padding(5)
       .foregroundColor(.white)
-      .background(.blue)
-      .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
-      .font(.system(.title2, design: .rounded, weight: .heavy))
-      .bold()
+      .background(Color("HomescreenColor"))
+      .cornerRadius(8)
+  }
+}
+
+struct MoveToWishlistButton: View {
+  var body: some View {
+    Image(systemName: "star.circle")
+      .font(.system(size: 20))
+      .padding(5)
+      .foregroundColor(.white)
+      .background(Color("OnboardingColor"))
+      .cornerRadius(8)
+  }
+}
+
+struct AddToWishListButton: View {
+  var body: some View {
+    VStack {
+      Image(systemName: "star.circle")
+        .font(.system(size: 50))
+
+      Text("WishList")
+        .font(.system(.title2, design: .rounded, weight: .heavy))
+        .bold()
+    }
+    .padding()
+    .frame(
+      // Constants.ItemDetails.addToCartButtonWidth
+      width: 160,
+      height: 100
+    )
+    .foregroundColor(.white)
+    .background(Color("OnboardingColor"))
+    .cornerRadius(Constants.ItemDetails.addToCartButtonCornerRadius)
   }
 }
 
@@ -65,6 +115,9 @@ struct ButtonViews_Previews: PreviewProvider {
         CategoryTextView(categoryName: "Jewelry", backgroundColor: .orange)
         CategoryTextView(categoryName: "Women's\nClothing", backgroundColor: .red)
         AddToCartButton()
+        MoveToCartButton()
+        MoveToWishlistButton()
+        AddToWishListButton()
         PlaceOrderButton()
       }
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InventoryView: View {
-  @StateObject var store = InventoryViewModel()
+  @EnvironmentObject var store: InventoryViewModel
   @State private var searchTerm = ""
   var searchResults: [Item] {
     searchTerm.isEmpty ? store.inventory : store.inventory.filter { $0.title.lowercased().contains(
@@ -22,35 +22,31 @@ struct InventoryView: View {
 
   var body: some View {
     NavigationStack {
-      // instead of adding images to grid tiles, I added them as ListRow tiles.
-      // I will replace the grid tile backgrounds with nice images with overlayed category text.
-      LazyVGrid(columns: columns, spacing: Constants.Inventory.gridSpacing) {
-        NavigationLink {
-          ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry")
-        } label: {
-          CategoryTextView(categoryName: "Jewelry", backgroundColor: .green)
+      ScrollView(.horizontal) {
+        LazyHGrid(rows: columns, spacing: Constants.Inventory.gridSpacing) {
+          NavigationLink {
+            ItemsDisplayView(items: store.jewelery, categoryName: "Jewelry")
+          } label: {
+            CategoryTextView(categoryName: "Jewelry", backgroundColor: .green)
+          }
+          NavigationLink {
+            ItemsDisplayView(items: store.electronics, categoryName: "Electronics")
+          } label: {
+            CategoryTextView(categoryName: "Electronics", backgroundColor: .orange)
+          }
+          NavigationLink {
+            ItemsDisplayView(items: store.mensclothing, categoryName: "Men's Clothing")
+          } label: {
+            CategoryTextView(categoryName: "Men's Clothing", backgroundColor: .blue)
+          }
+          NavigationLink {
+            ItemsDisplayView(items: store.womensclothing, categoryName: "Women's Clothing")
+          } label: {
+            CategoryTextView(categoryName: "Women's Clothing", backgroundColor: .pink)
+          }
         }
-        NavigationLink {
-          ItemsDisplayView(items: store.electronics, categoryName: "Electronics")
-        } label: {
-          CategoryTextView(categoryName: "Electronics", backgroundColor: .orange)
-        }
-        NavigationLink {
-          ItemsDisplayView(items: store.mensclothing, categoryName: "Men's Clothing")
-        } label: {
-          CategoryTextView(categoryName: "Men's Clothing", backgroundColor: .blue)
-        }
-        NavigationLink {
-          ItemsDisplayView(items: store.womensclothing, categoryName: "Women's Clothing")
-        } label: {
-          CategoryTextView(categoryName: "Women's Clothing", backgroundColor: .pink)
-        }
-      }
-      .padding(Constants.Inventory.gridPadding)
-
-      .navigationTitle("Store Categories")
-      .onAppear {
-        store.loadCategoryData()
+        .padding(Constants.Inventory.gridPadding)
+        .navigationTitle("Shop Rabbit")
       }
 
       Text("All Items")
@@ -101,5 +97,6 @@ struct InventoryView: View {
 struct InventoryView_Previews: PreviewProvider {
   static var previews: some View {
     InventoryView()
+      .environmentObject(InventoryViewModel())
   }
 }
