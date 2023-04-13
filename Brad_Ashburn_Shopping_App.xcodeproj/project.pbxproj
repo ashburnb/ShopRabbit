@@ -29,6 +29,7 @@
 		DEC03E0929D8D1B900D4AE4E /* storedata.json in Resources */ = {isa = PBXBuildFile; fileRef = DEC03E0629D8D1B900D4AE4E /* storedata.json */; };
 		DECED29E29E760E300A91068 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECED29D29E760E300A91068 /* OrdersViewModel.swift */; };
 		DECED2A029E7611900A91068 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECED29F29E7611900A91068 /* Order.swift */; };
+		DECED2A229E7863600A91068 /* OrderConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECED2A129E7863600A91068 /* OrderConfirmationView.swift */; };
 		DEDC387B29E330450012C51E /* LaunchscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387A29E330450012C51E /* LaunchscreenView.swift */; };
 		DEDC387D29E331150012C51E /* LaunchscreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387C29E331150012C51E /* LaunchscreenViewModel.swift */; };
 		DEDC387F29E3AAD00012C51E /* WishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC387E29E3AACF0012C51E /* WishListView.swift */; };
@@ -78,6 +79,7 @@
 		DEC03E0629D8D1B900D4AE4E /* storedata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = storedata.json; sourceTree = SOURCE_ROOT; };
 		DECED29D29E760E300A91068 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
 		DECED29F29E7611900A91068 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		DECED2A129E7863600A91068 /* OrderConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationView.swift; sourceTree = "<group>"; };
 		DEDC387A29E330450012C51E /* LaunchscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchscreenView.swift; sourceTree = "<group>"; };
 		DEDC387C29E331150012C51E /* LaunchscreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchscreenViewModel.swift; sourceTree = "<group>"; };
 		DEDC387E29E3AACF0012C51E /* WishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				DE56BF8E29BC71CD000D0C6F /* ShoppingCartView.swift */,
 				DEDC387E29E3AACF0012C51E /* WishListView.swift */,
 				DE38CFA729C6698300630043 /* CheckOutView.swift */,
+				DECED2A129E7863600A91068 /* OrderConfirmationView.swift */,
 				DEF5871C29E739C40043DB84 /* AccountView.swift */,
 				DEF5871A29E4FF360043DB84 /* OrdersView.swift */,
 				DE56BF9429BD3FD2000D0C6F /* ButtonViews.swift */,
@@ -376,6 +379,7 @@
 			files = (
 				DE56BF9329BD3EE8000D0C6F /* Constants.swift in Sources */,
 				DE56BF9529BD3FD2000D0C6F /* ButtonViews.swift in Sources */,
+				DECED2A229E7863600A91068 /* OrderConfirmationView.swift in Sources */,
 				DEDC387B29E330450012C51E /* LaunchscreenView.swift in Sources */,
 				DEDC388129E3E93B0012C51E /* WishListViewModel.swift in Sources */,
 				DECED2A029E7611900A91068 /* Order.swift in Sources */,

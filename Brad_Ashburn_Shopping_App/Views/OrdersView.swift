@@ -45,12 +45,15 @@ struct OrdersView: View {
 }
 
 struct OrderDetailView: View {
+  @EnvironmentObject var shoppingCart: ShoppingCartViewModel
   let order: Order
 
   var body: some View {
-    Text("\(order.date)")
-    Text("\(order.totalPrice)")
-    Text("Number of items: \(order.orderItems.count)")
+    VStack(alignment: .leading) {
+      Text("Ordered on \(order.date.formatted(date: .abbreviated, time: .omitted))")
+      Text("$\(String(format: "%.2f", order.totalPrice))")
+      Text("Number of items: \(order.orderItems.count)")
+    }
 
     List {
       ForEach(order.orderItems) { item in
@@ -82,9 +85,16 @@ struct OrderDetailView: View {
           Text(item.details)
 
           // ADD BUTTON TO PURCHASE AGAIN (Add to Cart alert)
+          Button {
+            shoppingCart.itemsInCart.append(item)
+          } label: {
+            AddToCartButton()
+          }
+
         }
       }
     }
+    .navigationTitle("Order Details")
 
   }
 }
@@ -92,6 +102,7 @@ struct OrderDetailView: View {
 struct OrdersView_Previews: PreviewProvider {
   static var previews: some View {
     OrdersView()
+      .environmentObject(ShoppingCartViewModel())
       .environmentObject(OrdersViewModel())
   }
 }
