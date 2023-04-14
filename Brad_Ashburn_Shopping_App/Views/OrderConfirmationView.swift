@@ -20,10 +20,9 @@ struct OrderConfirmationView: View {
 
   var body: some View {
     VStack {
-      
 
       VStack {
-        
+
         Text("Order\nSuccesful!")
           .multilineTextAlignment(.center)
           .font(.system(size: 60, weight: .black, design: .rounded))
@@ -40,7 +39,7 @@ struct OrderConfirmationView: View {
             x: -2,
             y: 2
           )
-        
+
       }
       .scaleEffect(scale)
       .onAppear {
@@ -69,7 +68,7 @@ struct OrderConfirmationView: View {
       Text("You earned +\(carrotPointsEarnedFromOrder) carrot points")
         .font(.largeTitle)
         .multilineTextAlignment(.center)
-      
+
       Spacer()
     }
   }

@@ -62,6 +62,7 @@
 		DE046BAF299F675A002FF96E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE046BB2299F675A002FF96E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DE20CAE329B3ABAE005EECDA /* ShoppingCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewModel.swift; sourceTree = "<group>"; };
+		DE32A8AF29E9E768004DF6B5 /* CookiePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = CookiePlayground.playground; path = ../CookiePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DE36E0AD29A06AF200AD747A /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		DE38CFA729C6698300630043 /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
 		DE4F6DCA29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Brad_Ashburn_Shopping_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +119,7 @@
 		DE046B9F299F6758002FF96E = {
 			isa = PBXGroup;
 			children = (
+				DE32A8AF29E9E768004DF6B5 /* CookiePlayground.playground */,
 				DE046BAA299F6758002FF96E /* Brad_Ashburn_Shopping_App */,
 				DE4F6DCB29CBBC04000CD5EC /* Brad_Ashburn_Shopping_AppTests */,
 				DE4F6DD829CBBC17000CD5EC /* Brad_Ashburn_Shopping_AppUITests */,

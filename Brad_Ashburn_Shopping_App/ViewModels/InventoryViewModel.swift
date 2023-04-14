@@ -7,7 +7,7 @@
 
 import Foundation
 
-class InventoryViewModel: ObservableObject {
+@MainActor class InventoryViewModel: ObservableObject {
   // stores entire product catalog
   @Published var inventory = [Item]() {
     didSet {
@@ -22,9 +22,12 @@ class InventoryViewModel: ObservableObject {
   @Published var womensclothing = [Item]()
 
   init() {
-//    loadAllProductsFromAPI()
-    loadAllProductsFromJSONFile()
-    loadCategoryData()
+    Task {
+      await loadAllProductsFromAPI()
+      loadCategoryData()
+    }
+//    loadAllProductsFromJSONFile()
+    
   }
 
   func loadCategoryData() {
@@ -98,35 +101,48 @@ extension InventoryViewModel {
 
 } // end of extension
 
-// adds method to fetch items
+// WEEK 09 - PART 1 and 2
 extension InventoryViewModel {
   /// Makes api call to fetch JSON products from the www.fakeapistore.com
-  func loadAllProductsFromAPI() {
+  func loadAllProductsFromAPI() async {
     // creates a URL object from a string or exits function leaving the inventory empty
     guard let url = URL(string: "https://fakestoreapi.com/products") else {
       print("Invalid URL")
       return
     }
 
+    do {
+      let (data, response) = try await URLSession.shared.data(from: url)
+      guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+        print("Server Error occurred")
+        return
+      }
+      print("The data received was \(data).")
+      self.inventory = try JSONDecoder().decode([Item].self, from: data)
+    } catch {
+      print("Error from API request")
+    }
+    
+    // BELOW IS THE OLDER METHOD I ORIGINALLY CHOSE BEFORE LEARNING ASYNC/AWAIT
     // use URLSession with url constant created above to retrieve JSON data
     // the two underscores represent response and error which are not used
-    let fetchData = URLSession.shared.dataTask(with: url) { (data, _, _) in
-      if let data = data {
-        do {
-          // fetched JSON data object is decoded into an array of items
-          let results = try JSONDecoder().decode([Item].self, from: data)
+//    let fetchData = URLSession.shared.dataTask(with: url) { (data, _, _) in
+//      if let data = data {
+//        do {
+//          // fetched JSON data object is decoded into an array of items
+//          let results = try JSONDecoder().decode([Item].self, from: data)
+//
+//          DispatchQueue.main.async {
+//            // the class inventory property is then set to this Item array
+//            self.inventory = results
+//          }
+//
+//        } catch {
+//          print("Invalid JSON")
+//        }
+//      }
+//    }
 
-          DispatchQueue.main.async {
-            // the class inventory property is then set to this Item array
-            self.inventory = results
-          }
-
-        } catch {
-          print("Invalid JSON")
-        }
-      }
-    }
-
-    fetchData.resume()
+//    fetchData.resume()
   } // end of loadAllProductsFromAPI() method
 }

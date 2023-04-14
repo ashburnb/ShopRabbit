@@ -8,7 +8,7 @@
 import Foundation
 
 class ShoppingCartViewModel: ObservableObject {
-  @Published var discountPercentage: Double = 0
+  @Published var discountPercentage: Double? = 0
   @Published var itemsInCart = [Item]() {
     // when an item is added or removed from the cart, this data is saved in Documents Directory
     didSet {
@@ -16,27 +16,33 @@ class ShoppingCartViewModel: ObservableObject {
     }
   }
 
-  let discountTypes = [
-    "springbreak": 0.10,
-    "newcustomer": 0.25,
-    "newyearnewyou": 0.50,
-    "thanksgiving": 0.60,
-    "winterwonderland": 0.75
-  ]
+  @Published var discountTypes = [String:Double]()
 
   init() {
-    // WEEK07 - ASSIGNMENT 4
     loadItemsInShoppingCartFromDocumentDirectory()
   }
-}
 
-extension ShoppingCartViewModel {
-  func calculateDiscountPercentage(discountCode: String) {
-    guard let discount = discountTypes[discountCode] else {
-      return
+  func createDiscountCode() -> String {
+    let alphanumerics = Array("abcdefghijklmnopqrstuvwxyz1234567890")
+    var discountCode = ""
+    for _ in 1...6 {
+      discountCode += String(alphanumerics.randomElement()!)
     }
-    discountPercentage = discount
+    return discountCode
   }
+
+  func saveDiscountCode(_ discountCode: String, percentOff: Double) {
+    discountTypes[discountCode] = percentOff
+  }
+
+  func removeDiscountCode(_ discountCode: String) {
+    discountTypes.removeValue(forKey: discountCode)
+  }
+
+  func calculateDiscountPercentage(using discountCode: String) -> Double? {
+    return discountTypes[discountCode]
+  }
+
 }
 
 extension ShoppingCartViewModel {
