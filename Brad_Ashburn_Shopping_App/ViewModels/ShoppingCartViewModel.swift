@@ -15,13 +15,14 @@ class ShoppingCartViewModel: ObservableObject {
       saveItemsInShoppingCartToDocumentDirectory()
     }
   }
-
-  @Published var discountTypes = [String:Double]()
+  @Published var discountTypes = [String: Double]()
 
   init() {
     loadItemsInShoppingCartFromDocumentDirectory()
   }
 
+  // when carrots points are successfully redeemed for a discount, this method will create a random
+  // six character discount code
   func createDiscountCode() -> String {
     let alphanumerics = Array("abcdefghijklmnopqrstuvwxyz1234567890")
     var discountCode = ""
@@ -31,10 +32,12 @@ class ShoppingCartViewModel: ObservableObject {
     return discountCode
   }
 
+  // the discount code generated in the method above will be saved into the @Published dictionary
   func saveDiscountCode(_ discountCode: String, percentOff: Double) {
     discountTypes[discountCode] = percentOff
   }
 
+  // after the apply discount button in CheckOutView is pressed, this method removes the code from further use
   func removeDiscountCode(_ discountCode: String) {
     discountTypes.removeValue(forKey: discountCode)
   }

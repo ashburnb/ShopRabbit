@@ -84,7 +84,6 @@ struct OrderDetailView: View {
           Text(item.category)
           Text(item.details)
 
-          // ADD BUTTON TO PURCHASE AGAIN (Add to Cart alert)
           Button {
             shoppingCart.itemsInCart.append(item)
           } label: {

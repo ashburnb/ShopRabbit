@@ -20,7 +20,6 @@ struct HomescreenTitleView: View {
 
 struct DateAttributedStringView: View {
   var dateAttributedString: AttributedString {
-    //var longerDateDisplay = Date.now.formatted(date: .abbreviated, time: .shortened)
     var customDateDisplay = Date.now.formatted(.dateTime.hour().minute().attributed)
 
     // modifies color of hour

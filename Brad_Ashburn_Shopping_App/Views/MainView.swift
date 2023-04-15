@@ -38,6 +38,7 @@ struct MainView: View {
 
     }
     .onAppear {
+      // after 3 seconds, the dismiss method will end the launchscreen animation
       DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
         launchscreen.dismiss()
       }
@@ -50,5 +51,6 @@ struct MainView_Previews: PreviewProvider {
     MainView()
       .environmentObject(LaunchscreenViewModel())
       .environmentObject(ShoppingCartViewModel())
+      .environmentObject(WishListViewModel())
   }
 }

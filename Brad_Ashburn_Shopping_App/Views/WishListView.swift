@@ -62,6 +62,7 @@ struct WishListView: View {
     wishlist.items.remove(atOffsets: offsets)
   }
 
+  // allows "press and hold" to move the items around on screen
   func move(from source: IndexSet, to destination: Int) {
     wishlist.items.move(fromOffsets: source, toOffset: destination)
   }

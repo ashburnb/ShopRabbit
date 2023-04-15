@@ -27,7 +27,7 @@ import Foundation
       loadCategoryData()
     }
 //    loadAllProductsFromJSONFile()
-    
+
   }
 
   func loadCategoryData() {
@@ -122,7 +122,7 @@ extension InventoryViewModel {
     } catch {
       print("Error from API request")
     }
-    
+
     // BELOW IS THE OLDER METHOD I ORIGINALLY CHOSE BEFORE LEARNING ASYNC/AWAIT
     // use URLSession with url constant created above to retrieve JSON data
     // the two underscores represent response and error which are not used

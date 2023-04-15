@@ -85,6 +85,7 @@ struct ShoppingCartView: View {
 
     } // end of NavigationView
   } // end of body property
+
   // needed to implement List item delete functionality
   // is passed into .onDelete as a closure
   func deleteItems(at offsets: IndexSet) {

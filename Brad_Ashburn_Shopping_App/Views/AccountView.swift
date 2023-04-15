@@ -74,7 +74,7 @@ struct AccountView: View {
           HStack {
             Spacer()
             Text("\(orders.carrotPoints)")
-              .font(.system(size: 60, design: .rounded))
+              .font(.system(size: 40, design: .rounded))
               .bold()
             Image("carrotpoints")
               .resizable()
@@ -92,16 +92,6 @@ struct AccountView: View {
             }
           }
 
-        }
-
-        Section("Trophies") {
-          // place badges in a grid
-          // greyed out ones for not earned yet
-          HStack {
-            Text("Award")
-            Text("Award")
-            Text("Award")
-          }
         }
 
       }
@@ -218,7 +208,7 @@ struct AccountView: View {
 struct RedemptionTile: View {
   let discount: Int
   let pointsRequired: Int
-  
+
   var body: some View {
     VStack {
       VStack {

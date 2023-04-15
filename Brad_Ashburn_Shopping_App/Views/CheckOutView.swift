@@ -43,10 +43,6 @@ struct CheckOutView: View {
   }
 
   var totalPriceAfterDiscount: Double {
-    guard let discountPercentage = shoppingCart.discountPercentage else {
-      return totalPrice
-    }
-
     return totalPrice - (totalPrice * (shoppingCart.discountPercentage ?? 0))
   }
 
@@ -97,7 +93,6 @@ struct CheckOutView: View {
               shoppingCart.discountPercentage =  shoppingCart.calculateDiscountPercentage(using: discountField)
 
               // NEED TO ADD IN FUNCTIONALITY TO SHOW USER THAT AN INVALID CODE WAS ENTERED
-              
               // after usage, code is removed from the dictionary
               shoppingCart.removeDiscountCode(discountField)
             } label: {
@@ -142,7 +137,8 @@ struct CheckOutView: View {
     .navigationTitle("Checkout")
     .navigationBarTitleDisplayMode(.inline)
     .fullScreenCover(isPresented: $showConfirmation) {
-      OrderConfirmationView(showConfirmation: $showConfirmation, carrotPointsEarnedFromOrder: $carrotPointsEarnedFromOrder)
+      OrderConfirmationView(showConfirmation: $showConfirmation,
+                                  carrotPointsEarnedFromOrder: $carrotPointsEarnedFromOrder)
     }
 
   } // end of body property

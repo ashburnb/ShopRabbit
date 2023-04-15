@@ -7,6 +7,7 @@
 
 import Foundation
 
+// these phases control the launchscreen animation
 enum LaunchscreenPhase {
   case first, second, completed
 }
@@ -14,6 +15,8 @@ enum LaunchscreenPhase {
 final class LaunchscreenViewModel: ObservableObject {
   @Published private(set) var state: LaunchscreenPhase = .first
 
+  // when this method is called, it will transition the launchscreen animation to end
+  // once the state property becomes completed, the @main App file will no longer show the LaunchscreenView
   func dismiss() {
     self.state = .second
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

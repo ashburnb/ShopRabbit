@@ -43,9 +43,6 @@ extension WishListViewModel {
     }
   } // end of method
 
-}
-
-extension WishListViewModel {
   func loadItemsInWishListFromDocumentDirectory() {
     // get url for Documents folder
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -66,4 +63,4 @@ extension WishListViewModel {
       print("Initial run of app or failure loading JSON file from Documents Directory")
     }
   }
-}
+} // end of extension

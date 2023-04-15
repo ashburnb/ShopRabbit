@@ -13,7 +13,7 @@ final class OrdersViewModel: ObservableObject {
       saveOrdersToDocumentDirectory()
     }
   }
-  
+
   @Published var carrotPoints = 0 {
     didSet {
       saveCarrotPointsToDocumentDirectory()
@@ -46,10 +46,8 @@ extension OrdersViewModel {
     } catch {
       print("Error encoding cart data to JSON file")
     }
-  }
-}
+  } // end of method
 
-extension OrdersViewModel {
   func loadOrdersFromDocumentDirectory() {
     // get url for Documents folder
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -60,17 +58,15 @@ extension OrdersViewModel {
     do {
       // convert URL contents into JSON data
       let jsonCartDataFromURL = try Data(contentsOf: jsonCartDataURL)
-
       let decoder = JSONDecoder()
       let decodedData = try decoder.decode([Order].self, from: jsonCartDataFromURL)
-
       ordersPlaced = decodedData
       return
     } catch {
       print("Initial run of app or failure loading JSON file from Documents Directory")
     }
-  }
-}
+  } // end of method
+} // end of extension
 
 extension OrdersViewModel {
   func saveCarrotPointsToDocumentDirectory() {
@@ -85,17 +81,16 @@ extension OrdersViewModel {
       let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
       // get url for JSON file
-      let jsonCartDataURL = documentsDirectory.appendingPathComponent("totalCarrotPoints").appendingPathExtension("json")
+      let jsonCartDataURL = documentsDirectory.appendingPathComponent("totalCarrotPoints")
+                                                .appendingPathExtension("json")
 
       // write the JSON data to the url
       try cartData.write(to: jsonCartDataURL)
     } catch {
       print("Error encoding cart data to JSON file")
     }
-  }
-}
+  } // end of method
 
-extension OrdersViewModel {
   func loadCarrotPointsFromDocumentDirectory() {
     // get url for Documents folder
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -106,14 +101,13 @@ extension OrdersViewModel {
     do {
       // convert URL contents into JSON data
       let jsonCartDataFromURL = try Data(contentsOf: jsonCartDataURL)
-
       let decoder = JSONDecoder()
       let decodedData = try decoder.decode(Int.self, from: jsonCartDataFromURL)
-
       carrotPoints = decodedData
       return
     } catch {
       print("Initial run of app or failure loading JSON file from Documents Directory")
     }
-  }
-}
+  } // end of method
+
+} // end of extension
