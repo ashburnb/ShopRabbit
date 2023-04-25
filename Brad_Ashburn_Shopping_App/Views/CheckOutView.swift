@@ -17,14 +17,33 @@ struct CheckOutView: View {
   @State private var creditCardNumber = ""
   @State private var hasDiscountCode = false
   @State private var discountField: String = ""
-  @State private var showOrderConfirmed = false
+  @State private var showConfirmation = false
+  @State private var carrotPointsEarnedFromOrder = 0
+  @AppStorage("firstName") var firstName = ""
+  @AppStorage("lastName") var lastName = ""
+  @AppStorage("address") var address = ""
+  @AppStorage("city") var city = ""
+  @AppStorage("state") var state = ""
+  @AppStorage("zipCode") var zipCode = ""
+
+  let states = ["Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas",
+                        "California", "Colorado", "Connecticut", "Delaware",
+                        "District of Columbia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho",
+                        "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
+                        "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi",
+                        "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
+                        "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",
+                        "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
+                        "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas",
+                        "U.S. Virgin Islands", "Utah", "Vermont", "Virginia", "Washington",
+                        "West Virginia", "Wisconsin", "Wyoming"]
 
   var totalPrice: Double {
     return shoppingCart.itemsInCart.reduce(0) { $0 + $1.price }
   }
 
   var totalPriceAfterDiscount: Double {
-    return totalPrice - (totalPrice * shoppingCart.discountPercentage)
+    return totalPrice - (totalPrice * (shoppingCart.discountPercentage ?? 0))
   }
 
   var body: some View {
@@ -41,11 +60,24 @@ struct CheckOutView: View {
         }
       }
 
+      Section("Billing Information") {
+        TextField("First Name", text: $firstName)
+        TextField("Last Name", text: $lastName)
+        TextField("Address", text: $address)
+        TextField("City", text: $city)
+        Picker("State", selection: $state) {
+          ForEach(states, id: \.self) {
+            Text($0)
+          }
+        }
+        TextField("Zipcode", text: $zipCode)
+      }
+
       Section("Total") {
         Text("Total Amount: $\(String(format: "%.2f", totalPrice))")
 
         Toggle("Do you have a discount code?", isOn: $hasDiscountCode)
-          .tint(Color("HomescreenColor"))
+          .tint(Color("OnboardingColor"))
 
         if hasDiscountCode {
           HStack {
@@ -58,7 +90,11 @@ struct CheckOutView: View {
               .textFieldStyle(.roundedBorder)
               .autocapitalization(.none)
             Button {
-              shoppingCart.calculateDiscountPercentage(discountCode: discountField)
+              shoppingCart.discountPercentage =  shoppingCart.calculateDiscountPercentage(using: discountField)
+
+              // NEED TO ADD IN FUNCTIONALITY TO SHOW USER THAT AN INVALID CODE WAS ENTERED
+              // after usage, code is removed from the dictionary
+              shoppingCart.removeDiscountCode(discountField)
             } label: {
               Text("Apply")
                 .padding(.leading, Constants.CheckOut.applyButtonPadding)
@@ -74,7 +110,7 @@ struct CheckOutView: View {
           // create a new Order instance to store the order
           let newOrder = Order(orderItems: shoppingCart.itemsInCart, date: Date.now, totalPrice: totalPrice)
           orders.ordersPlaced.append(newOrder)
-          
+
           // check if any items in the shopping cart are also on the wishlist
           // if so, then remove the item from the wishlist since it was just purchased
           for item in shoppingCart.itemsInCart where wishlist.items.contains(item) {
@@ -83,29 +119,26 @@ struct CheckOutView: View {
             wishlist.items.remove(at: indexOfWishListItem)
           }
 
+          // add carrotPoints to running total
+          carrotPointsEarnedFromOrder = Int(10 * totalPrice)
+          orders.carrotPoints += carrotPointsEarnedFromOrder
+
           // empty the cart and show a modal to the user that order was successful
           shoppingCart.itemsInCart.removeAll()
-          showOrderConfirmed.toggle()
+          showConfirmation.toggle()
 
-          // ADD A CONFETTI ANIMATION WHEN USER COMPLETES PURCHASE
         } label: {
           PlaceOrderButton()
         }
         .listRowBackground(Color.clear)
       }
 
-      Section {
-        DateAttributedStringView()
-          .listRowBackground(Color.clear)
-      }
-
     } // end of Form
     .navigationTitle("Checkout")
     .navigationBarTitleDisplayMode(.inline)
-    .alert("Order Confirmed", isPresented: $showOrderConfirmed) {
-      // add buttons here
-    } message: {
-      Text("Thank you!")
+    .fullScreenCover(isPresented: $showConfirmation) {
+      OrderConfirmationView(showConfirmation: $showConfirmation,
+                                  carrotPointsEarnedFromOrder: $carrotPointsEarnedFromOrder)
     }
 
   } // end of body property

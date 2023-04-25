@@ -41,8 +41,8 @@ enum Constants {
 
     public static let vstackSpacing: CGFloat = 20.0
     public static let vstackPadding: CGFloat = 20.0
-    public static let imageWidth: CGFloat = 300.0
-    public static let imageHeight: CGFloat = 300.0
+    public static let imageWidth: CGFloat = 150.0
+    public static let imageHeight: CGFloat = 150.0
   }
 
   enum ShoppingCart {
@@ -59,8 +59,7 @@ enum Constants {
     public static let wishlistImageThumbnailHeight: CGFloat = 50.0
     public static let wishlistPadding: CGFloat = 5.0
   }
-  
-  
+
   enum CheckOut {
     public static let applyButtonPadding: CGFloat = 5.0
   }

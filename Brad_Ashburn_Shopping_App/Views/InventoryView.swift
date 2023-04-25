@@ -83,7 +83,6 @@ struct InventoryView: View {
         }
       }
       .listStyle(PlainListStyle())
-
       .searchable(
         text: $searchTerm,
         placement: .navigationBarDrawer(displayMode: .always)

@@ -24,12 +24,10 @@ struct ItemDetailView: View {
             content: { image in
               image
                 .resizable()
-//                .aspectRatio(contentMode: .fit)
                 .scaledToFit()
                 .frame(
-//                  width: Constants.ItemDetails.imageWidth,
-//                  height: Constants.ItemDetails.imageHeight
-                  width: 150
+                  width: Constants.ItemDetails.imageWidth,
+                  height: Constants.ItemDetails.imageHeight
                 )
             },
             placeholder: {

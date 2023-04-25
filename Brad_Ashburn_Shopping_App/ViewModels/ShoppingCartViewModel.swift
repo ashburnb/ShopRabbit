@@ -8,35 +8,44 @@
 import Foundation
 
 class ShoppingCartViewModel: ObservableObject {
-  @Published var discountPercentage: Double = 0
+  @Published var discountPercentage: Double? = 0
   @Published var itemsInCart = [Item]() {
     // when an item is added or removed from the cart, this data is saved in Documents Directory
     didSet {
       saveItemsInShoppingCartToDocumentDirectory()
     }
   }
-
-  let discountTypes = [
-    "springbreak": 0.10,
-    "newcustomer": 0.25,
-    "newyearnewyou": 0.50,
-    "thanksgiving": 0.60,
-    "winterwonderland": 0.75
-  ]
+  @Published var discountTypes = [String: Double]()
 
   init() {
-    // WEEK07 - ASSIGNMENT 4
     loadItemsInShoppingCartFromDocumentDirectory()
   }
-}
 
-extension ShoppingCartViewModel {
-  func calculateDiscountPercentage(discountCode: String) {
-    guard let discount = discountTypes[discountCode] else {
-      return
+  // when carrots points are successfully redeemed for a discount, this method will create a random
+  // six character discount code
+  func createDiscountCode() -> String {
+    let alphanumerics = Array("abcdefghijklmnopqrstuvwxyz1234567890")
+    var discountCode = ""
+    for _ in 1...6 {
+      discountCode += String(alphanumerics.randomElement()!)
     }
-    discountPercentage = discount
+    return discountCode
   }
+
+  // the discount code generated in the method above will be saved into the @Published dictionary
+  func saveDiscountCode(_ discountCode: String, percentOff: Double) {
+    discountTypes[discountCode] = percentOff
+  }
+
+  // after the apply discount button in CheckOutView is pressed, this method removes the code from further use
+  func removeDiscountCode(_ discountCode: String) {
+    discountTypes.removeValue(forKey: discountCode)
+  }
+
+  func calculateDiscountPercentage(using discountCode: String) -> Double? {
+    return discountTypes[discountCode]
+  }
+
 }
 
 extension ShoppingCartViewModel {
