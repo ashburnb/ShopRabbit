@@ -111,8 +111,17 @@ extension InventoryViewModel {
       return
     }
 
+    let configuration = URLSessionConfiguration.default
+    configuration.waitsForConnectivity = true               // wait for connectivity or fail immediately
+    configuration.timeoutIntervalForRequest = 10           // unit is seconds
+    configuration.allowsCellularAccess = true               // set to false to prevent cellular network access
+    configuration.allowsExpensiveNetworkAccess = true     // set to false to prevent expensive network access
+    configuration.allowsConstrainedNetworkAccess = true  // set to false to prevent network access in Low Data Mode
+
+    let session = URLSession(configuration: configuration)
+
     do {
-      let (data, response) = try await URLSession.shared.data(from: url)
+      let (data, response) = try await session.data(from: url)
       guard (response as? HTTPURLResponse)?.statusCode == 200 else {
         print("Server Error occurred")
         return

@@ -14,11 +14,18 @@ struct ShopRabbit: App {
   @StateObject var shoppingCart = ShoppingCartViewModel()
   @StateObject var wishlist = WishListViewModel()
   @StateObject var orders = OrdersViewModel()
+  @StateObject var network = NetworkMonitor()
 
   var body: some Scene {
     WindowGroup {
       ZStack {
-        MainView()
+        if network.isActive {
+          MainView()
+
+        } else {
+          NoNetworkConnectionView()
+        }
+
         if launchscreen.state != .completed {
           LaunchscreenView()
         }

@@ -22,7 +22,7 @@ final class LaunchscreenViewModel: ObservableObject {
 //    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 //      self.state = .completed
 //    }
-    
+
     // updated to newer async/await concurrency model
     Task { @MainActor in
       try await Task.sleep(until: .now + .seconds(1), clock: .continuous)
