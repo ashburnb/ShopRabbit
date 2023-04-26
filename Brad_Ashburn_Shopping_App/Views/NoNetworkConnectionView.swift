@@ -9,7 +9,30 @@ import SwiftUI
 
 struct NoNetworkConnectionView: View {
   var body: some View {
-    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    ZStack {
+      Color("HomescreenColor")
+        .ignoresSafeArea()
+
+      VStack {
+        HomescreenTitleView(text: "Shop Rabbit")
+          .padding(.top, Constants.Homescreen.titleTextTopPadding)
+
+//        Spacer()
+
+        Image("emptyCartImage")
+          .resizable()
+          .scaledToFit()
+          .frame(width: 400)
+
+        Text("Uh oh! No network connection.\nPlease check your settings.")
+          .foregroundColor(.white)
+          .font(.title)
+          .multilineTextAlignment(.center)
+          .padding()
+//        Spacer()
+
+      } // end of VStack
+    } // end of ZStack
   }
 }
 
