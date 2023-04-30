@@ -17,8 +17,6 @@ struct NoNetworkConnectionView: View {
         HomescreenTitleView(text: "Shop Rabbit")
           .padding(.top, Constants.Homescreen.titleTextTopPadding)
 
-//        Spacer()
-
         Image("emptyCartImage")
           .resizable()
           .scaledToFit()
@@ -29,7 +27,6 @@ struct NoNetworkConnectionView: View {
           .font(.title)
           .multilineTextAlignment(.center)
           .padding()
-//        Spacer()
 
       } // end of VStack
     } // end of ZStack
