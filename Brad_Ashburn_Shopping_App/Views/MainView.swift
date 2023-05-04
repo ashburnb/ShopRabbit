@@ -37,12 +37,12 @@ struct MainView: View {
         }
 
     }
-    .onAppear {
-      // after 3 seconds, the dismiss method will end the launchscreen animation
-      DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-        launchscreen.dismiss()
-      }
-    }
+//    .task {
+//      do {
+//        try await Task.sleep(until: .now + .seconds(3), clock: .continuous)
+//        launchscreen.dismiss()
+//      } catch {}
+//    }
   }
 }
 

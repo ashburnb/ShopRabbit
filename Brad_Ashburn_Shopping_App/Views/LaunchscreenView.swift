@@ -47,6 +47,12 @@ struct LaunchscreenView: View {
         break
       }
     }
+    .task {
+      do {
+        try await Task.sleep(until: .now + .seconds(3), clock: .continuous)
+        launchscreenModel.dismiss()
+      } catch {}
+    }
 
   } // end of body property
 }
